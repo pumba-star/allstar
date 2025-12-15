@@ -1,39 +1,341 @@
+<!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>האתר שלי</title>
+    <title>ייבוא אישי פרימיום</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        * {
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
             min-height: 100vh;
+            color: #fff;
         }
-        .container {
-            max-width: 800px;
-            margin: 50px auto;
-            background: white;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-        h1 {
-            color: #667eea;
+        
+        .header {
+            background: linear-gradient(135deg, #e94560 0%, #533483 100%);
+            padding: 40px 20px;
             text-align: center;
+            box-shadow: 0 10px 40px rgba(233, 69, 96, 0.3);
+            border-bottom: 3px solid #e94560;
         }
-        p {
-            line-height: 1.6;
-            color: #333;
+        
+        .header h1 {
+            font-size: 3em;
+            font-weight: 800;
+            margin-bottom: 10px;
+            text-shadow: 3px 3px 10px rgba(0,0,0,0.5);
+            letter-spacing: 2px;
+        }
+        
+        .header p {
+            font-size: 1.3em;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+        
+        .container {
+            display: flex;
+            max-width: 1600px;
+            margin: 0 auto;
+            min-height: calc(100vh - 180px);
+        }
+        
+        .sidebar {
+            width: 300px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            padding: 30px 20px;
+            border-left: 3px solid rgba(233, 69, 96, 0.5);
+            box-shadow: -5px 0 30px rgba(0,0,0,0.3);
+        }
+        
+        .sidebar h2 {
+            color: #e94560;
+            margin-bottom: 25px;
+            font-size: 1.5em;
+            font-weight: 700;
+            text-align: center;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+        }
+        
+        .category-btn {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            width: 100%;
+            padding: 18px 25px;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, rgba(233, 69, 96, 0.2), rgba(83, 52, 131, 0.2));
+            border: 2px solid rgba(233, 69, 96, 0.3);
+            border-radius: 15px;
+            color: #fff;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: right;
+        }
+        
+        .category-btn:hover {
+            background: linear-gradient(135deg, rgba(233, 69, 96, 0.4), rgba(83, 52, 131, 0.4));
+            transform: translateX(-10px) scale(1.05);
+            border-color: #e94560;
+            box-shadow: 0 8px 25px rgba(233, 69, 96, 0.4);
+        }
+        
+        .category-btn.active {
+            background: linear-gradient(135deg, #e94560, #533483);
+            border-color: #e94560;
+            box-shadow: 0 8px 30px rgba(233, 69, 96, 0.6);
+            transform: translateX(-5px) scale(1.03);
+        }
+        
+        .category-icon {
+            font-size: 1.8em;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
+        }
+        
+        .content {
+            flex: 1;
+            padding: 40px;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 35px;
+        }
+        
+        .product-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid rgba(233, 69, 96, 0.2);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 20px 60px rgba(233, 69, 96, 0.5);
+            border-color: #e94560;
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-bottom: 3px solid rgba(233, 69, 96, 0.5);
+        }
+        
+        .product-info {
+            padding: 25px;
+        }
+        
+        .product-name {
+            font-size: 1.4em;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #fff;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+        }
+        
+        .product-price {
+            font-size: 1.6em;
+            font-weight: 800;
+            color: #e94560;
+            text-shadow: 2px 2px 8px rgba(233, 69, 96, 0.5);
+        }
+        
+        .category-section {
+            display: none;
+        }
+        
+        .category-section.active {
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                border-left: none;
+                border-bottom: 3px solid rgba(233, 69, 96, 0.5);
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>ברוכים הבאים לאתר שלי! 🎉</h1>
-        <p>זהו האתר הראשון שלי ב-GitHub Pages.</p>
-        <p>אני יכול לערוך את הקוד ולהוסיף עוד תוכן בכל זמן!</p>
+    <div class="header">
+        <h1>ייבוא אישי פרימיום</h1>
+        <p>מוצרים איכותיים מכל העולם</p>
     </div>
+    
+    <div class="container">
+        <div class="sidebar">
+            <h2>📦 קטגוריות</h2>
+            <button class="category-btn active" onclick="showCategory(1)">
+                <span class="category-icon">👔</span>
+                <span>ביגוד</span>
+            </button>
+            <button class="category-btn" onclick="showCategory(2)">
+                <span class="category-icon">📱</span>
+                <span>אלקטרוניקה</span>
+            </button>
+            <button class="category-btn" onclick="showCategory(3)">
+                <span class="category-icon">🌸</span>
+                <span>בישום</span>
+            </button>
+            <button class="category-btn" onclick="showCategory(4)">
+                <span class="category-icon">👟</span>
+                <span>נעליים</span>
+            </button>
+            <button class="category-btn" onclick="showCategory(5)">
+                <span class="category-icon">🛋️</span>
+                <span>ריהוט</span>
+            </button>
+        </div>
+        
+        <div class="content">
+            <!-- ביגוד -->
+            <div class="category-section active" id="category-1">
+                <div class="products-grid">
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1586363104862-3a5e2ab60d99?w=400" alt="חולצה" class="product-image">
+                        <div class="product-info">
+                            <div class="product-name">חולצת פולו מעוצבת</div>
+                            <div class="product-price">₪249</div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400" alt="ג'ינס" class="product-image">
+                        <div class="product-info">
+                            <div class="product-name">ג'ינס סלים פיט</div>
+                            <div class="product-price">₪349</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- אלקטרוניקה -->
+            <div class="category-section" id="category-2">
+                <div class="products-grid">
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400" alt="אוזניות" class="product-image">
+                        <div class="product-info">
+                            <div class="product-name">אוזניות Bluetooth פרימיום</div>
+                            <div class="product-price">₪599</div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=400" alt="שעון חכם" class="product-image">
+                        <div class="product-info">
+                            <div class="product-name">שעון חכם מתקדם</div>
+                            <div class="product-price">₪899</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- בישום -->
+            <div class="category-section" id="category-3">
+                <div class="products-grid">
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?w=400" alt="בושם" class="product-image">
+                        <div class="product-info">
+                            <div class="product-name">בושם יוקרתי לגבר</div>
+                            <div class="product-price">₪699</div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1588405748880-12d1d2a59d75?w=400" alt="בושם נשים" class="product-image">
+                        <div class="product-info">
+                            <div class="product-name">בושם אלגנטי לאישה</div>
+                            <div class="product-price">₪799</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- נעליים -->
+            <div class="category-section" id="category-4">
+                <div class="products-grid">
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400" alt="נעלי ספורט" class="product-image">
+                        <div class="product-info">
+                            <div class="product-name">נעלי ספורט מקצועיות</div>
+                            <div class="product-price">₪449</div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1533867617858-e7b97e060509?w=400" alt="נעלי עור" class="product-image">
+                        <div class="product-info">
+                            <div class="product-name">נעלי עור אלגנטיות</div>
+                            <div class="product-price">₪549</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ריהוט -->
+            <div class="category-section" id="category-5">
+                <div class="products-grid">
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400" alt="כורסא" class="product-image">
+                        <div class="product-info">
+                            <div class="product-name">כורסת מעצבים</div>
+                            <div class="product-price">₪2,499</div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=400" alt="שולחן" class="product-image">
+                        <div class="product-info">
+                            <div class="product-name">שולחן קפה מודרני</div>
+                            <div class="product-price">₪1,899</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function showCategory(categoryId) {
+            // הסתר את כל הקטגוריות
+            document.querySelectorAll('.category-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // הסר את המצב הפעיל מכל הכפתורים
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // הצג את הקטגוריה שנבחרה
+            document.getElementById('category-' + categoryId).classList.add('active');
+            
+            // הוסף מצב פעיל לכפתור שנלחץ
+            event.target.closest('.category-btn').classList.add('active');
+        }
+    </script>
 </body>
 </html>
