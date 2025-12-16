@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>תיקים - ייבוא אישי פרימיום</title>
+    <title>תיקים | ייבוא אישי פרימיום</title>
     <style>
         * {
             margin: 0;
@@ -17,10 +17,8 @@
             color: white;
             overflow-x: hidden;
             position: relative;
-            min-height: 100vh;
         }
 
-        /* אנימציית רקע זוהרת */
         body::before {
             content: '';
             position: fixed;
@@ -42,7 +40,6 @@
             50% { transform: translate(50px, 50px) rotate(180deg); opacity: 0.8; }
         }
 
-        /* Header */
         header {
             position: relative;
             z-index: 10;
@@ -51,242 +48,175 @@
             backdrop-filter: blur(10px);
             border-bottom: 2px solid rgba(255, 215, 0, 0.2);
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
         }
 
-        .back-btn {
-            color: white;
-            text-decoration: none;
-            font-size: 1.2em;
-            padding: 12px 30px;
-            border: 2px solid rgba(255, 215, 0, 0.5);
-            border-radius: 12px;
-            transition: all 0.3s ease;
-            background: rgba(255, 215, 0, 0.05);
+        nav {
+            display: flex;
+            gap: 40px;
+            align-items: center;
         }
 
-        .back-btn:hover {
-            background: #ffd700;
-            color: black;
-            transform: translateX(5px);
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        .category {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            color: white;
+            text-decoration: none;
+            padding: 15px 0;
+            font-size: 1.2em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .category.active {
+            color: #ffd700;
+        }
+
+        .category::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: radial-gradient(circle, #fff 0%, rgba(255, 255, 255, 0.4) 50%, transparent 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 12px #fff, 0 0 20px rgba(255, 255, 255, 0.8);
+            animation: glow-dot 2s ease-in-out infinite;
+            margin-left: 40px;
+        }
+
+        .category:first-child::before {
+            display: none;
+        }
+
+        @keyframes glow-dot {
+            0%, 100% { 
+                box-shadow: 0 0 12px #fff, 0 0 20px rgba(255, 255, 255, 0.8);
+                transform: scale(1);
+            }
+            50% { 
+                box-shadow: 0 0 20px #fff, 0 0 35px rgba(255, 255, 255, 1);
+                transform: scale(1.3);
+            }
+        }
+
+        .category:hover {
+            color: #ffd700;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+        }
+
+        main {
+            position: relative;
+            z-index: 5;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 50px;
         }
 
         .page-title {
-            font-size: 2.8em;
-            font-weight: bold;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .page-title h1 {
+            font-size: 3em;
+            margin-bottom: 15px;
             background: linear-gradient(45deg, #fff, #ffd700, #c0c0c0);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-align: center;
-            flex: 1;
         }
 
-        /* Main Gallery Container */
-        main {
-            position: relative;
-            z-index: 5;
-            padding: 40px 50px 200px 50px;
-            max-width: 1600px;
-            margin: 0 auto;
+        .page-title p {
+            font-size: 1.2em;
+            color: rgba(255, 255, 255, 0.6);
         }
 
-        /* Main Display - בועה מרכזית */
-        .main-display {
-            position: relative;
-            width: 100%;
-            max-width: 900px;
-            height: 600px;
-            margin: 0 auto 60px auto;
-            background: rgba(20, 20, 20, 0.8);
-            border-radius: 30px;
-            border: 3px solid rgba(255, 215, 0, 0.3);
-            overflow: hidden;
-            box-shadow: 0 20px 60px rgba(255, 215, 0, 0.3);
-            display: flex;
+        .back-btn {
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-        }
-
-        .main-image {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-            animation: fadeIn 0.5s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        .placeholder-main {
-            text-align: center;
-            color: rgba(255, 215, 0, 0.5);
-            font-size: 2em;
-        }
-
-        .placeholder-main p {
-            margin-top: 20px;
-            font-size: 0.5em;
-            color: rgba(255, 255, 255, 0.3);
-        }
-
-        /* Product Info Section */
-        .product-info {
-            max-width: 900px;
-            margin: 0 auto 60px auto;
-            padding: 30px;
-            background: rgba(20, 20, 20, 0.6);
-            border-radius: 20px;
-            border: 2px solid rgba(255, 215, 0, 0.2);
-        }
-
-        .product-name {
-            font-size: 2.2em;
-            font-weight: bold;
+            gap: 10px;
             color: #ffd700;
+            text-decoration: none;
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            color: #fff;
+            transform: translateX(5px);
+        }
+
+        /* Products Gallery */
+        .products-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .product-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            border: 2px solid rgba(255, 215, 0, 0.2);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 215, 0, 0.6);
+            box-shadow: 0 20px 40px rgba(255, 215, 0, 0.2);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .product-info h3 {
+            font-size: 1.4em;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .product-info p {
+            color: rgba(255, 255, 255, 0.6);
             margin-bottom: 15px;
         }
 
-        .product-description {
-            font-size: 1.3em;
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.8;
-            margin-bottom: 20px;
-        }
-
-        .product-price {
-            font-size: 2.5em;
+        .order-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(45deg, #ffd700, #ffed4a);
+            color: #000;
+            text-decoration: none;
+            border-radius: 25px;
             font-weight: bold;
-            color: #fff;
-            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
-        }
-
-        /* Thumbnail Gallery - תחתית העמוד */
-        .thumbnail-gallery {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0, 0, 0, 0.95);
-            border-top: 2px solid rgba(255, 215, 0, 0.3);
-            padding: 20px 30px;
-            z-index: 100;
-            backdrop-filter: blur(10px);
-        }
-
-        .thumbnail-container {
-            display: flex;
-            gap: 15px;
-            overflow-x: auto;
-            overflow-y: hidden;
-            padding: 10px 0;
-            scroll-behavior: smooth;
-        }
-
-        /* Custom Scrollbar */
-        .thumbnail-container::-webkit-scrollbar {
-            height: 8px;
-        }
-
-        .thumbnail-container::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-        }
-
-        .thumbnail-container::-webkit-scrollbar-thumb {
-            background: rgba(255, 215, 0, 0.5);
-            border-radius: 10px;
-        }
-
-        .thumbnail-container::-webkit-scrollbar-thumb:hover {
-            background: rgba(255, 215, 0, 0.8);
-        }
-
-        .thumbnail {
-            flex-shrink: 0;
-            width: 150px;
-            height: 150px;
-            border-radius: 15px;
-            overflow: hidden;
-            cursor: pointer;
-            border: 3px solid transparent;
             transition: all 0.3s ease;
-            position: relative;
         }
 
-        .thumbnail:hover {
-            transform: translateY(-5px) scale(1.05);
-            border-color: rgba(255, 215, 0, 0.6);
+        .order-btn:hover {
+            transform: scale(1.05);
             box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
         }
 
-        .thumbnail.active {
-            border-color: #ffd700;
-            box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
-            transform: translateY(-5px) scale(1.1);
-        }
-
-        .thumbnail img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .thumbnail-placeholder {
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: rgba(255, 215, 0, 0.5);
-            font-size: 0.9em;
-            text-align: center;
-            padding: 10px;
-        }
-
-        /* Navigation Arrows */
-        .nav-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255, 215, 0, 0.2);
-            border: 2px solid rgba(255, 215, 0, 0.5);
-            color: #ffd700;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 2em;
-            transition: all 0.3s ease;
-            z-index: 10;
-        }
-
-        .nav-arrow:hover {
-            background: rgba(255, 215, 0, 0.4);
-            transform: translateY(-50%) scale(1.1);
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
-        }
-
-        .nav-arrow.left {
-            right: 20px;
-        }
-
-        .nav-arrow.right {
-            left: 20px;
-        }
-
-        /* WhatsApp Button */
         .whatsapp-btn {
             position: fixed;
-            bottom: 200px;
+            bottom: 30px;
             left: 30px;
             z-index: 1000;
             width: 70px;
@@ -300,7 +230,6 @@
             box-shadow: 0 8px 30px rgba(37, 211, 102, 0.5);
             transition: all 0.3s ease;
             animation: pulse 2s infinite;
-            text-decoration: none;
         }
 
         @keyframes pulse {
@@ -319,221 +248,111 @@
             fill: white;
         }
 
-        /* Responsive */
+        footer {
+            position: relative;
+            z-index: 10;
+            padding: 40px 50px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.95);
+            border-top: 2px solid rgba(255, 215, 0, 0.2);
+            margin-top: 60px;
+        }
+
+        .footer-logo {
+            font-size: 2.5em;
+            font-weight: bold;
+            background: linear-gradient(45deg, #fff, #ffd700, #c0c0c0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
         @media (max-width: 768px) {
-            header {
+            nav {
                 flex-direction: column;
                 gap: 20px;
+            }
+            .category::before {
+                display: none;
+            }
+            main {
                 padding: 20px;
             }
-
-            .page-title {
+            .page-title h1 {
                 font-size: 2em;
             }
-
-            main {
-                padding: 20px 20px 200px 20px;
+            .products-gallery {
+                grid-template-columns: 1fr;
             }
-
-            .main-display {
-                height: 400px;
-            }
-
-            .thumbnail {
-                width: 100px;
-                height: 100px;
-            }
-
-            .nav-arrow {
-                width: 50px;
-                height: 50px;
-                font-size: 1.5em;
-            }
-
-            .whatsapp-btn {
-                bottom: 180px;
-                left: 20px;
-                width: 60px;
-                height: 60px;
-            }
-        }
-
-        /* Empty State */
-        .empty-gallery {
-            text-align: center;
-            padding: 40px;
-            color: rgba(255, 255, 255, 0.5);
-        }
-
-        .empty-gallery h3 {
-            font-size: 1.8em;
-            margin-bottom: 10px;
-            color: rgba(255, 215, 0, 0.7);
         }
     </style>
 </head>
 <body>
     <header>
-        <a href="index.html" class="back-btn">→ חזרה לדף הבית</a>
-        <h1 class="page-title">👜 תיקים 👜</h1>
-        <div style="width: 150px;"></div>
+        <nav>
+            <a href="shoes.html" class="category">נעליים</a>
+            <a href="clothes.html" class="category">בגדים</a>
+            <a href="bags.html" class="category active">תיקים</a>
+            <a href="perfume.html" class="category">בישום</a>
+            <a href="electronics.html" class="category">אלקטרוניקה</a>
+            <a href="furniture.html" class="category">ריהוט בהזמנה</a>
+        </nav>
     </header>
 
     <main>
-        <!-- Main Display -->
-        <div class="main-display" id="mainDisplay">
-            <div class="placeholder-main">
-                <div>🖼️</div>
-                <p>בחר תמונה מהגלריה למטה</p>
-            </div>
-            <!-- חצי ניווט -->
-            <div class="nav-arrow left" id="prevBtn" style="display: none;">›</div>
-            <div class="nav-arrow right" id="nextBtn" style="display: none;">‹</div>
+        <a href="index.html" class="back-btn">→ חזרה לדף הראשי</a>
+        
+        <div class="page-title">
+            <h1>👜 תיקים</h1>
+            <p>תיקי מעצבים יוקרתיים בייבוא אישי</p>
         </div>
 
-        <!-- Product Info -->
-        <div class="product-info" id="productInfo" style="display: none;">
-            <div class="product-name" id="productName">שם התיק</div>
-            <div class="product-description" id="productDescription">תיאור מפורט של התיק</div>
-            <div class="product-price" id="productPrice">₪399</div>
+        <div class="products-gallery">
+            <div class="product-card">
+                <img src="https://i.ibb.co/Q7m273Mf/nscwr-Whats-App-Image-2025-12-16-at-20-57-16.jpg" alt="תיק יוקרתי 1" class="product-image">
+                <div class="product-info">
+                    <h3>תיק יוקרתי</h3>
+                    <p>ייבוא אישי • איכות פרימיום</p>
+                    <a href="https://wa.me/972500000000?text=היי, אני מתעניין/ת בתיק מהאתר" class="order-btn">לפרטים והזמנה</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://i.ibb.co/8n05HX73/pddgp-Whats-App-Image-2025-12-16-at-20-57-17.jpg" alt="תיק יוקרתי 2" class="product-image">
+                <div class="product-info">
+                    <h3>תיק יוקרתי</h3>
+                    <p>ייבוא אישי • איכות פרימיום</p>
+                    <a href="https://wa.me/972500000000?text=היי, אני מתעניין/ת בתיק מהאתר" class="order-btn">לפרטים והזמנה</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://i.ibb.co/BH5YW1XG/nzknc-Whats-App-Image-2025-12-16-at-20-57-16.jpg" alt="תיק יוקרתי 3" class="product-image">
+                <div class="product-info">
+                    <h3>תיק יוקרתי</h3>
+                    <p>ייבוא אישי • איכות פרימיום</p>
+                    <a href="https://wa.me/972500000000?text=היי, אני מתעניין/ת בתיק מהאתר" class="order-btn">לפרטים והזמנה</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://i.ibb.co/MxqWPc6N/ewhoi-Whats-App-Image-2025-12-16-at-20-57-17.jpg" alt="תיק יוקרתי 4" class="product-image">
+                <div class="product-info">
+                    <h3>תיק יוקרתי</h3>
+                    <p>ייבוא אישי • איכות פרימיום</p>
+                    <a href="https://wa.me/972500000000?text=היי, אני מתעניין/ת בתיק מהאתר" class="order-btn">לפרטים והזמנה</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://i.ibb.co/JwC46mmJ/fehrv-Whats-App-Image-2025-12-16-at-20-57-16.jpg" alt="תיק יוקרתי 5" class="product-image">
+                <div class="product-info">
+                    <h3>תיק יוקרתי</h3>
+                    <p>ייבוא אישי • איכות פרימיום</p>
+                    <a href="https://wa.me/972500000000?text=היי, אני מתעניין/ת בתיק מהאתר" class="order-btn">לפרטים והזמנה</a>
+                </div>
+            </div>
         </div>
     </main>
 
-    <!-- Thumbnail Gallery -->
-    <div class="thumbnail-gallery">
-        <div class="thumbnail-container" id="thumbnailContainer">
-            <!-- תמונות ממוזערות יתווספו כאן -->
-            <!-- דוגמה: -->
-            <div class="thumbnail active" onclick="selectImage(0)">
-                <div class="thumbnail-placeholder">תמונה 1<br>הוסף כאן</div>
-            </div>
-            <div class="thumbnail" onclick="selectImage(1)">
-                <div class="thumbnail-placeholder">תמונה 2<br>הוסף כאן</div>
-            </div>
-            <div class="thumbnail" onclick="selectImage(2)">
-                <div class="thumbnail-placeholder">תמונה 3<br>הוסף כאן</div>
-            </div>
-            <div class="thumbnail" onclick="selectImage(3)">
-                <div class="thumbnail-placeholder">תמונה 4<br>הוסף כאן</div>
-            </div>
-            <div class="thumbnail" onclick="selectImage(4)">
-                <div class="thumbnail-placeholder">תמונה 5<br>הוסף כאן</div>
-            </div>
-            <div class="thumbnail" onclick="selectImage(5)">
-                <div class="thumbnail-placeholder">תמונה 6<br>הוסף כאן</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- WhatsApp Button -->
-    <a href="https://wa.me/972500000000" target="_blank" class="whatsapp-btn" title="צור קשר בוואטסאפ">
-        <svg viewBox="0 0 32 32">
-            <path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 8.135-2.135c2.369 1.313 5.061 2.135 7.865 2.135 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.333c-2.547 0-5.043-0.725-7.203-2.088l-0.515-0.32-5.328 1.397 1.423-5.195-0.348-0.533c-1.499-2.312-2.363-5.035-2.363-7.927 0-7.455 6.212-13.667 13.667-13.667s13.667 6.212 13.667 13.667c0 7.455-6.212 13.667-13.667 13.667zM23.488 19.739c-0.424-0.212-2.507-1.239-2.897-1.381s-0.671-0.212-0.953 0.212c-0.283 0.424-1.097 1.381-1.344 1.663s-0.495 0.318-0.919 0.106c-0.424-0.212-1.789-0.659-3.405-2.101-1.259-1.121-2.109-2.507-2.355-2.931s-0.025-0.653 0.186-0.864c0.191-0.191 0.424-0.495 0.637-0.743s0.283-0.424 0.424-0.707c0.141-0.283 0.071-0.531-0.035-0.743s-0.953-2.299-1.305-3.147c-0.344-0.825-0.692-0.712-0.953-0.725-0.247-0.012-0.531-0.015-0.815-0.015s-0.743 0.106-1.133 0.531c-0.39 0.424-1.487 1.453-1.487 3.544s1.521 4.112 1.733 4.395c0.212 0.283 2.989 4.563 7.243 6.4 1.012 0.437 1.8 0.697 2.416 0.892 1.019 0.318 1.945 0.273 2.677 0.165 0.817-0.122 2.507-1.025 2.861-2.015s0.353-1.839 0.247-2.015c-0.106-0.176-0.39-0.283-0.815-0.495z"/>
-        </svg>
-    </a>
-
-    <script>
-        // מערך התמונות - כאן תוסיף את קישורי התמונות שלך
-        const images = [
-            {
-                url: 'https://ibb.co/wFD3pSs6', 
-                name: 'תיק יד עור מעוצב',
-                description: '• כיסים • רוכסן איכותי,
-                price: '₪599'
-            },
-            {
-                url: 'https://ibb.co/7db5Mjjm', 
-                name: 'תיק יד אלגנטי',
-                description: 'עיצוב קלאסי • מתאים לאירועים • עור רך ונעים למגע',
-                price: '₪449'
-            },
-            {
-                url: 'https://ibb.co/Cp0kp3Qz', 
-                name: 'תיק יד יוקרתי',
-                description: 'נוח לנשיאה • רצועות מרופדות • עמיד במים',
-                price: '₪299'
-            },
-            {
-                url: 'https://ibb.co/201pVbDS', 
-                name: 'תיק יד לגבר',
-                description: 'קומפקטי ונוח • מושלם ליום יום',
-                price: '₪199'
-            },
-            {
-                url: 'https://ibb.co/XfbsqVCB', 
-                name: 'תיק יד גבר',
-                description: 'עיצוב מהודר •עור איכותי ',
-                price: '₪799'
-            },
-         
-        ];
-
-        let currentIndex = 0;
-
-        // בחירת תמונה
-        function selectImage(index) {
-            currentIndex = index;
-            const mainDisplay = document.getElementById('mainDisplay');
-            const productInfo = document.getElementById('productInfo');
-            const thumbnails = document.querySelectorAll('.thumbnail');
-            
-            // עדכון תמונה ראשית
-            if (images[index].url) {
-                mainDisplay.innerHTML = `
-                    <img src="${images[index].url}" alt="${images[index].name}" class="main-image">
-                    <div class="nav-arrow left" onclick="prevImage()">›</div>
-                    <div class="nav-arrow right" onclick="nextImage()">‹</div>
-                `;
-                
-                // עדכון מידע מוצר
-                productInfo.style.display = 'block';
-                document.getElementById('productName').textContent = images[index].name;
-                document.getElementById('productDescription').textContent = images[index].description;
-                document.getElementById('productPrice').textContent = images[index].price;
-            } else {
-                mainDisplay.innerHTML = `
-                    <div class="placeholder-main">
-                        <div>🖼️</div>
-                        <p>הוסף תמונה במערך images בקוד</p>
-                    </div>
-                `;
-                productInfo.style.display = 'none';
-            }
-            
-            // עדכון מסגרת פעילה
-            thumbnails.forEach((thumb, i) => {
-                if (i === index) {
-                    thumb.classList.add('active');
-                } else {
-                    thumb.classList.remove('active');
-                }
-            });
-        }
-
-        // תמונה הבאה
-        function nextImage() {
-            currentIndex = (currentIndex + 1) % images.length;
-            selectImage(currentIndex);
-        }
-
-        // תמונה קודמת
-        function prevImage() {
-            currentIndex = (currentIndex - 1 + images.length) % images.length;
-            selectImage(currentIndex);
-        }
-
-        // מקשי מקלדת
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowLeft') nextImage();
-            if (e.key === 'ArrowRight') prevImage();
-        });
-
-        // טען את התמונה הראשונה
-        window.addEventListener('load', () => {
-            if (images[0].url) {
-                selectImage(0);
-            }
-        });
-    </script>
-</body>
-</html>
+    <a href="https://wa.me/972500000000" 
