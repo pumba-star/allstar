@@ -147,7 +147,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: brightness(0.8);
+            filter: brightness(0.9);
         }
 
         /* Text Banner */
@@ -199,18 +199,6 @@
         @keyframes sparkle {
             0%, 100% { opacity: 0.3; transform: scale(0.8) rotate(0deg); }
             50% { opacity: 1; transform: scale(1.2) rotate(180deg); }
-        }
-
-        /* Placeholder for images */
-        .placeholder {
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2em;
-            color: rgba(255, 215, 0, 0.5);
         }
 
         /* WhatsApp Button */
@@ -352,32 +340,33 @@
         </div>
 
         <div class="slideshow-container" id="slideshow">
-            <!-- כאן תוכל להוסיף תמונות -->
             <div class="slide active">
-                <div class="placeholder">
-                    הוסף תמונה מספר 1<br>
-                    <small style="font-size: 0.5em;">עורך את הקוד והחלף את ה-placeholder</small>
-                </div>
+                <img src="https://i.ibb.co/Q7m273Mf/nscwr-Whats-App-Image-2025-12-16-at-20-57-16.jpg" alt="מוצר ייבוא 1" class="slide-image">
             </div>
 
             <div class="slide">
-                <div class="placeholder">הוסף תמונה מספר 2</div>
+                <img src="https://i.ibb.co/8n05HX73/pddgp-Whats-App-Image-2025-12-16-at-20-57-17.jpg" alt="מוצר ייבוא 2" class="slide-image">
             </div>
 
             <div class="slide">
-                <div class="placeholder">הוסף תמונה מספר 3</div>
+                <img src="https://i.ibb.co/BH5YW1XG/nzknc-Whats-App-Image-2025-12-16-at-20-57-16.jpg" alt="מוצר ייבוא 3" class="slide-image">
             </div>
 
             <div class="slide">
-                <div class="placeholder">הוסף תמונה מספר 4</div>
+                <img src="https://i.ibb.co/MxqWPc6N/ewhoi-Whats-App-Image-2025-12-16-at-20-57-17.jpg" alt="מוצר ייבוא 4" class="slide-image">
+            </div>
+
+            <div class="slide">
+                <img src="https://i.ibb.co/JwC46mmJ/fehrv-Whats-App-Image-2025-12-16-at-20-57-16.jpg" alt="מוצר ייבוא 5" class="slide-image">
             </div>
         </div>
 
         <div class="dots-container">
-            <span class="dot" onclick="currentSlide(0)"></span>
+            <span class="dot active" onclick="currentSlide(0)"></span>
             <span class="dot" onclick="currentSlide(1)"></span>
             <span class="dot" onclick="currentSlide(2)"></span>
             <span class="dot" onclick="currentSlide(3)"></span>
+            <span class="dot" onclick="currentSlide(4)"></span>
         </div>
     </main>
 
@@ -425,12 +414,6 @@
 
         // Initialize
         showSlide(currentSlideIndex);
-
-        // הוראות להוספת תמונות:
-        // 1. מצא את האלמנטים עם class="placeholder"
-        // 2. החלף אותם ב: <img src="URL-של-התמונה-שלך" alt="תיאור" class="slide-image">
-        // לדוגמה:
-        // <img src="https://example.com/shoe.jpg" alt="נעליים" class="slide-image">
     </script>
 </body>
 </html>
