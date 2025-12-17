@@ -11,32 +11,36 @@
             box-sizing: border-box;
         }
 
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: #000000;
             color: white;
-            min-height: 100vh;
             display: flex;
             flex-direction: column;
         }
 
         header {
-            padding: 25px 20px;
+            padding: 15px 20px;
             text-align: center;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            flex-shrink: 0;
         }
 
         .logo {
-            font-size: 1.6em;
+            font-size: 1.4em;
             font-weight: 300;
-            letter-spacing: 10px;
+            letter-spacing: 8px;
             text-transform: uppercase;
             color: #ffffff;
             text-decoration: none;
             text-shadow: 
                 0 0 10px rgba(255, 255, 255, 0.8),
-                0 0 20px rgba(255, 255, 255, 0.6),
-                0 0 40px rgba(255, 255, 255, 0.4);
+                0 0 20px rgba(255, 255, 255, 0.6);
         }
 
         .categories {
@@ -45,17 +49,17 @@
             justify-content: center;
             gap: 0;
             flex-wrap: wrap;
-            margin-top: 15px;
+            margin-top: 10px;
         }
 
         .category {
             color: #ffffff;
             text-decoration: none;
-            font-size: 0.9em;
+            font-size: 0.8em;
             font-weight: 400;
             letter-spacing: 2px;
             text-transform: uppercase;
-            padding: 8px 15px;
+            padding: 6px 12px;
             transition: all 0.3s ease;
             text-shadow: 
                 0 0 8px rgba(255, 255, 255, 0.6),
@@ -66,8 +70,7 @@
         .category.active {
             text-shadow: 
                 0 0 15px rgba(255, 255, 255, 1),
-                0 0 30px rgba(255, 255, 255, 0.8),
-                0 0 50px rgba(255, 255, 255, 0.6);
+                0 0 30px rgba(255, 255, 255, 0.8);
         }
 
         .dot {
@@ -75,19 +78,13 @@
             height: 4px;
             background: #ffffff;
             border-radius: 50%;
-            box-shadow: 
-                0 0 8px rgba(255, 255, 255, 1),
-                0 0 15px rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 8px rgba(255, 255, 255, 1);
             animation: glow 2s ease-in-out infinite;
         }
 
         @keyframes glow {
-            0%, 100% {
-                box-shadow: 0 0 8px rgba(255, 255, 255, 1), 0 0 15px rgba(255, 255, 255, 0.8);
-            }
-            50% {
-                box-shadow: 0 0 15px rgba(255, 255, 255, 1), 0 0 25px rgba(255, 255, 255, 1);
-            }
+            0%, 100% { box-shadow: 0 0 8px rgba(255, 255, 255, 1); }
+            50% { box-shadow: 0 0 15px rgba(255, 255, 255, 1); }
         }
 
         .main-section {
@@ -96,30 +93,27 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 30px 20px;
-        }
-
-        .page-title {
-            text-align: center;
-            margin-bottom: 25px;
+            padding: 15px 20px;
+            min-height: 0;
         }
 
         .page-title h1 {
-            font-size: 1.8em;
+            font-size: 1.4em;
             font-weight: 300;
-            letter-spacing: 8px;
+            letter-spacing: 6px;
             text-transform: uppercase;
             color: #ffffff;
-            text-shadow: 
-                0 0 10px rgba(255, 255, 255, 0.8),
-                0 0 20px rgba(255, 255, 255, 0.6);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            margin-bottom: 15px;
+            text-align: center;
         }
 
         .main-image-container {
             position: relative;
             width: 100%;
-            max-width: 650px;
-            aspect-ratio: 1/1;
+            max-width: 500px;
+            height: calc(100vh - 280px);
+            max-height: 500px;
         }
 
         .main-image-wrapper {
@@ -127,8 +121,9 @@
             height: 100%;
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 15px;
+            border-radius: 12px;
             overflow: hidden;
+            position: relative;
         }
 
         .main-image {
@@ -136,6 +131,7 @@
             height: 100%;
             object-fit: cover;
             object-position: center;
+            cursor: pointer;
             transition: opacity 0.3s ease;
         }
 
@@ -143,13 +139,13 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            width: 55px;
-            height: 55px;
-            background: rgba(0, 0, 0, 0.5);
+            width: 45px;
+            height: 45px;
+            background: rgba(0, 0, 0, 0.6);
             border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 50%;
             color: #ffffff;
-            font-size: 1.3em;
+            font-size: 1.1em;
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -162,97 +158,42 @@
         .nav-btn:hover {
             background: rgba(255, 255, 255, 0.2);
             border-color: rgba(255, 255, 255, 0.8);
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
         }
 
-        .nav-prev { right: 15px; }
-        .nav-next { left: 15px; }
+        .nav-prev { right: 10px; }
+        .nav-next { left: 10px; }
 
-        .product-info {
-            text-align: center;
-            margin-top: 20px;
+        .thumbnails-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+            padding: 30px 15px 15px;
+            z-index: 5;
         }
 
-        .product-info h3 {
-            font-size: 1.2em;
-            font-weight: 400;
-            letter-spacing: 2px;
-            margin-bottom: 8px;
-            color: #ffffff;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-        }
-
-        .product-info p {
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 0.85em;
-            margin-bottom: 15px;
-        }
-
-        .order-btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            color: #ffffff;
-            text-decoration: none;
-            border-radius: 25px;
-            font-size: 0.9em;
-            letter-spacing: 2px;
-            transition: all 0.3s ease;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-        }
-
-        .order-btn:hover {
-            background: #ffffff;
-            color: #000000;
-            text-shadow: none;
-            box-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
-        }
-
-        .image-counter {
-            margin-top: 10px;
-            font-size: 0.85em;
-            color: rgba(255, 255, 255, 0.4);
-            letter-spacing: 3px;
-        }
-
-        .thumbnails-section {
-            width: 100%;
-            padding: 20px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            background: rgba(255, 255, 255, 0.02);
-        }
-
-        .thumbnails-wrapper {
-            width: 100%;
+        .thumbnails-scroll {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
             overflow-x: auto;
-            padding: 10px 20px;
+            padding-bottom: 5px;
         }
 
-        .thumbnails-wrapper::-webkit-scrollbar {
-            height: 4px;
+        .thumbnails-scroll::-webkit-scrollbar {
+            height: 3px;
         }
 
-        .thumbnails-wrapper::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .thumbnails-wrapper::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.2);
+        .thumbnails-scroll::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
             border-radius: 10px;
         }
 
-        .thumbnails-grid {
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-            min-width: max-content;
-        }
-
         .thumbnail {
-            width: 80px;
-            height: 80px;
-            border-radius: 8px;
+            width: 50px;
+            height: 50px;
+            border-radius: 6px;
             overflow: hidden;
             cursor: pointer;
             border: 2px solid transparent;
@@ -261,15 +202,12 @@
             flex-shrink: 0;
         }
 
-        .thumbnail:hover {
-            opacity: 0.8;
-            border-color: rgba(255, 255, 255, 0.3);
-        }
+        .thumbnail:hover { opacity: 0.8; }
 
         .thumbnail.active {
             opacity: 1;
             border-color: rgba(255, 255, 255, 0.9);
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
 
         .thumbnail img {
@@ -278,43 +216,138 @@
             object-fit: cover;
         }
 
+        .product-info {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .product-info h3 {
+            font-size: 1em;
+            font-weight: 400;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .product-info p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.8em;
+            margin-bottom: 10px;
+        }
+
+        .order-btn {
+            display: inline-block;
+            padding: 10px 25px;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.85em;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .order-btn:hover {
+            background: #ffffff;
+            color: #000000;
+        }
+
+        .image-counter {
+            margin-top: 8px;
+            font-size: 0.75em;
+            color: rgba(255, 255, 255, 0.4);
+            letter-spacing: 2px;
+        }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.98);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            cursor: zoom-out;
+        }
+
+        .lightbox.active { display: flex; }
+
+        .lightbox-image {
+            max-width: 95%;
+            max-height: 95%;
+            object-fit: contain;
+            border-radius: 5px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            color: #ffffff;
+            font-size: 1.5em;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .lightbox-close:hover {
+            background: #ffffff;
+            color: #000000;
+        }
+
         .whatsapp-btn {
             position: fixed;
-            bottom: 120px;
+            bottom: 20px;
             left: 20px;
             z-index: 1000;
-            width: 55px;
-            height: 55px;
+            width: 50px;
+            height: 50px;
             background: linear-gradient(135deg, #25D366, #128C7E);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
             transition: all 0.3s ease;
         }
 
-        .whatsapp-btn:hover {
-            transform: scale(1.1);
-        }
+        .whatsapp-btn:hover { transform: scale(1.1); }
 
         .whatsapp-btn svg {
-            width: 28px;
-            height: 28px;
+            width: 26px;
+            height: 26px;
             fill: white;
         }
 
-        @media (max-width: 768px) {
-            .logo { font-size: 1.3em; letter-spacing: 6px; }
-            .categories { flex-direction: column; gap: 3px; }
+        @media (max-width: 600px) {
+            header { padding: 10px 15px; }
+            .logo { font-size: 1.2em; letter-spacing: 5px; }
+            .categories { flex-direction: column; gap: 2px; }
             .dot { display: none; }
-            .category { font-size: 0.8em; padding: 6px 10px; }
-            .page-title h1 { font-size: 1.4em; }
-            .main-image-container { max-width: 90%; }
-            .nav-btn { width: 45px; height: 45px; font-size: 1.1em; }
-            .nav-prev { right: 10px; }
-            .nav-next { left: 10px; }
-            .thumbnail { width: 60px; height: 60px; }
+            .category { font-size: 0.7em; padding: 4px 8px; }
+            .page-title h1 { font-size: 1.2em; margin-bottom: 10px; }
+            .main-image-container { height: calc(100vh - 240px); }
+            .nav-btn { width: 35px; height: 35px; font-size: 0.9em; }
+            .thumbnail { width: 40px; height: 40px; }
+        }
+
+        @media (max-height: 700px) {
+            header { padding: 10px 15px; }
+            .page-title h1 { font-size: 1.2em; margin-bottom: 10px; }
+            .main-image-container { height: calc(100vh - 220px); }
+            .product-info { margin-top: 10px; }
         }
     </style>
 </head>
@@ -345,11 +378,15 @@
 
         <div class="main-image-container">
             <div class="main-image-wrapper">
-                <img src="" alt="שעון חכם" class="main-image" id="mainImage">
+                <img src="" alt="שעון חכם" class="main-image" id="mainImage" onclick="openFullImage()">
+                
+                <button class="nav-btn nav-prev" onclick="changeImage(1)">❮</button>
+                <button class="nav-btn nav-next" onclick="changeImage(-1)">❯</button>
+
+                <div class="thumbnails-bar">
+                    <div class="thumbnails-scroll" id="thumbnailsGrid"></div>
+                </div>
             </div>
-            
-            <button class="nav-btn nav-prev" onclick="changeImage(1)">❮</button>
-            <button class="nav-btn nav-next" onclick="changeImage(-1)">❯</button>
         </div>
 
         <div class="product-info">
@@ -362,10 +399,9 @@
         </div>
     </div>
 
-    <div class="thumbnails-section">
-        <div class="thumbnails-wrapper">
-            <div class="thumbnails-grid" id="thumbnailsGrid"></div>
-        </div>
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <button class="lightbox-close" onclick="closeLightbox()">×</button>
+        <img src="" alt="תמונה מלאה" class="lightbox-image" id="lightboxImage">
     </div>
 
     <a href="https://wa.me/972500000000" target="_blank" class="whatsapp-btn" title="צור קשר בוואטסאפ">
@@ -398,7 +434,7 @@
             images.forEach((src, index) => {
                 const thumb = document.createElement('div');
                 thumb.className = `thumbnail ${index === 0 ? 'active' : ''}`;
-                thumb.onclick = () => selectImage(index);
+                thumb.onclick = (e) => { e.stopPropagation(); selectImage(index); };
                 thumb.innerHTML = `<img src="${src}" alt="מוצר ${index + 1}">`;
                 grid.appendChild(thumb);
             });
@@ -431,9 +467,22 @@
             updateThumbnails();
         }
 
+        function openFullImage() {
+            document.getElementById('lightboxImage').src = images[currentIndex];
+            document.getElementById('lightbox').classList.add('active');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+        }
+
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'ArrowRight') changeImage(-1);
-            if (e.key === 'ArrowLeft') changeImage(1);
+            if (document.getElementById('lightbox').classList.contains('active')) {
+                if (e.key === 'Escape') closeLightbox();
+            } else {
+                if (e.key === 'ArrowRight') changeImage(-1);
+                if (e.key === 'ArrowLeft') changeImage(1);
+            }
         });
 
         document.getElementById('totalImages').textContent = images.length;
