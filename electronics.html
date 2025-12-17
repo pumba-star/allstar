@@ -2,9 +2,8 @@
 <html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>אלקטרוניקה | Premium</title>
     <style>
         * {
@@ -14,25 +13,11 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        html {
-            height: 100%;
-            height: -webkit-fill-available;
-        }
-
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: #000000;
             color: white;
-            min-height: 100%;
-            min-height: -webkit-fill-available;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            min-height: 100vh;
         }
 
         /* כוכבים ברקע */
@@ -71,17 +56,17 @@
 
         /* Header */
         header {
-            flex-shrink: 0;
-            padding: 12px 15px;
+            padding: 15px 20px;
             text-align: center;
             background: rgba(0, 0, 0, 0.95);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            position: relative;
+            position: sticky;
+            top: 0;
             z-index: 100;
         }
 
         .logo {
-            font-size: 1.4em;
+            font-size: 1.5em;
             font-weight: 300;
             letter-spacing: 8px;
             text-transform: uppercase;
@@ -93,7 +78,7 @@
                 0 0 40px rgba(255, 255, 255, 0.6),
                 0 0 60px rgba(255, 255, 255, 0.4);
             display: block;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             animation: logoGlow 3s ease-in-out infinite;
         }
 
@@ -113,18 +98,18 @@
             }
         }
 
-        /* תפריט אופקי */
+        /* תפריט */
         .categories {
             display: flex;
             align-items: center;
             justify-content: center;
             width: 100%;
             overflow-x: auto;
-            overflow-y: hidden;
             white-space: nowrap;
             -webkit-overflow-scrolling: touch;
             scrollbar-width: none;
             padding: 5px 10px;
+            gap: 0;
         }
 
         .categories::-webkit-scrollbar {
@@ -134,11 +119,11 @@
         .category {
             color: #ffffff;
             text-decoration: none;
-            font-size: 0.8em;
+            font-size: 0.85em;
             font-weight: 400;
             letter-spacing: 1.5px;
             text-transform: uppercase;
-            padding: 8px 12px;
+            padding: 8px 15px;
             transition: all 0.4s ease;
             text-shadow: 
                 0 0 8px rgba(255, 255, 255, 0.7),
@@ -199,25 +184,23 @@
         }
 
         /* אזור ראשי */
-        .main-section {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
+        main {
             position: relative;
             z-index: 10;
-            overflow: hidden;
+            padding: 30px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .page-title {
-            flex-shrink: 0;
-            padding: 15px 0 10px;
             text-align: center;
+            margin-bottom: 30px;
         }
 
         .page-title h1 {
-            font-size: 1.3em;
+            font-size: 1.8em;
             font-weight: 300;
-            letter-spacing: 6px;
+            letter-spacing: 8px;
             text-transform: uppercase;
             color: #ffffff;
             text-shadow: 
@@ -226,28 +209,31 @@
                 0 0 40px rgba(255, 255, 255, 0.5);
         }
 
-        /* תמונה ראשית */
-        .main-image-section {
-            flex: 1;
+        /* === תצוגת מחשב === */
+        .desktop-view {
+            display: block;
+        }
+
+        .mobile-view {
+            display: none;
+        }
+
+        .gallery-container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            padding: 10px 15px;
-            min-height: 0;
+            gap: 20px;
         }
 
         .main-image-container {
             position: relative;
             width: 100%;
-            max-width: 500px;
-            aspect-ratio: 1/1;
-            max-height: 45vh;
+            max-width: 600px;
         }
 
         .main-image-wrapper {
             width: 100%;
-            height: 100%;
+            aspect-ratio: 1/1;
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 12px;
@@ -263,18 +249,17 @@
             cursor: pointer;
         }
 
-        /* חצי ניווט */
         .nav-btn {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             background: rgba(0, 0, 0, 0.7);
             border: 1px solid rgba(255, 255, 255, 0.4);
             border-radius: 50%;
             color: #ffffff;
-            font-size: 1em;
+            font-size: 1.2em;
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -285,42 +270,23 @@
 
         .nav-btn:hover {
             background: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
         }
 
-        .nav-prev { right: 8px; }
-        .nav-next { left: 8px; }
+        .nav-prev { right: 15px; }
+        .nav-next { left: 15px; }
 
-        /* תמונות ממוזערות - גלילה אנכית */
-        .thumbnails-section {
-            flex-shrink: 0;
-            padding: 10px 15px;
-            max-height: 25vh;
-            overflow: hidden;
-        }
-
-        .thumbnails-scroll {
+        .thumbnails-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 8px;
-            max-height: 100%;
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-            padding: 5px;
-        }
-
-        .thumbnails-scroll::-webkit-scrollbar {
-            width: 3px;
-        }
-
-        .thumbnails-scroll::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 10px;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 10px;
+            width: 100%;
+            max-width: 600px;
         }
 
         .thumbnail {
             aspect-ratio: 1/1;
-            border-radius: 6px;
+            border-radius: 8px;
             overflow: hidden;
             cursor: pointer;
             border: 2px solid transparent;
@@ -335,7 +301,7 @@
         .thumbnail.active {
             opacity: 1;
             border-color: rgba(255, 255, 255, 0.9);
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
         }
 
         .thumbnail img {
@@ -346,54 +312,51 @@
 
         /* מידע על המוצר */
         .product-info {
-            flex-shrink: 0;
             text-align: center;
-            padding: 10px 15px 15px;
-            background: rgba(0, 0, 0, 0.9);
+            margin-top: 25px;
         }
 
         .product-info h3 {
-            font-size: 1em;
+            font-size: 1.2em;
             font-weight: 400;
-            letter-spacing: 2px;
-            margin-bottom: 5px;
+            letter-spacing: 3px;
+            margin-bottom: 8px;
             color: #ffffff;
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
         }
 
         .product-info p {
             color: rgba(255, 255, 255, 0.5);
-            font-size: 0.8em;
-            margin-bottom: 10px;
+            font-size: 0.9em;
+            margin-bottom: 15px;
         }
 
         .order-btn {
             display: inline-block;
-            padding: 10px 25px;
+            padding: 12px 35px;
             background: transparent;
             border: 1px solid rgba(255, 255, 255, 0.5);
             color: #ffffff;
             text-decoration: none;
-            border-radius: 20px;
-            font-size: 0.85em;
-            letter-spacing: 1px;
+            border-radius: 25px;
+            font-size: 0.95em;
+            letter-spacing: 2px;
             transition: all 0.3s ease;
             text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
         }
 
-        .order-btn:hover,
-        .order-btn:active {
+        .order-btn:hover {
             background: #ffffff;
             color: #000000;
             text-shadow: none;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
         }
 
         .image-counter {
-            margin-top: 8px;
-            font-size: 0.75em;
+            margin-top: 12px;
+            font-size: 0.85em;
             color: rgba(255, 255, 255, 0.4);
-            letter-spacing: 2px;
+            letter-spacing: 3px;
         }
 
         /* Lightbox */
@@ -415,8 +378,8 @@
         }
 
         .lightbox-image {
-            max-width: 100%;
-            max-height: 100%;
+            max-width: 95%;
+            max-height: 95%;
             object-fit: contain;
         }
 
@@ -424,118 +387,179 @@
             position: absolute;
             top: 20px;
             right: 20px;
-            width: 45px;
-            height: 45px;
+            width: 50px;
+            height: 50px;
             background: rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(255, 255, 255, 0.5);
             border-radius: 50%;
             color: #ffffff;
-            font-size: 1.5em;
+            font-size: 1.8em;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             z-index: 10;
+            transition: all 0.3s ease;
+        }
+
+        .lightbox-close:hover {
+            background: #ffffff;
+            color: #000000;
         }
 
         /* כפתור וואטסאפ */
         .whatsapp-btn {
             position: fixed;
-            bottom: 15px;
-            left: 15px;
+            bottom: 20px;
+            left: 20px;
             z-index: 1000;
-            width: 50px;
-            height: 50px;
+            width: 55px;
+            height: 55px;
             background: linear-gradient(135deg, #25D366, #128C7E);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.5);
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
         }
 
         .whatsapp-btn svg {
-            width: 26px;
-            height: 26px;
+            width: 28px;
+            height: 28px;
             fill: white;
         }
 
-        /* מסכים גדולים */
-        @media (min-width: 768px) {
+        /* === תצוגת טלפון === */
+        @media (max-width: 768px) {
+            .desktop-view {
+                display: none;
+            }
+
+            .mobile-view {
+                display: block;
+            }
+
             header {
-                padding: 15px 20px;
+                padding: 12px 15px;
             }
 
             .logo {
-                font-size: 1.6em;
-                letter-spacing: 10px;
+                font-size: 1.3em;
+                letter-spacing: 6px;
+                margin-bottom: 12px;
             }
 
             .category {
-                font-size: 0.9em;
-                padding: 10px 18px;
+                font-size: 0.75em;
+                padding: 6px 10px;
             }
 
-            .page-title h1 {
-                font-size: 1.6em;
-            }
-
-            .main-image-container {
-                max-width: 550px;
-                max-height: 50vh;
-            }
-
-            .nav-btn {
-                width: 50px;
-                height: 50px;
-                font-size: 1.2em;
-            }
-
-            .thumbnails-scroll {
-                grid-template-columns: repeat(6, 1fr);
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .main-image-container {
-                max-width: 600px;
-                max-height: 55vh;
-            }
-
-            .thumbnails-scroll {
-                grid-template-columns: repeat(8, 1fr);
-            }
-        }
-
-        /* מסכים קטנים */
-        @media (max-height: 700px) {
-            header {
-                padding: 8px 10px;
-            }
-
-            .logo {
-                font-size: 1.2em;
-                margin-bottom: 8px;
+            main {
+                padding: 20px 15px;
             }
 
             .page-title {
-                padding: 8px 0;
+                margin-bottom: 20px;
             }
 
             .page-title h1 {
+                font-size: 1.4em;
+                letter-spacing: 5px;
+            }
+
+            /* תמונה מלאה בטלפון */
+            .mobile-gallery {
+                position: relative;
+                width: 100%;
+            }
+
+            .mobile-image-wrapper {
+                width: 100%;
+                aspect-ratio: 1/1;
+                background: rgba(255, 255, 255, 0.02);
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                border-radius: 10px;
+                overflow: hidden;
+                position: relative;
+            }
+
+            .mobile-image {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                object-position: center;
+            }
+
+            .mobile-nav-btn {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 45px;
+                height: 45px;
+                background: rgba(0, 0, 0, 0.6);
+                border: 1px solid rgba(255, 255, 255, 0.3);
+                border-radius: 50%;
+                color: #ffffff;
+                font-size: 1.1em;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 10;
+                transition: all 0.2s ease;
+            }
+
+            .mobile-nav-btn:active {
+                background: rgba(255, 255, 255, 0.2);
+            }
+
+            .mobile-nav-prev { right: 10px; }
+            .mobile-nav-next { left: 10px; }
+
+            .product-info {
+                margin-top: 20px;
+            }
+
+            .product-info h3 {
                 font-size: 1.1em;
             }
 
+            .order-btn {
+                padding: 10px 28px;
+                font-size: 0.9em;
+            }
+
+            .image-counter {
+                font-size: 0.8em;
+            }
+
+            .whatsapp-btn {
+                width: 50px;
+                height: 50px;
+                bottom: 15px;
+                left: 15px;
+            }
+
+            .whatsapp-btn svg {
+                width: 25px;
+                height: 25px;
+            }
+        }
+
+        /* מסכים גדולים */
+        @media (min-width: 1024px) {
             .main-image-container {
-                max-height: 40vh;
+                max-width: 650px;
             }
 
-            .thumbnails-section {
-                max-height: 20vh;
-            }
-
-            .product-info {
-                padding: 8px 15px 12px;
+            .thumbnails-grid {
+                grid-template-columns: repeat(8, 1fr);
+                max-width: 650px;
             }
         }
     </style>
@@ -547,182 +571,4 @@
     <header>
         <a href="index.html" class="logo">Premium</a>
         
-        <nav class="categories">
-            <a href="shoes.html" class="category">נעליים</a>
-            <span class="dot"></span>
-            <a href="clothes.html" class="category">בגדים</a>
-            <span class="dot"></span>
-            <a href="bags.html" class="category">תיקים</a>
-            <span class="dot"></span>
-            <a href="perfume.html" class="category">בישום</a>
-            <span class="dot"></span>
-            <a href="electronics.html" class="category active">אלקטרוניקה</a>
-            <span class="dot"></span>
-            <a href="furniture.html" class="category">ריהוט</a>
-        </nav>
-    </header>
-
-    <div class="main-section">
-        <div class="page-title">
-            <h1>אלקטרוניקה</h1>
-        </div>
-
-        <div class="main-image-section">
-            <div class="main-image-container">
-                <div class="main-image-wrapper">
-                    <img src="" alt="שעון חכם" class="main-image" id="mainImage" onclick="openFullImage()">
-                    
-                    <button class="nav-btn nav-prev" onclick="changeImage(1)">❮</button>
-                    <button class="nav-btn nav-next" onclick="changeImage(-1)">❯</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="thumbnails-section">
-            <div class="thumbnails-scroll" id="thumbnailsGrid"></div>
-        </div>
-
-        <div class="product-info">
-            <h3>שעון חכם</h3>
-            <p>ייבוא אישי • איכות פרימיום</p>
-            <a href="" class="order-btn" id="orderBtn">לפרטים והזמנה</a>
-            <div class="image-counter">
-                <span id="currentIndex">1</span> / <span id="totalImages">11</span>
-            </div>
-        </div>
-    </div>
-
-    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-        <button class="lightbox-close" onclick="closeLightbox()">×</button>
-        <img src="" alt="תמונה מלאה" class="lightbox-image" id="lightboxImage">
-    </div>
-
-    <a href="https://wa.me/972500000000" target="_blank" class="whatsapp-btn">
-        <svg viewBox="0 0 32 32">
-            <path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 8.135-2.135c2.369 1.313 5.061 2.135 7.865 2.135 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.333c-2.547 0-5.043-0.725-7.203-2.088l-0.515-0.32-5.328 1.397 1.423-5.195-0.348-0.533c-1.499-2.312-2.363-5.035-2.363-7.927 0-7.455 6.212-13.667 13.667-13.667s13.667 6.212 13.667 13.667c0 7.455-6.212 13.667-13.667 13.667zM23.488 19.739c-0.424-0.212-2.507-1.239-2.897-1.381s-0.671-0.212-0.953 0.212c-0.283 0.424-1.097 1.381-1.344 1.663s-0.495 0.318-0.919 0.106c-0.424-0.212-1.789-0.659-3.405-2.101-1.259-1.121-2.109-2.507-2.355-2.931s-0.025-0.653 0.186-0.864c0.191-0.191 0.424-0.495 0.637-0.743s0.283-0.424 0.424-0.707c0.141-0.283 0.071-0.531-0.035-0.743s-0.953-2.299-1.305-3.147c-0.344-0.825-0.692-0.712-0.953-0.725-0.247-0.012-0.531-0.015-0.815-0.015s-0.743 0.106-1.133 0.531c-0.39 0.424-1.487 1.453-1.487 3.544s1.521 4.112 1.733 4.395c0.212 0.283 2.989 4.563 7.243 6.4 1.012 0.437 1.8 0.697 2.416 0.892 1.019 0.318 1.945 0.273 2.677 0.165 0.817-0.122 2.507-1.025 2.861-2.015s0.353-1.839 0.247-2.015c-0.106-0.176-0.39-0.283-0.815-0.495z"/>
-        </svg>
-    </a>
-
-    <script>
-        const images = [
-            'https://i.ibb.co/7J35yfg8/0da65f7b-efd6-4b80-9ab5-73675a2f6311.jpg',
-            'https://i.ibb.co/qLQYTvJg/2ce0352f-77f0-41d6-b283-4a7f17df879c.jpg',
-            'https://i.ibb.co/RpM1ygmz/3fc368e7-f9a8-4c37-82f6-df3179524864.jpg',
-            'https://i.ibb.co/Q7mSWK9m/5bbc35e0-6f7b-4c86-b24c-a3e2e3090bfa.jpg',
-            'https://i.ibb.co/KxPwNQR5/7c638c24-a251-4cf9-bf5e-8dfd7a5ee8d8.jpg',
-            'https://i.ibb.co/HpMhZYjc/60c1d402-0fad-432a-ae47-9c01dcc0ccaf.jpg',
-            'https://i.ibb.co/2YdCRh2H/377f0ffe-017f-4361-8438-bbb47c55baa0.jpg',
-            'https://i.ibb.co/Z6v9pCdk/612ea015-b258-497b-b250-d6f4856950bb.jpg',
-            'https://i.ibb.co/8g8cbdhT/5445d0bb-7618-4be3-aa86-34a71de383a0.jpg',
-            'https://i.ibb.co/fGQKyBDr/7316b4ec-c593-4c01-9f39-22bc76edd53e.jpg',
-            'https://i.ibb.co/q3Ss1XGX/aeb9f969-aef6-40c1-a83d-02463b08c493.jpg'
-        ];
-
-        let currentIndex = 0;
-        const phoneNumber = '972500000000';
-
-        // כוכבים
-        function createStars() {
-            const container = document.getElementById('starsContainer');
-            for (let i = 0; i < 20; i++) {
-                createStar(container);
-            }
-        }
-
-        function createStar(container) {
-            const star = document.createElement('div');
-            star.className = 'star';
-            star.style.left = Math.random() * 100 + '%';
-            star.style.top = Math.random() * 100 + '%';
-            const size = Math.random() * 2 + 1;
-            star.style.width = size + 'px';
-            star.style.height = size + 'px';
-            star.style.animationDelay = Math.random() * 4 + 's';
-            star.style.animationDuration = (Math.random() * 3 + 3) + 's';
-            container.appendChild(star);
-
-            setTimeout(() => {
-                star.remove();
-                createStar(container);
-            }, (Math.random() * 6 + 4) * 1000);
-        }
-
-        function createThumbnails() {
-            const grid = document.getElementById('thumbnailsGrid');
-            grid.innerHTML = '';
-            images.forEach((src, index) => {
-                const thumb = document.createElement('div');
-                thumb.className = `thumbnail ${index === 0 ? 'active' : ''}`;
-                thumb.onclick = () => selectImage(index);
-                thumb.innerHTML = `<img src="${src}" alt="מוצר ${index + 1}">`;
-                grid.appendChild(thumb);
-            });
-        }
-
-        function selectImage(index) {
-            currentIndex = index;
-            updateMainImage();
-            updateThumbnails();
-        }
-
-        function updateMainImage() {
-            document.getElementById('mainImage').src = images[currentIndex];
-            document.getElementById('orderBtn').href = `https://wa.me/${phoneNumber}?text=היי, אני מתעניין/ת במוצר אלקטרוניקה (תמונה ${currentIndex + 1})`;
-            document.getElementById('currentIndex').textContent = currentIndex + 1;
-        }
-
-        function updateThumbnails() {
-            document.querySelectorAll('.thumbnail').forEach((thumb, index) => {
-                thumb.classList.toggle('active', index === currentIndex);
-            });
-        }
-
-        function changeImage(direction) {
-            currentIndex += direction;
-            if (currentIndex >= images.length) currentIndex = 0;
-            if (currentIndex < 0) currentIndex = images.length - 1;
-            updateMainImage();
-            updateThumbnails();
-        }
-
-        function openFullImage() {
-            document.getElementById('lightboxImage').src = images[currentIndex];
-            document.getElementById('lightbox').classList.add('active');
-        }
-
-        function closeLightbox() {
-            document.getElementById('lightbox').classList.remove('active');
-        }
-
-        // Touch swipe
-        let touchStartX = 0;
-        const mainWrapper = document.querySelector('.main-image-wrapper');
-        
-        mainWrapper.addEventListener('touchstart', e => {
-            touchStartX = e.changedTouches[0].screenX;
-        }, { passive: true });
-
-        mainWrapper.addEventListener('touchend', e => {
-            const diff = touchStartX - e.changedTouches[0].screenX;
-            if (Math.abs(diff) > 50) changeImage(diff > 0 ? -1 : 1);
-        }, { passive: true });
-
-        // Keyboard
-        document.addEventListener('keydown', function(e) {
-            if (document.getElementById('lightbox').classList.contains('active')) {
-                if (e.key === 'Escape') closeLightbox();
-            } else {
-                if (e.key === 'ArrowRight') changeImage(-1);
-                if (e.key === 'ArrowLeft') changeImage(1);
-            }
-        });
-
-        // Init
-        document.getElementById('totalImages').textContent = images.length;
-        createStars();
-        createThumbnails();
-        updateMainImage();
-    </script>
-
-</body>
-</html>
+        <nav 
