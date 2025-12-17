@@ -2,16 +2,19 @@
 <html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
     <title>אלקטרוניקה | Premium</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        html, body {
+        html {
             height: 100%;
             overflow: hidden;
         }
@@ -20,50 +23,66 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: #000000;
             color: white;
+            height: 100%;
+            overflow: hidden;
             display: flex;
             flex-direction: column;
         }
 
         header {
-            padding: 15px 20px;
-            text-align: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             flex-shrink: 0;
+            padding: 12px 10px;
+            text-align: center;
+            background: #000000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 100;
         }
 
         .logo {
-            font-size: 1.4em;
+            font-size: 1.3em;
             font-weight: 300;
-            letter-spacing: 8px;
+            letter-spacing: 6px;
             text-transform: uppercase;
             color: #ffffff;
             text-decoration: none;
             text-shadow: 
                 0 0 10px rgba(255, 255, 255, 0.8),
                 0 0 20px rgba(255, 255, 255, 0.6);
+            display: block;
+            margin-bottom: 10px;
         }
 
         .categories {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0;
-            flex-wrap: wrap;
-            margin-top: 10px;
+            width: 100%;
+            overflow-x: auto;
+            overflow-y: hidden;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding: 5px 0;
+        }
+
+        .categories::-webkit-scrollbar {
+            display: none;
         }
 
         .category {
             color: #ffffff;
             text-decoration: none;
-            font-size: 0.8em;
+            font-size: 0.75em;
             font-weight: 400;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             text-transform: uppercase;
-            padding: 6px 12px;
+            padding: 8px 10px;
             transition: all 0.3s ease;
             text-shadow: 
                 0 0 8px rgba(255, 255, 255, 0.6),
                 0 0 15px rgba(255, 255, 255, 0.4);
+            flex-shrink: 0;
         }
 
         .category:hover,
@@ -76,15 +95,23 @@
         .dot {
             width: 4px;
             height: 4px;
+            min-width: 4px;
             background: #ffffff;
             border-radius: 50%;
-            box-shadow: 0 0 8px rgba(255, 255, 255, 1);
+            box-shadow: 
+                0 0 6px rgba(255, 255, 255, 1),
+                0 0 12px rgba(255, 255, 255, 0.8);
             animation: glow 2s ease-in-out infinite;
+            flex-shrink: 0;
         }
 
         @keyframes glow {
-            0%, 100% { box-shadow: 0 0 8px rgba(255, 255, 255, 1); }
-            50% { box-shadow: 0 0 15px rgba(255, 255, 255, 1); }
+            0%, 100% { 
+                box-shadow: 0 0 6px rgba(255, 255, 255, 1), 0 0 12px rgba(255, 255, 255, 0.8); 
+            }
+            50% { 
+                box-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1); 
+            }
         }
 
         .main-section {
@@ -93,27 +120,29 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 15px 20px;
+            padding: 10px;
             min-height: 0;
+            overflow: hidden;
         }
 
         .page-title h1 {
-            font-size: 1.4em;
+            font-size: 1.2em;
             font-weight: 300;
-            letter-spacing: 6px;
+            letter-spacing: 5px;
             text-transform: uppercase;
             color: #ffffff;
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             text-align: center;
         }
 
         .main-image-container {
             position: relative;
             width: 100%;
-            max-width: 500px;
-            height: calc(100vh - 280px);
-            max-height: 500px;
+            max-width: 450px;
+            flex: 1;
+            min-height: 0;
+            max-height: calc(100% - 100px);
         }
 
         .main-image-wrapper {
@@ -121,7 +150,7 @@
             height: 100%;
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 12px;
+            border-radius: 10px;
             overflow: hidden;
             position: relative;
         }
@@ -129,85 +158,75 @@
         .main-image {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
             object-position: center;
             cursor: pointer;
-            transition: opacity 0.3s ease;
         }
 
         .nav-btn {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            width: 45px;
-            height: 45px;
-            background: rgba(0, 0, 0, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            width: 40px;
+            height: 40px;
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.4);
             border-radius: 50%;
             color: #ffffff;
-            font-size: 1.1em;
+            font-size: 1em;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
             z-index: 10;
         }
 
-        .nav-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-            border-color: rgba(255, 255, 255, 0.8);
+        .nav-btn:active {
+            background: rgba(255, 255, 255, 0.3);
         }
 
-        .nav-prev { right: 10px; }
-        .nav-next { left: 10px; }
+        .nav-prev { right: 8px; }
+        .nav-next { left: 8px; }
 
         .thumbnails-bar {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
-            padding: 30px 15px 15px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.95));
+            padding: 25px 10px 10px;
             z-index: 5;
         }
 
         .thumbnails-scroll {
             display: flex;
-            gap: 8px;
-            justify-content: center;
+            gap: 6px;
+            justify-content: flex-start;
             overflow-x: auto;
-            padding-bottom: 5px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            padding-bottom: 3px;
         }
 
         .thumbnails-scroll::-webkit-scrollbar {
-            height: 3px;
-        }
-
-        .thumbnails-scroll::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 10px;
+            display: none;
         }
 
         .thumbnail {
-            width: 50px;
-            height: 50px;
-            border-radius: 6px;
+            width: 45px;
+            height: 45px;
+            min-width: 45px;
+            border-radius: 5px;
             overflow: hidden;
             cursor: pointer;
             border: 2px solid transparent;
-            transition: all 0.3s ease;
             opacity: 0.5;
-            flex-shrink: 0;
         }
-
-        .thumbnail:hover { opacity: 0.8; }
 
         .thumbnail.active {
             opacity: 1;
             border-color: rgba(255, 255, 255, 0.9);
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
         }
 
         .thumbnail img {
@@ -218,22 +237,22 @@
 
         .product-info {
             text-align: center;
-            margin-top: 15px;
+            padding: 10px 0;
+            flex-shrink: 0;
         }
 
         .product-info h3 {
-            font-size: 1em;
+            font-size: 0.95em;
             font-weight: 400;
             letter-spacing: 2px;
-            margin-bottom: 5px;
+            margin-bottom: 4px;
             color: #ffffff;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
 
         .product-info p {
             color: rgba(255, 255, 255, 0.5);
-            font-size: 0.8em;
-            margin-bottom: 10px;
+            font-size: 0.75em;
+            margin-bottom: 8px;
         }
 
         .order-btn {
@@ -244,19 +263,18 @@
             color: #ffffff;
             text-decoration: none;
             border-radius: 20px;
-            font-size: 0.85em;
-            letter-spacing: 2px;
-            transition: all 0.3s ease;
+            font-size: 0.8em;
+            letter-spacing: 1px;
         }
 
-        .order-btn:hover {
+        .order-btn:active {
             background: #ffffff;
             color: #000000;
         }
 
         .image-counter {
-            margin-top: 8px;
-            font-size: 0.75em;
+            margin-top: 6px;
+            font-size: 0.7em;
             color: rgba(255, 255, 255, 0.4);
             letter-spacing: 2px;
         }
@@ -272,45 +290,38 @@
             z-index: 2000;
             justify-content: center;
             align-items: center;
-            cursor: zoom-out;
         }
 
         .lightbox.active { display: flex; }
 
         .lightbox-image {
-            max-width: 95%;
-            max-height: 95%;
+            max-width: 100%;
+            max-height: 100%;
             object-fit: contain;
-            border-radius: 5px;
         }
 
         .lightbox-close {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 45px;
-            height: 45px;
-            background: transparent;
+            top: 15px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            background: rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(255, 255, 255, 0.5);
             border-radius: 50%;
             color: #ffffff;
-            font-size: 1.5em;
+            font-size: 1.3em;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .lightbox-close:hover {
-            background: #ffffff;
-            color: #000000;
+            z-index: 10;
         }
 
         .whatsapp-btn {
             position: fixed;
-            bottom: 20px;
-            left: 20px;
+            bottom: 15px;
+            left: 15px;
             z-index: 1000;
             width: 50px;
             height: 50px;
@@ -319,11 +330,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
-            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
         }
-
-        .whatsapp-btn:hover { transform: scale(1.1); }
 
         .whatsapp-btn svg {
             width: 26px;
@@ -331,23 +339,29 @@
             fill: white;
         }
 
-        @media (max-width: 600px) {
-            header { padding: 10px 15px; }
-            .logo { font-size: 1.2em; letter-spacing: 5px; }
-            .categories { flex-direction: column; gap: 2px; }
-            .dot { display: none; }
-            .category { font-size: 0.7em; padding: 4px 8px; }
-            .page-title h1 { font-size: 1.2em; margin-bottom: 10px; }
-            .main-image-container { height: calc(100vh - 240px); }
-            .nav-btn { width: 35px; height: 35px; font-size: 0.9em; }
-            .thumbnail { width: 40px; height: 40px; }
+        @media (min-width: 768px) {
+            header { padding: 15px 20px; }
+            .logo { font-size: 1.5em; letter-spacing: 8px; }
+            .category { font-size: 0.85em; padding: 8px 15px; }
+            .page-title h1 { font-size: 1.5em; }
+            .main-image-container { max-width: 550px; }
+            .nav-btn { width: 50px; height: 50px; }
+            .thumbnail { width: 55px; height: 55px; min-width: 55px; }
         }
 
-        @media (max-height: 700px) {
-            header { padding: 10px 15px; }
-            .page-title h1 { font-size: 1.2em; margin-bottom: 10px; }
-            .main-image-container { height: calc(100vh - 220px); }
-            .product-info { margin-top: 10px; }
+        @media (max-height: 600px) {
+            header { padding: 8px 10px; }
+            .logo { font-size: 1.1em; margin-bottom: 5px; }
+            .category { font-size: 0.65em; padding: 5px 8px; }
+            .page-title h1 { font-size: 1em; margin-bottom: 5px; }
+            .product-info { padding: 5px 0; }
+            .product-info h3 { font-size: 0.85em; }
+            .order-btn { padding: 8px 20px; font-size: 0.75em; }
+            .thumbnail { width: 38px; height: 38px; min-width: 38px; }
+        }
+
+        @supports (-webkit-touch-callout: none) {
+            body { height: -webkit-fill-available; }
         }
     </style>
 </head>
@@ -404,7 +418,7 @@
         <img src="" alt="תמונה מלאה" class="lightbox-image" id="lightboxImage">
     </div>
 
-    <a href="https://wa.me/972500000000" target="_blank" class="whatsapp-btn" title="צור קשר בוואטסאפ">
+    <a href="https://wa.me/972500000000" target="_blank" class="whatsapp-btn">
         <svg viewBox="0 0 32 32">
             <path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 8.135-2.135c2.369 1.313 5.061 2.135 7.865 2.135 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.333c-2.547 0-5.043-0.725-7.203-2.088l-0.515-0.32-5.328 1.397 1.423-5.195-0.348-0.533c-1.499-2.312-2.363-5.035-2.363-7.927 0-7.455 6.212-13.667 13.667-13.667s13.667 6.212 13.667 13.667c0 7.455-6.212 13.667-13.667 13.667zM23.488 19.739c-0.424-0.212-2.507-1.239-2.897-1.381s-0.671-0.212-0.953 0.212c-0.283 0.424-1.097 1.381-1.344 1.663s-0.495 0.318-0.919 0.106c-0.424-0.212-1.789-0.659-3.405-2.101-1.259-1.121-2.109-2.507-2.355-2.931s-0.025-0.653 0.186-0.864c0.191-0.191 0.424-0.495 0.637-0.743s0.283-0.424 0.424-0.707c0.141-0.283 0.071-0.531-0.035-0.743s-0.953-2.299-1.305-3.147c-0.344-0.825-0.692-0.712-0.953-0.725-0.247-0.012-0.531-0.015-0.815-0.015s-0.743 0.106-1.133 0.531c-0.39 0.424-1.487 1.453-1.487 3.544s1.521 4.112 1.733 4.395c0.212 0.283 2.989 4.563 7.243 6.4 1.012 0.437 1.8 0.697 2.416 0.892 1.019 0.318 1.945 0.273 2.677 0.165 0.817-0.122 2.507-1.025 2.861-2.015s0.353-1.839 0.247-2.015c-0.106-0.176-0.39-0.283-0.815-0.495z"/>
         </svg>
@@ -475,6 +489,17 @@
         function closeLightbox() {
             document.getElementById('lightbox').classList.remove('active');
         }
+
+        // Touch swipe
+        let touchStartX = 0;
+        document.querySelector('.main-image-wrapper').addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        document.querySelector('.main-image-wrapper').addEventListener('touchend', e => {
+            const diff = touchStartX - e.changedTouches[0].screenX;
+            if (Math.abs(diff) > 50) changeImage(diff > 0 ? -1 : 1);
+        }, { passive: true });
 
         document.addEventListener('keydown', function(e) {
             if (document.getElementById('lightbox').classList.contains('active')) {
