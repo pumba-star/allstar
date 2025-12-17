@@ -16,16 +16,18 @@
             background: #000000;
             color: white;
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         header {
-            padding: 40px 20px;
+            padding: 25px 20px;
             text-align: center;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .logo {
-            font-size: 2em;
+            font-size: 1.6em;
             font-weight: 300;
             letter-spacing: 10px;
             text-transform: uppercase;
@@ -43,17 +45,17 @@
             justify-content: center;
             gap: 0;
             flex-wrap: wrap;
-            margin-top: 30px;
+            margin-top: 15px;
         }
 
         .category {
             color: #ffffff;
             text-decoration: none;
-            font-size: 1em;
+            font-size: 0.9em;
             font-weight: 400;
             letter-spacing: 2px;
             text-transform: uppercase;
-            padding: 10px 20px;
+            padding: 8px 15px;
             transition: all 0.3s ease;
             text-shadow: 
                 0 0 8px rgba(255, 255, 255, 0.6),
@@ -69,45 +71,41 @@
         }
 
         .dot {
-            width: 5px;
-            height: 5px;
+            width: 4px;
+            height: 4px;
             background: #ffffff;
             border-radius: 50%;
             box-shadow: 
                 0 0 8px rgba(255, 255, 255, 1),
-                0 0 15px rgba(255, 255, 255, 0.8),
-                0 0 25px rgba(255, 255, 255, 0.6);
+                0 0 15px rgba(255, 255, 255, 0.8);
             animation: glow 2s ease-in-out infinite;
         }
 
         @keyframes glow {
             0%, 100% {
-                box-shadow: 
-                    0 0 8px rgba(255, 255, 255, 1),
-                    0 0 15px rgba(255, 255, 255, 0.8),
-                    0 0 25px rgba(255, 255, 255, 0.6);
+                box-shadow: 0 0 8px rgba(255, 255, 255, 1), 0 0 15px rgba(255, 255, 255, 0.8);
             }
             50% {
-                box-shadow: 
-                    0 0 15px rgba(255, 255, 255, 1),
-                    0 0 25px rgba(255, 255, 255, 1),
-                    0 0 40px rgba(255, 255, 255, 0.8);
+                box-shadow: 0 0 15px rgba(255, 255, 255, 1), 0 0 25px rgba(255, 255, 255, 1);
             }
         }
 
-        main {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 50px 20px;
+        .main-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 20px;
         }
 
         .page-title {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 25px;
         }
 
         .page-title h1 {
-            font-size: 2.5em;
+            font-size: 1.8em;
             font-weight: 300;
             letter-spacing: 8px;
             text-transform: uppercase;
@@ -117,85 +115,77 @@
                 0 0 20px rgba(255, 255, 255, 0.6);
         }
 
-        .products-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-        }
-
-        .product-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .product-card:hover {
-            border-color: rgba(255, 255, 255, 0.3);
-            box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
-            transform: translateY(-5px);
-        }
-
-        .image-container {
-            width: 100%;
-            height: 350px;
-            overflow: hidden;
-            cursor: pointer;
+        .main-image-container {
             position: relative;
+            width: 100%;
+            max-width: 650px;
+            aspect-ratio: 1/1;
         }
 
-        .image-container::after {
-            content: 'לחץ להגדלה';
-            position: absolute;
-            bottom: 15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.8);
-            color: #ffffff;
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-size: 0.85em;
-            letter-spacing: 1px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        .main-image-wrapper {
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            overflow: hidden;
         }
 
-        .image-container:hover::after {
-            opacity: 1;
-        }
-
-        .product-image {
+        .main-image {
             width: 100%;
             height: 100%;
             object-fit: cover;
             object-position: center;
-            transition: transform 0.3s ease;
+            transition: opacity 0.3s ease;
         }
 
-        .product-card:hover .product-image {
-            transform: scale(1.05);
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 55px;
+            height: 55px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            color: #ffffff;
+            font-size: 1.3em;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+            z-index: 10;
         }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .nav-prev { right: 15px; }
+        .nav-next { left: 15px; }
 
         .product-info {
-            padding: 25px;
             text-align: center;
+            margin-top: 20px;
         }
 
         .product-info h3 {
             font-size: 1.2em;
             font-weight: 400;
             letter-spacing: 2px;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             color: #ffffff;
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
 
         .product-info p {
             color: rgba(255, 255, 255, 0.5);
-            font-size: 0.9em;
-            margin-bottom: 20px;
+            font-size: 0.85em;
+            margin-bottom: 15px;
         }
 
         .order-btn {
@@ -216,138 +206,115 @@
             background: #ffffff;
             color: #000000;
             text-shadow: none;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
         }
 
-        .lightbox {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
+        .image-counter {
+            margin-top: 10px;
+            font-size: 0.85em;
+            color: rgba(255, 255, 255, 0.4);
+            letter-spacing: 3px;
+        }
+
+        .thumbnails-section {
+            width: 100%;
+            padding: 20px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .thumbnails-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            padding: 10px 20px;
+        }
+
+        .thumbnails-wrapper::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .thumbnails-wrapper::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .thumbnails-wrapper::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+        }
+
+        .thumbnails-grid {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            min-width: max-content;
+        }
+
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            opacity: 0.5;
+            flex-shrink: 0;
+        }
+
+        .thumbnail:hover {
+            opacity: 0.8;
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .thumbnail.active {
+            opacity: 1;
+            border-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+        }
+
+        .thumbnail img {
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .lightbox.active {
-            display: flex;
-        }
-
-        .lightbox-content {
-            position: relative;
-            max-width: 90%;
-            max-height: 90%;
-        }
-
-        .lightbox-image {
-            max-width: 100%;
-            max-height: 85vh;
-            object-fit: contain;
-            border-radius: 10px;
-            box-shadow: 0 0 50px rgba(255, 255, 255, 0.2);
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: -50px;
-            right: 0;
-            width: 45px;
-            height: 45px;
-            background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            border-radius: 50%;
-            color: #ffffff;
-            font-size: 1.5em;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .lightbox-close:hover {
-            background: #ffffff;
-            color: #000000;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-        }
-
-        .lightbox-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 50px;
-            height: 50px;
-            background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            border-radius: 50%;
-            color: #ffffff;
-            font-size: 1.2em;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .lightbox-nav:hover {
-            background: #ffffff;
-            color: #000000;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-        }
-
-        .lightbox-prev { left: -70px; }
-        .lightbox-next { right: -70px; }
-
-        .lightbox-counter {
-            position: absolute;
-            bottom: -40px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.9em;
-            letter-spacing: 2px;
+            object-fit: cover;
         }
 
         .whatsapp-btn {
             position: fixed;
-            bottom: 30px;
-            left: 30px;
+            bottom: 120px;
+            left: 20px;
             z-index: 1000;
-            width: 60px;
-            height: 60px;
+            width: 55px;
+            height: 55px;
             background: linear-gradient(135deg, #25D366, #128C7E);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
             box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
             transition: all 0.3s ease;
         }
 
         .whatsapp-btn:hover {
             transform: scale(1.1);
-            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6);
         }
 
         .whatsapp-btn svg {
-            width: 32px;
-            height: 32px;
+            width: 28px;
+            height: 28px;
             fill: white;
         }
 
         @media (max-width: 768px) {
-            .logo { font-size: 1.5em; letter-spacing: 6px; }
-            .categories { flex-direction: column; gap: 5px; }
+            .logo { font-size: 1.3em; letter-spacing: 6px; }
+            .categories { flex-direction: column; gap: 3px; }
             .dot { display: none; }
-            .category { font-size: 0.9em; padding: 8px 15px; }
-            .page-title h1 { font-size: 1.8em; }
-            .products-gallery { grid-template-columns: 1fr; }
-            .lightbox-prev { left: 10px; }
-            .lightbox-next { right: 10px; }
+            .category { font-size: 0.8em; padding: 6px 10px; }
+            .page-title h1 { font-size: 1.4em; }
+            .main-image-container { max-width: 90%; }
+            .nav-btn { width: 45px; height: 45px; font-size: 1.1em; }
+            .nav-prev { right: 10px; }
+            .nav-next { left: 10px; }
+            .thumbnail { width: 60px; height: 60px; }
         }
     </style>
 </head>
@@ -371,142 +338,33 @@
         </nav>
     </header>
 
-    <main>
+    <div class="main-section">
         <div class="page-title">
             <h1>אלקטרוניקה</h1>
         </div>
 
-        <div class="products-gallery">
-            <div class="product-card">
-                <div class="image-container" onclick="openLightbox(0)">
-                    <img src="https://i.ibb.co/7J35yfg8/0da65f7b-efd6-4b80-9ab5-73675a2f6311.jpg" alt="שעון חכם" class="product-image">
-                </div>
-                <div class="product-info">
-                    <h3>שעון חכם</h3>
-                    <p>ייבוא אישי • איכות פרימיום</p>
-                    <a href="https://wa.me/972500000000?text=היי, אני מתעניין/ת במוצר אלקטרוניקה (תמונה 1)" class="order-btn">לפרטים והזמנה</a>
-                </div>
+        <div class="main-image-container">
+            <div class="main-image-wrapper">
+                <img src="" alt="שעון חכם" class="main-image" id="mainImage">
             </div>
+            
+            <button class="nav-btn nav-prev" onclick="changeImage(1)">❮</button>
+            <button class="nav-btn nav-next" onclick="changeImage(-1)">❯</button>
+        </div>
 
-            <div class="product-card">
-                <div class="image-container" onclick="openLightbox(1)">
-                    <img src="https://i.ibb.co/qLQYTvJg/2ce0352f-77f0-41d6-b283-4a7f17df879c.jpg" alt="שעון חכם" class="product-image">
-                </div>
-                <div class="product-info">
-                    <h3>שעון חכם</h3>
-                    <p>ייבוא אישי • איכות פרימיום</p>
-                    <a href="https://wa.me/972500000000?text=היי, אני מתעניין/ת במוצר אלקטרוניקה (תמונה 2)" class="order-btn">לפרטים והזמנה</a>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="image-container" onclick="openLightbox(2)">
-                    <img src="https://i.ibb.co/RpM1ygmz/3fc368e7-f9a8-4c37-82f6-df3179524864.jpg" alt="שעון חכם" class="product-image">
-                </div>
-                <div class="product-info">
-                    <h3>שעון חכם</h3>
-                    <p>ייבוא אישי • איכות פרימיום</p>
-                    <a href="https://wa.me/972500000000?text=היי, אני מתעניין/ת במוצר אלקטרוניקה (תמונה 3)" class="order-btn">לפרטים והזמנה</a>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="image-container" onclick="openLightbox(3)">
-                    <img src="https://i.ibb.co/Q7mSWK9m/5bbc35e0-6f7b-4c86-b24c-a3e2e3090bfa.jpg" alt="שעון חכם" class="product-image">
-                </div>
-                <div class="product-info">
-                    <h3>שעון חכם</h3>
-                    <p>ייבוא אישי • איכות פרימיום</p>
-                    <a href="https://wa.me/972500000000?text=היי, אני מתעניין/ת במוצר אלקטרוניקה (תמונה 4)" class="order-btn">לפרטים והזמנה</a>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="image-container" onclick="openLightbox(4)">
-                    <img src="https://i.ibb.co/KxPwNQR5/7c638c24-a251-4cf9-bf5e-8dfd7a5ee8d8.jpg" alt="שעון חכם" class="product-image">
-                </div>
-                <div class="product-info">
-                    <h3>שעון חכם</h3>
-                    <p>ייבוא אישי • איכות פרימיום</p>
-                    <a href="https://wa.me/972500000000?text=היי, אני מתעניין/ת במוצר אלקטרוניקה (תמונה 5)" class="order-btn">לפרטים והזמנה</a>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="image-container" onclick="openLightbox(5)">
-                    <img src="https://i.ibb.co/HpMhZYjc/60c1d402-0fad-432a-ae47-9c01dcc0ccaf.jpg" alt="שעון חכם" class="product-image">
-                </div>
-                <div class="product-info">
-                    <h3>שעון חכם</h3>
-                    <p>ייבוא אישי • איכות פרימיום</p>
-                    <a href="https://wa.me/972500000000?text=היי, אני מתעניין/ת במוצר אלקטרוניקה (תמונה 6)" class="order-btn">לפרטים והזמנה</a>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="image-container" onclick="openLightbox(6)">
-                    <img src="https://i.ibb.co/2YdCRh2H/377f0ffe-017f-4361-8438-bbb47c55baa0.jpg" alt="שעון חכם" class="product-image">
-                </div>
-                <div class="product-info">
-                    <h3>שעון חכם</h3>
-                    <p>ייבוא אישי • איכות פרימיום</p>
-                    <a href="https://wa.me/972500000000?text=היי, אני מתעניין/ת במוצר אלקטרוניקה (תמונה 7)" class="order-btn">לפרטים והזמנה</a>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="image-container" onclick="openLightbox(7)">
-                    <img src="https://i.ibb.co/Z6v9pCdk/612ea015-b258-497b-b250-d6f4856950bb.jpg" alt="שעון חכם" class="product-image">
-                </div>
-                <div class="product-info">
-                    <h3>שעון חכם</h3>
-                    <p>ייבוא אישי • איכות פרימיום</p>
-                    <a href="https://wa.me/972500000000?text=היי, אני מתעניין/ת במוצר אלקטרוניקה (תמונה 8)" class="order-btn">לפרטים והזמנה</a>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="image-container" onclick="openLightbox(8)">
-                    <img src="https://i.ibb.co/8g8cbdhT/5445d0bb-7618-4be3-aa86-34a71de383a0.jpg" alt="שעון חכם" class="product-image">
-                </div>
-                <div class="product-info">
-                    <h3>שעון חכם</h3>
-                    <p>ייבוא אישי • איכות פרימיום</p>
-                    <a href="https://wa.me/972500000000?text=היי, אני מתעניין/ת במוצר אלקטרוניקה (תמונה 9)" class="order-btn">לפרטים והזמנה</a>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="image-container" onclick="openLightbox(9)">
-                    <img src="https://i.ibb.co/fGQKyBDr/7316b4ec-c593-4c01-9f39-22bc76edd53e.jpg" alt="שעון חכם" class="product-image">
-                </div>
-                <div class="product-info">
-                    <h3>שעון חכם</h3>
-                    <p>ייבוא אישי • איכות פרימיום</p>
-                    <a href="https://wa.me/972500000000?text=היי, אני מתעניין/ת במוצר אלקטרוניקה (תמונה 10)" class="order-btn">לפרטים והזמנה</a>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="image-container" onclick="openLightbox(10)">
-                    <img src="https://i.ibb.co/q3Ss1XGX/aeb9f969-aef6-40c1-a83d-02463b08c493.jpg" alt="שעון חכם" class="product-image">
-                </div>
-                <div class="product-info">
-                    <h3>שעון חכם</h3>
-                    <p>ייבוא אישי • איכות פרימיום</p>
-                    <a href="https://wa.me/972500000000?text=היי, אני מתעניין/ת במוצר אלקטרוניקה (תמונה 11)" class="order-btn">לפרטים והזמנה</a>
-                </div>
+        <div class="product-info">
+            <h3>שעון חכם</h3>
+            <p>ייבוא אישי • איכות פרימיום</p>
+            <a href="" class="order-btn" id="orderBtn">לפרטים והזמנה</a>
+            <div class="image-counter">
+                <span id="currentIndex">1</span> / <span id="totalImages">11</span>
             </div>
         </div>
-    </main>
+    </div>
 
-    <div class="lightbox" id="lightbox">
-        <div class="lightbox-content">
-            <button class="lightbox-close" onclick="closeLightbox()">×</button>
-            <button class="lightbox-nav lightbox-prev" onclick="changeImage(-1)">❮</button>
-            <img src="" alt="תמונה מוגדלת" class="lightbox-image" id="lightbox-img">
-            <button class="lightbox-nav lightbox-next" onclick="changeImage(1)">❯</button>
-            <div class="lightbox-counter" id="lightbox-counter"></div>
+    <div class="thumbnails-section">
+        <div class="thumbnails-wrapper">
+            <div class="thumbnails-grid" id="thumbnailsGrid"></div>
         </div>
     </div>
 
@@ -531,40 +389,56 @@
             'https://i.ibb.co/q3Ss1XGX/aeb9f969-aef6-40c1-a83d-02463b08c493.jpg'
         ];
 
-        let currentImageIndex = 0;
+        let currentIndex = 0;
+        const phoneNumber = '972500000000';
 
-        function openLightbox(index) {
-            currentImageIndex = index;
-            document.getElementById('lightbox-img').src = images[index];
-            document.getElementById('lightbox-counter').textContent = `${index + 1} / ${images.length}`;
-            document.getElementById('lightbox').classList.add('active');
-            document.body.style.overflow = 'hidden';
+        function createThumbnails() {
+            const grid = document.getElementById('thumbnailsGrid');
+            grid.innerHTML = '';
+            images.forEach((src, index) => {
+                const thumb = document.createElement('div');
+                thumb.className = `thumbnail ${index === 0 ? 'active' : ''}`;
+                thumb.onclick = () => selectImage(index);
+                thumb.innerHTML = `<img src="${src}" alt="מוצר ${index + 1}">`;
+                grid.appendChild(thumb);
+            });
         }
 
-        function closeLightbox() {
-            document.getElementById('lightbox').classList.remove('active');
-            document.body.style.overflow = 'auto';
+        function selectImage(index) {
+            currentIndex = index;
+            updateMainImage();
+            updateThumbnails();
+        }
+
+        function updateMainImage() {
+            document.getElementById('mainImage').src = images[currentIndex];
+            document.getElementById('orderBtn').href = `https://wa.me/${phoneNumber}?text=היי, אני מתעניין/ת במוצר אלקטרוניקה (תמונה ${currentIndex + 1})`;
+            document.getElementById('currentIndex').textContent = currentIndex + 1;
+        }
+
+        function updateThumbnails() {
+            document.querySelectorAll('.thumbnail').forEach((thumb, index) => {
+                thumb.classList.toggle('active', index === currentIndex);
+            });
+            document.querySelector('.thumbnail.active')?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
         }
 
         function changeImage(direction) {
-            currentImageIndex += direction;
-            if (currentImageIndex >= images.length) currentImageIndex = 0;
-            if (currentImageIndex < 0) currentImageIndex = images.length - 1;
-            document.getElementById('lightbox-img').src = images[currentImageIndex];
-            document.getElementById('lightbox-counter').textContent = `${currentImageIndex + 1} / ${images.length}`;
+            currentIndex += direction;
+            if (currentIndex >= images.length) currentIndex = 0;
+            if (currentIndex < 0) currentIndex = images.length - 1;
+            updateMainImage();
+            updateThumbnails();
         }
 
-        document.getElementById('lightbox').addEventListener('click', function(e) {
-            if (e.target === this) closeLightbox();
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight') changeImage(-1);
+            if (e.key === 'ArrowLeft') changeImage(1);
         });
 
-        document.addEventListener('keydown', function(e) {
-            if (document.getElementById('lightbox').classList.contains('active')) {
-                if (e.key === 'Escape') closeLightbox();
-                if (e.key === 'ArrowRight') changeImage(-1);
-                if (e.key === 'ArrowLeft') changeImage(1);
-            }
-        });
+        document.getElementById('totalImages').textContent = images.length;
+        createThumbnails();
+        updateMainImage();
     </script>
 
 </body>
