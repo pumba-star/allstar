@@ -571,4 +571,211 @@
     <header>
         <a href="index.html" class="logo">Premium</a>
         
-        <nav 
+        <nav class="categories">
+            <a href="shoes.html" class="category">נעליים</a>
+            <span class="dot"></span>
+            <a href="clothes.html" class="category">בגדים</a>
+            <span class="dot"></span>
+            <a href="bags.html" class="category">תיקים</a>
+            <span class="dot"></span>
+            <a href="perfume.html" class="category">בישום</a>
+            <span class="dot"></span>
+            <a href="electronics.html" class="category active">אלקטרוניקה</a>
+            <span class="dot"></span>
+            <a href="furniture.html" class="category">ריהוט</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="page-title">
+            <h1>אלקטרוניקה</h1>
+        </div>
+
+        <!-- תצוגת מחשב -->
+        <div class="desktop-view">
+            <div class="gallery-container">
+                <div class="main-image-container">
+                    <div class="main-image-wrapper">
+                        <img src="" alt="שעון חכם" class="main-image" id="mainImage" onclick="openFullImage()">
+                        
+                        <button class="nav-btn nav-prev" onclick="changeImage(1)">❮</button>
+                        <button class="nav-btn nav-next" onclick="changeImage(-1)">❯</button>
+                    </div>
+                </div>
+
+                <div class="thumbnails-grid" id="thumbnailsGrid"></div>
+            </div>
+        </div>
+
+        <!-- תצוגת טלפון -->
+        <div class="mobile-view">
+            <div class="mobile-gallery">
+                <div class="mobile-image-wrapper" id="mobileImageWrapper">
+                    <img src="" alt="שעון חכם" class="mobile-image" id="mobileImage">
+                    
+                    <button class="mobile-nav-btn mobile-nav-prev" onclick="changeImage(1)">❮</button>
+                    <button class="mobile-nav-btn mobile-nav-next" onclick="changeImage(-1)">❯</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-info">
+            <h3>שעון חכם</h3>
+            <p>ייבוא אישי • איכות פרימיום</p>
+            <a href="" class="order-btn" id="orderBtn">לפרטים והזמנה</a>
+            <div class="image-counter">
+                <span id="currentIndex">1</span> / <span id="totalImages">11</span>
+            </div>
+        </div>
+    </main>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <button class="lightbox-close" onclick="closeLightbox()">×</button>
+        <img src="" alt="תמונה מלאה" class="lightbox-image" id="lightboxImage">
+    </div>
+
+    <a href="https://wa.me/972500000000" target="_blank" class="whatsapp-btn">
+        <svg viewBox="0 0 32 32">
+            <path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 8.135-2.135c2.369 1.313 5.061 2.135 7.865 2.135 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.333c-2.547 0-5.043-0.725-7.203-2.088l-0.515-0.32-5.328 1.397 1.423-5.195-0.348-0.533c-1.499-2.312-2.363-5.035-2.363-7.927 0-7.455 6.212-13.667 13.667-13.667s13.667 6.212 13.667 13.667c0 7.455-6.212 13.667-13.667 13.667zM23.488 19.739c-0.424-0.212-2.507-1.239-2.897-1.381s-0.671-0.212-0.953 0.212c-0.283 0.424-1.097 1.381-1.344 1.663s-0.495 0.318-0.919 0.106c-0.424-0.212-1.789-0.659-3.405-2.101-1.259-1.121-2.109-2.507-2.355-2.931s-0.025-0.653 0.186-0.864c0.191-0.191 0.424-0.495 0.637-0.743s0.283-0.424 0.424-0.707c0.141-0.283 0.071-0.531-0.035-0.743s-0.953-2.299-1.305-3.147c-0.344-0.825-0.692-0.712-0.953-0.725-0.247-0.012-0.531-0.015-0.815-0.015s-0.743 0.106-1.133 0.531c-0.39 0.424-1.487 1.453-1.487 3.544s1.521 4.112 1.733 4.395c0.212 0.283 2.989 4.563 7.243 6.4 1.012 0.437 1.8 0.697 2.416 0.892 1.019 0.318 1.945 0.273 2.677 0.165 0.817-0.122 2.507-1.025 2.861-2.015s0.353-1.839 0.247-2.015c-0.106-0.176-0.39-0.283-0.815-0.495z"/>
+        </svg>
+    </a>
+
+    <script>
+        const images = [
+            'https://i.ibb.co/7J35yfg8/0da65f7b-efd6-4b80-9ab5-73675a2f6311.jpg',
+            'https://i.ibb.co/qLQYTvJg/2ce0352f-77f0-41d6-b283-4a7f17df879c.jpg',
+            'https://i.ibb.co/RpM1ygmz/3fc368e7-f9a8-4c37-82f6-df3179524864.jpg',
+            'https://i.ibb.co/Q7mSWK9m/5bbc35e0-6f7b-4c86-b24c-a3e2e3090bfa.jpg',
+            'https://i.ibb.co/KxPwNQR5/7c638c24-a251-4cf9-bf5e-8dfd7a5ee8d8.jpg',
+            'https://i.ibb.co/HpMhZYjc/60c1d402-0fad-432a-ae47-9c01dcc0ccaf.jpg',
+            'https://i.ibb.co/2YdCRh2H/377f0ffe-017f-4361-8438-bbb47c55baa0.jpg',
+            'https://i.ibb.co/Z6v9pCdk/612ea015-b258-497b-b250-d6f4856950bb.jpg',
+            'https://i.ibb.co/8g8cbdhT/5445d0bb-7618-4be3-aa86-34a71de383a0.jpg',
+            'https://i.ibb.co/fGQKyBDr/7316b4ec-c593-4c01-9f39-22bc76edd53e.jpg',
+            'https://i.ibb.co/q3Ss1XGX/aeb9f969-aef6-40c1-a83d-02463b08c493.jpg'
+        ];
+
+        let currentIndex = 0;
+        const phoneNumber = '972500000000';
+
+        // כוכבים
+        function createStars() {
+            const container = document.getElementById('starsContainer');
+            for (let i = 0; i < 25; i++) {
+                createStar(container);
+            }
+        }
+
+        function createStar(container) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            const size = Math.random() * 2 + 1;
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.animationDelay = Math.random() * 4 + 's';
+            star.style.animationDuration = (Math.random() * 3 + 3) + 's';
+            container.appendChild(star);
+
+            setTimeout(() => {
+                star.remove();
+                createStar(container);
+            }, (Math.random() * 6 + 4) * 1000);
+        }
+
+        // יצירת thumbnails למחשב
+        function createThumbnails() {
+            const grid = document.getElementById('thumbnailsGrid');
+            if (!grid) return;
+            
+            grid.innerHTML = '';
+            images.forEach((src, index) => {
+                const thumb = document.createElement('div');
+                thumb.className = `thumbnail ${index === 0 ? 'active' : ''}`;
+                thumb.onclick = () => selectImage(index);
+                thumb.innerHTML = `<img src="${src}" alt="מוצר ${index + 1}">`;
+                grid.appendChild(thumb);
+            });
+        }
+
+        function selectImage(index) {
+            currentIndex = index;
+            updateImages();
+            updateThumbnails();
+        }
+
+        function updateImages() {
+            const mainImage = document.getElementById('mainImage');
+            if (mainImage) mainImage.src = images[currentIndex];
+            
+            const mobileImage = document.getElementById('mobileImage');
+            if (mobileImage) mobileImage.src = images[currentIndex];
+            
+            const orderBtn = document.getElementById('orderBtn');
+            if (orderBtn) {
+                orderBtn.href = `https://wa.me/${phoneNumber}?text=היי, אני מתעניין/ת במוצר אלקטרוניקה (תמונה ${currentIndex + 1})`;
+            }
+            
+            const currentIndexEl = document.getElementById('currentIndex');
+            if (currentIndexEl) currentIndexEl.textContent = currentIndex + 1;
+        }
+
+        function updateThumbnails() {
+            document.querySelectorAll('.thumbnail').forEach((thumb, index) => {
+                thumb.classList.toggle('active', index === currentIndex);
+            });
+        }
+
+        function changeImage(direction) {
+            currentIndex += direction;
+            if (currentIndex >= images.length) currentIndex = 0;
+            if (currentIndex < 0) currentIndex = images.length - 1;
+            updateImages();
+            updateThumbnails();
+        }
+
+        function openFullImage() {
+            document.getElementById('lightboxImage').src = images[currentIndex];
+            document.getElementById('lightbox').classList.add('active');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+        }
+
+        // Touch swipe לטלפון
+        let touchStartX = 0;
+        const mobileWrapper = document.getElementById('mobileImageWrapper');
+        
+        if (mobileWrapper) {
+            mobileWrapper.addEventListener('touchstart', e => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            mobileWrapper.addEventListener('touchend', e => {
+                const diff = touchStartX - e.changedTouches[0].screenX;
+                if (Math.abs(diff) > 50) changeImage(diff > 0 ? -1 : 1);
+            }, { passive: true });
+        }
+
+        // Keyboard
+        document.addEventListener('keydown', function(e) {
+            if (document.getElementById('lightbox').classList.contains('active')) {
+                if (e.key === 'Escape') closeLightbox();
+            } else {
+                if (e.key === 'ArrowRight') changeImage(-1);
+                if (e.key === 'ArrowLeft') changeImage(1);
+            }
+        });
+
+        // Init
+        document.getElementById('totalImages').textContent = images.length;
+        createStars();
+        createThumbnails();
+        updateImages();
+    </script>
+
+</body>
+</html>
