@@ -5,282 +5,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>בישום | Premium</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #000000;
-            color: white;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        /* כוכבים ברקע - בדיוק כמו בדף הבית */
-        .stars-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .star {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: #ffffff;
-            border-radius: 50%;
-            opacity: 0;
-            animation: twinkle 4s ease-in-out infinite;
-        }
-
-        @keyframes twinkle {
-            0%, 100% { opacity: 0; transform: scale(0.5); }
-            50% { opacity: 1; transform: scale(1); box-shadow: 0 0 10px #fff; }
-        }
-
-        /* כותרת עליונה */
-        .header {
-            padding: 40px 20px;
-            text-align: center;
-            position: relative;
-            z-index: 10;
-        }
-
-        .back-link {
-            position: absolute;
-            right: 20px;
-            top: 45px;
-            color: #fff;
-            text-decoration: none;
-            font-size: 0.9em;
-            letter-spacing: 2px;
-            transition: 0.3s;
-            text-shadow: 0 0 5px #fff;
-        }
-
-        .logo {
-            font-size: 2.2em;
-            font-weight: 300;
-            letter-spacing: 12px;
-            text-transform: uppercase;
-            text-shadow: 
-                0 0 10px rgba(255, 255, 255, 1),
-                0 0 30px rgba(255, 255, 255, 0.6);
-        }
-
-        /* קטלוג מוצרים */
-        .products-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
-            position: relative;
-            z-index: 10;
-        }
-
-        .product-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 20px;
-            text-align: center;
-            transition: all 0.4s ease;
-            backdrop-filter: blur(10px);
-        }
-
-        .product-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(255, 255, 255, 0.5);
-            box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
-        }
-
-        .product-image {
-            width: 100%;
-            height: 220px;
-            object-fit: contain;
-            margin-bottom: 20px;
-            filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
-        }
-
-        .brand-name {
-            font-size: 0.75em;
-            letter-spacing: 4px;
-            color: rgba(255,255,255,0.6);
-            text-transform: uppercase;
-            margin-bottom: 8px;
-        }
-
-        .product-title {
-            font-size: 1.1em;
-            font-weight: 400;
-            margin-bottom: 12px;
-            letter-spacing: 1px;
-        }
-
-        .price {
-            font-size: 1.3em;
-            font-weight: 300;
-            margin-bottom: 18px;
-            color: #fff;
-            text-shadow: 0 0 10px rgba(255,255,255,0.5);
-        }
-
-        .order-btn {
-            display: inline-block;
-            width: 100%;
-            padding: 12px;
-            background: transparent;
-            color: #fff;
-            border: 1px solid #fff;
-            text-decoration: none;
-            border-radius: 50px;
-            font-size: 0.9em;
-            transition: 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .order-btn:hover {
-            background: #fff;
-            color: #000;
-            box-shadow: 0 0 20px #fff;
-        }
-
-        /* כפתור וואטסאפ צף */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 25px;
-            left: 25px;
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
-            transition: 0.3s;
-        }
-
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-        }
-
-        @media (max-width: 768px) {
-            .products-container {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 15px;
-                padding: 10px;
-            }
-            .logo { font-size: 1.6em; letter-spacing: 6px; }
-            .product-card { padding: 15px; }
-            .product-image { height: 160px; }
-            .product-title { font-size: 0.9em; }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background: #000; color: white; min-height: 100vh; overflow-x: hidden; }
+        .stars-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+        .star { position: absolute; width: 2px; height: 2px; background: #fff; border-radius: 50%; opacity: 0; animation: twinkle 4s infinite; }
+        @keyframes twinkle { 0%, 100% { opacity: 0; } 50% { opacity: 1; box-shadow: 0 0 10px #fff; } }
+        .header { padding: 40px 20px; text-align: center; position: relative; z-index: 10; }
+        .back-link { position: absolute; right: 20px; top: 45px; color: #fff; text-decoration: none; font-size: 0.9em; letter-spacing: 2px; }
+        .logo { font-size: 2.2em; font-weight: 300; letter-spacing: 12px; text-transform: uppercase; text-shadow: 0 0 15px #fff; }
+        .products-container { max-width: 1100px; margin: 0 auto; padding: 20px; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; position: relative; z-index: 10; }
+        .product-card { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 15px; padding: 15px; text-align: center; transition: 0.4s; backdrop-filter: blur(10px); }
+        .product-card:hover { transform: translateY(-10px); border-color: #fff; }
+        .product-image { width: 100%; height: 220px; object-fit: contain; margin-bottom: 20px; }
+        .brand-name { font-size: 0.8em; color: #aaa; letter-spacing: 3px; margin-bottom: 10px; }
+        .price { font-size: 1.3em; margin-bottom: 15px; }
+        .order-btn { display: inline-block; width: 100%; padding: 12px; background: #fff; color: #000; text-decoration: none; border-radius: 50px; font-weight: bold; transition: 0.3s; }
+        .order-btn:hover { box-shadow: 0 0 20px #fff; }
+        @media (max-width: 768px) { .products-container { grid-template-columns: repeat(2, 1fr); gap: 10px; } .product-image { height: 160px; } .logo { font-size: 1.6em; } }
     </style>
 </head>
 <body>
-
     <div class="stars-container" id="starsContainer"></div>
-
     <header class="header">
         <a href="index.html" class="back-link">→ חזרה</a>
         <h1 class="logo">בישום</h1>
     </header>
-
     <main class="products-container">
-        
-        <!-- מוצר 1 - Dior -->
+        <!-- מוצר 1 -->
         <div class="product-card">
             <div class="brand-name">Dior</div>
-            <img src="https://i.ibb.co/R4GVRfpL/9f9bf91d-8f5e-41cd-8d9b-d7c18489f709.jpg" class="product-image" alt="Dior">
-            <h3 class="product-title">Premium Collection</h3>
+            <img src="https://i.ibb.co/R4GVRfpL/9f9bf91d-8f5e-41cd-8d9b-d7c18489f709.jpg" class="product-image">
             <div class="price">₪390</div>
-            <a href="https://wa.me/972559937579?text=היי, אשמח להזמין את הבושם של Dior (תמונה 1)" class="order-btn">הזמנה בוואטסאפ</a>
+            <a href="https://wa.me/972559937579?text=היי, אני מעוניין בבושם Dior מהתמונה הזו: https://i.ibb.co/R4GVRfpL/9f9bf91d-8f5e-41cd-8d9b-d7c18489f709.jpg" class="order-btn">הזמנה בוואטסאפ</a>
         </div>
-
-        <!-- מוצר 2 - Chanel -->
+        <!-- מוצר 2 -->
         <div class="product-card">
             <div class="brand-name">Chanel</div>
-            <img src="https://i.ibb.co/1fqKsgz5/816e09df-b802-4c40-8d32-886de978b2f7.jpg" class="product-image" alt="Chanel">
-            <h3 class="product-title">Luxury Scent</h3>
+            <img src="https://i.ibb.co/1fqKsgz5/816e09df-b802-4c40-8d32-886de978b2f7.jpg" class="product-image">
             <div class="price">₪450</div>
-            <a href="https://wa.me/972559937579?text=היי, אשמח להזמין את הבושם של Chanel (תמונה 2)" class="order-btn">הזמנה בוואטסאפ</a>
+            <a href="https://wa.me/972559937579?text=היי, אני מעוניין בבושם Chanel מהתמונה הזו: https://i.ibb.co/1fqKsgz5/816e09df-b802-4c40-8d32-886de978b2f7.jpg" class="order-btn">הזמנה בוואטסאפ</a>
         </div>
-
-        <!-- מוצר 3 - Xerjoff -->
+        <!-- מוצר 3 -->
         <div class="product-card">
             <div class="brand-name">Xerjoff</div>
-            <img src="https://i.ibb.co/QFtmCQf1/dbc28d44-58fd-4de1-8568-0c3e8382d403.jpg" class="product-image" alt="Xerjoff">
-            <h3 class="product-title">Niche Selection</h3>
+            <img src="https://i.ibb.co/QFtmCQf1/dbc28d44-58fd-4de1-8568-0c3e8382d403.jpg" class="product-image">
             <div class="price">₪790</div>
-            <a href="https://wa.me/972559937579?text=היי, אשמח להזמין את הבושם של Xerjoff (תמונה 3)" class="order-btn">הזמנה בוואטסאפ</a>
+            <a href="https://wa.me/972559937579?text=היי, אני מעוניין בבושם Xerjoff מהתמונה הזו: https://i.ibb.co/QFtmCQf1/dbc28d44-58fd-4de1-8568-0c3e8382d403.jpg" class="order-btn">הזמנה בוואטסאפ</a>
         </div>
-
-        <!-- מוצר 4 - Dior -->
+        <!-- מוצר 4 -->
         <div class="product-card">
             <div class="brand-name">Dior</div>
-            <img src="https://i.ibb.co/mVjhmLPY/dd733263-ece9-43c9-a8c5-371f561db42a.jpg" class="product-image" alt="Dior">
-            <h3 class="product-title">Exclusive Edition</h3>
+            <img src="https://i.ibb.co/mVjhmLPY/dd733263-ece9-43c9-a8c5-371f561db42a.jpg" class="product-image">
             <div class="price">₪420</div>
-            <a href="https://wa.me/972559937579?text=היי, אשמח להזמין את הבושם של Dior (תמונה 4)" class="order-btn">הזמנה בוואטסאפ</a>
+            <a href="https://wa.me/972559937579?text=היי, אני מעוניין בבושם Dior מהתמונה הזו: https://i.ibb.co/mVjhmLPY/dd733263-ece9-43c9-a8c5-371f561db42a.jpg" class="order-btn">הזמנה בוואטסאפ</a>
         </div>
-
-        <!-- מוצר 5 - Chanel -->
-        <div class="product-card">
-            <div class="brand-name">Chanel</div>
-            <img src="https://i.ibb.co/WN0w7VZt/eb36d1b4-aa08-4f9f-a343-4324e347b56c.jpg" class="product-image" alt="Chanel">
-            <h3 class="product-title">Classic Selection</h3>
-            <div class="price">₪480</div>
-            <a href="https://wa.me/972559937579?text=היי, אשמח להזמין את הבושם של Chanel (תמונה 5)" class="order-btn">הזמנה בוואטסאפ</a>
-        </div>
-
-        <!-- מוצר 6 - Xerjoff -->
-        <div class="product-card">
-            <div class="brand-name">Xerjoff</div>
-            <img src="https://i.ibb.co/r2YWPHb2/f380c1c9-72a7-4327-b358-246ea144d9f6.jpg" class="product-image" alt="Xerjoff">
-            <h3 class="product-title">Gold Series</h3>
-            <div class="price">₪850</div>
-            <a href="https://wa.me/972559937579?text=היי, אשמח להזמין את הבושם של Xerjoff (תמונה 6)" class="order-btn">הזמנה בוואטסאפ</a>
-        </div>
-
     </main>
-
-    <!-- כפתור וואטסאפ צף כללי -->
-    <a href="https://wa.me/972559937579" class="whatsapp-float" target="_blank">
-        <svg style="width:30px;height:30px;fill:#fff" viewBox="0 0 32 32">
-            <path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 8.135-2.135c2.369 1.313 5.061 2.135 7.865 2.135 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.333c-2.547 0-5.043-0.725-7.203-2.088l-0.515-0.32-5.328 1.397 1.423-5.195-0.348-0.533c-1.499-2.312-2.363-5.035-2.363-7.927 0-7.455 6.212-13.667 13.667-13.667s13.667 6.212 13.667 13.667c0 7.455-6.212 13.667-13.667 13.667zM23.488 19.739c-0.424-0.212-2.507-1.239-2.897-1.381s-0.671-0.212-0.953 0.212c-0.283 0.424-1.097 1.381-1.344 1.663s-0.495 0.318-0.919 0.106c-0.424-0.212-1.789-0.659-3.405-2.101-1.259-1.121-2.109-2.507-2.355-2.931s-0.025-0.653 0.186-0.864c0.191-0.191 0.424-0.495 0.637-0.743s0.283-0.424 0.424-0.707c0.141-0.283 0.071-0.531-0.035-0.743s-0.953-2.299-1.305-3.147c-0.344-0.825-0.692-0.712-0.953-0.725-0.247-0.012-0.531-0.015-0.815-0.015s-0.743 0.106-1.133 0.531c-0.39 0.424-1.487 1.453-1.487 3.544s1.521 4.112 1.733 4.395c0.212 0.283 2.989 4.563 7.243 6.4 1.012 0.437 1.8 0.697 2.416 0.892 1.019 0.318 1.945 0.273 2.677 0.165 0.817-0.122 2.507-1.025 2.861-2.015s0.353-1.839 0.247-2.015c-0.106-0.176-0.39-0.283-0.815-0.495z"/>
-        </svg>
-    </a>
-
     <script>
-        // יצירת הכוכבים ברקע
         function createStars() {
             const container = document.getElementById('starsContainer');
-            const count = 35;
-            for (let i = 0; i < count; i++) {
+            for (let i = 0; i < 40; i++) {
                 const star = document.createElement('div');
                 star.className = 'star';
                 star.style.left = Math.random() * 100 + '%';
                 star.style.top = Math.random() * 100 + '%';
                 star.style.animationDelay = Math.random() * 4 + 's';
-                star.style.width = (Math.random() * 3 + 1) + 'px';
-                star.style.height = star.style.width;
                 container.appendChild(star);
             }
         }
         createStars();
     </script>
-
 </body>
 </html>
