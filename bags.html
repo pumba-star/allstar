@@ -2,22 +2,30 @@
 <html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <title>תיקים | Premium</title>
+    <title>Premium | תיקים</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
+        }
+
+        html, body {
+            min-height: 100%;
+            overflow-x: hidden;
         }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: #000000;
             color: white;
-            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            padding-bottom: 100px;
         }
 
         /* כוכבים ברקע */
@@ -34,8 +42,8 @@
 
         .star {
             position: absolute;
-            width: 2px;
-            height: 2px;
+            width: 3px;
+            height: 3px;
             background: #ffffff;
             border-radius: 50%;
             opacity: 0;
@@ -46,39 +54,59 @@
             0%, 100% { 
                 opacity: 0; 
                 transform: scale(0.5);
+                box-shadow: none;
             }
             50% { 
-                opacity: 0.8; 
+                opacity: 1; 
                 transform: scale(1);
-                box-shadow: 0 0 6px #fff, 0 0 12px rgba(255,255,255,0.5);
+                box-shadow: 
+                    0 0 6px #fff,
+                    0 0 12px #fff,
+                    0 0 20px rgba(255, 255, 255, 0.5);
             }
         }
 
         /* Header */
-        header {
-            padding: 15px 20px;
+        .header {
+            width: 100%;
+            padding: 30px 20px;
             text-align: center;
-            background: rgba(0, 0, 0, 0.95);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            position: relative;
+            z-index: 10;
+        }
+
+        .back-btn {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1em;
+            letter-spacing: 2px;
+            padding: 10px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.6);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
         }
 
         .logo {
-            font-size: 1.5em;
+            font-size: 2em;
             font-weight: 300;
-            letter-spacing: 8px;
+            letter-spacing: 10px;
             text-transform: uppercase;
             color: #ffffff;
-            text-decoration: none;
             text-shadow: 
                 0 0 10px rgba(255, 255, 255, 1),
-                0 0 20px rgba(255, 255, 255, 0.8),
-                0 0 40px rgba(255, 255, 255, 0.6),
-                0 0 60px rgba(255, 255, 255, 0.4);
-            display: block;
-            margin-bottom: 15px;
+                0 0 20px rgba(255, 255, 255, 0.9),
+                0 0 40px rgba(255, 255, 255, 0.7);
             animation: logoGlow 3s ease-in-out infinite;
         }
 
@@ -86,334 +114,181 @@
             0%, 100% {
                 text-shadow: 
                     0 0 10px rgba(255, 255, 255, 1),
-                    0 0 20px rgba(255, 255, 255, 0.8),
-                    0 0 40px rgba(255, 255, 255, 0.6);
+                    0 0 20px rgba(255, 255, 255, 0.9),
+                    0 0 40px rgba(255, 255, 255, 0.7);
             }
             50% {
                 text-shadow: 
                     0 0 15px rgba(255, 255, 255, 1),
                     0 0 30px rgba(255, 255, 255, 1),
-                    0 0 50px rgba(255, 255, 255, 0.8),
-                    0 0 70px rgba(255, 255, 255, 0.6);
+                    0 0 50px rgba(255, 255, 255, 0.8);
             }
-        }
-
-        /* תפריט */
-        .categories {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            overflow-x: auto;
-            white-space: nowrap;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-            padding: 5px 10px;
-            gap: 0;
-        }
-
-        .categories::-webkit-scrollbar {
-            display: none;
-        }
-
-        .category {
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 0.85em;
-            font-weight: 400;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            padding: 8px 15px;
-            transition: all 0.4s ease;
-            text-shadow: 
-                0 0 8px rgba(255, 255, 255, 0.7),
-                0 0 15px rgba(255, 255, 255, 0.5);
-            flex-shrink: 0;
-            position: relative;
-        }
-
-        .category::after {
-            content: '';
-            position: absolute;
-            bottom: 3px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 1px;
-            background: #ffffff;
-            box-shadow: 0 0 8px #fff;
-            transition: width 0.3s ease;
-        }
-
-        .category:hover::after,
-        .category.active::after {
-            width: 70%;
-        }
-
-        .category:hover,
-        .category.active {
-            text-shadow: 
-                0 0 15px rgba(255, 255, 255, 1),
-                0 0 30px rgba(255, 255, 255, 1),
-                0 0 50px rgba(255, 255, 255, 0.8),
-                0 0 70px rgba(255, 255, 255, 0.6);
-        }
-
-        .dot {
-            width: 4px;
-            height: 4px;
-            min-width: 4px;
-            background: #ffffff;
-            border-radius: 50%;
-            box-shadow: 
-                0 0 6px rgba(255, 255, 255, 1),
-                0 0 12px rgba(255, 255, 255, 0.8);
-            animation: dotGlow 2s ease-in-out infinite;
-            flex-shrink: 0;
-        }
-
-        @keyframes dotGlow {
-            0%, 100% { 
-                box-shadow: 0 0 6px rgba(255, 255, 255, 1), 0 0 12px rgba(255, 255, 255, 0.8);
-                transform: scale(1);
-            }
-            50% { 
-                box-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1);
-                transform: scale(1.2);
-            }
-        }
-
-        /* אזור ראשי */
-        main {
-            position: relative;
-            z-index: 10;
-            padding: 30px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
         }
 
         .page-title {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .page-title h1 {
-            font-size: 1.8em;
+            font-size: 1.3em;
             font-weight: 300;
             letter-spacing: 8px;
             text-transform: uppercase;
-            color: #ffffff;
-            text-shadow: 
-                0 0 10px rgba(255, 255, 255, 0.9),
-                0 0 20px rgba(255, 255, 255, 0.7),
-                0 0 40px rgba(255, 255, 255, 0.5);
+            margin-top: 15px;
+            color: rgba(255, 255, 255, 0.8);
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
         }
 
-        /* === תצוגת מחשב === */
-        .desktop-view {
-            display: block;
-        }
-
-        .mobile-view {
-            display: none;
-        }
-
-        /* תמונה ראשית - מחשב */
-        .gallery-container {
+        /* פילטר מותגים */
+        .brand-filter {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .main-image-container {
-            position: relative;
-            width: 100%;
-            max-width: 600px;
-        }
-
-        .main-image-wrapper {
-            width: 100%;
-            aspect-ratio: 1/1;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 12px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .main-image {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            object-position: center;
-            cursor: pointer;
-        }
-
-        .nav-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 50px;
-            height: 50px;
-            background: rgba(0, 0, 0, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            border-radius: 50%;
-            color: #ffffff;
-            font-size: 1.2em;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
             justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            padding: 20px;
+            position: relative;
             z-index: 10;
-            transition: all 0.3s ease;
         }
 
-        .nav-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-        }
-
-        .nav-prev { right: 15px; }
-        .nav-next { left: 15px; }
-
-        /* תמונות ממוזערות - מחשב */
-        .thumbnails-grid {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 10px;
-            width: 100%;
-            max-width: 600px;
-        }
-
-        .thumbnail {
-            aspect-ratio: 1/1;
-            border-radius: 8px;
-            overflow: hidden;
-            cursor: pointer;
-            border: 2px solid transparent;
-            transition: all 0.3s ease;
-            opacity: 0.5;
-        }
-
-        .thumbnail:hover {
-            opacity: 0.8;
-        }
-
-        .thumbnail.active {
-            opacity: 1;
-            border-color: rgba(255, 255, 255, 0.9);
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-        }
-
-        .thumbnail img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* מידע על המוצר */
-        .product-info {
-            text-align: center;
-            margin-top: 25px;
-        }
-
-        .product-info h3 {
-            font-size: 1.2em;
-            font-weight: 400;
-            letter-spacing: 3px;
-            margin-bottom: 8px;
-            color: #ffffff;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
-        }
-
-        .product-info p {
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 0.9em;
-            margin-bottom: 15px;
-        }
-
-        .order-btn {
-            display: inline-block;
-            padding: 12px 35px;
+        .brand-btn {
             background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             color: #ffffff;
-            text-decoration: none;
+            padding: 10px 25px;
             border-radius: 25px;
-            font-size: 0.95em;
+            cursor: pointer;
+            font-size: 0.9em;
             letter-spacing: 2px;
+            text-transform: uppercase;
             transition: all 0.3s ease;
             text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
         }
 
-        .order-btn:hover {
-            background: #ffffff;
-            color: #000000;
-            text-shadow: none;
-            box-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
+        .brand-btn:hover,
+        .brand-btn.active {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 
+                0 0 15px rgba(255, 255, 255, 0.4),
+                0 0 30px rgba(255, 255, 255, 0.2);
         }
 
-        .image-counter {
-            margin-top: 12px;
-            font-size: 0.85em;
-            color: rgba(255, 255, 255, 0.4);
-            letter-spacing: 3px;
+        /* רשת מוצרים */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 30px;
+            max-width: 1400px;
+            width: 100%;
+            position: relative;
+            z-index: 10;
         }
 
-        /* Lightbox */
-        .lightbox {
-            display: none;
-            position: fixed;
+        /* כרטיס מוצר */
+        .product-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
             top: 0;
             left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                135deg,
+                rgba(255, 255, 255, 0.05) 0%,
+                transparent 50%,
+                rgba(255, 255, 255, 0.02) 100%
+            );
+            pointer-events: none;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.5),
+                0 0 30px rgba(255, 255, 255, 0.1);
+        }
+
+        .product-image {
             width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.98);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
         }
 
-        .lightbox.active {
-            display: flex;
+        .product-card:hover .product-image {
+            transform: scale(1.05);
         }
 
-        .lightbox-image {
-            max-width: 95%;
-            max-height: 95%;
-            object-fit: contain;
+        .product-info {
+            padding: 20px;
+            text-align: center;
         }
 
-        .lightbox-close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            background: rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            border-radius: 50%;
+        .product-brand {
+            font-size: 0.8em;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 8px;
+        }
+
+        .product-name {
+            font-size: 1.1em;
+            font-weight: 400;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .product-price {
+            font-size: 1.3em;
+            font-weight: 300;
             color: #ffffff;
-            font-size: 1.8em;
-            cursor: pointer;
-            display: flex;
+            margin-bottom: 15px;
+            text-shadow: 
+                0 0 10px rgba(255, 255, 255, 0.8),
+                0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        .contact-btn {
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            z-index: 10;
+            gap: 8px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 0.9em;
+            letter-spacing: 1px;
             transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.3);
         }
 
-        .lightbox-close:hover {
-            background: #ffffff;
-            color: #000000;
+        .contact-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.5);
         }
 
-        /* כפתור וואטסאפ */
-        .whatsapp-btn {
+        .contact-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: white;
+        }
+
+        /* כפתור וואטסאפ קבוע */
+        .whatsapp-float {
             position: fixed;
-            bottom: 20px;
-            left: 20px;
+            bottom: 25px;
+            left: 25px;
             z-index: 1000;
             width: 55px;
             height: 55px;
@@ -426,143 +301,71 @@
             transition: all 0.3s ease;
         }
 
-        .whatsapp-btn:hover {
+        .whatsapp-float:hover {
             transform: scale(1.1);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.7);
         }
 
-        .whatsapp-btn svg {
+        .whatsapp-float svg {
             width: 28px;
             height: 28px;
             fill: white;
         }
 
-        /* === תצוגת טלפון === */
+        /* רספונסיבי */
         @media (max-width: 768px) {
-            .desktop-view {
-                display: none;
+            .header {
+                padding: 20px 15px 15px;
             }
 
-            .mobile-view {
-                display: block;
-            }
-
-            header {
-                padding: 12px 15px;
+            .back-btn {
+                position: relative;
+                right: auto;
+                top: auto;
+                transform: none;
+                margin-bottom: 15px;
+                display: inline-block;
             }
 
             .logo {
-                font-size: 1.3em;
+                font-size: 1.5em;
                 letter-spacing: 6px;
-                margin-bottom: 12px;
-            }
-
-            .category {
-                font-size: 0.75em;
-                padding: 6px 10px;
-            }
-
-            main {
-                padding: 20px 15px;
             }
 
             .page-title {
-                margin-bottom: 20px;
-            }
-
-            .page-title h1 {
-                font-size: 1.4em;
+                font-size: 1em;
                 letter-spacing: 5px;
             }
 
-            /* תמונה מלאה בטלפון */
-            .mobile-gallery {
-                position: relative;
-                width: 100%;
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 20px;
+                padding: 20px;
             }
 
-            .mobile-image-wrapper {
-                width: 100%;
-                aspect-ratio: 1/1;
-                background: rgba(255, 255, 255, 0.02);
-                border: 1px solid rgba(255, 255, 255, 0.15);
-                border-radius: 10px;
-                overflow: hidden;
-                position: relative;
+            .product-image {
+                height: 220px;
             }
 
-            .mobile-image {
-                width: 100%;
-                height: 100%;
-                object-fit: contain;
-                object-position: center;
+            .brand-filter {
+                gap: 10px;
             }
 
-            .mobile-nav-btn {
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-                width: 45px;
-                height: 45px;
-                background: rgba(0, 0, 0, 0.6);
-                border: 1px solid rgba(255, 255, 255, 0.3);
-                border-radius: 50%;
-                color: #ffffff;
-                font-size: 1.1em;
-                cursor: pointer;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                z-index: 10;
-                transition: all 0.2s ease;
-            }
-
-            .mobile-nav-btn:active {
-                background: rgba(255, 255, 255, 0.2);
-            }
-
-            .mobile-nav-prev { right: 10px; }
-            .mobile-nav-next { left: 10px; }
-
-            .product-info {
-                margin-top: 20px;
-            }
-
-            .product-info h3 {
-                font-size: 1.1em;
-            }
-
-            .order-btn {
-                padding: 10px 28px;
-                font-size: 0.9em;
-            }
-
-            .image-counter {
+            .brand-btn {
+                padding: 8px 18px;
                 font-size: 0.8em;
-            }
-
-            .whatsapp-btn {
-                width: 50px;
-                height: 50px;
-                bottom: 15px;
-                left: 15px;
-            }
-
-            .whatsapp-btn svg {
-                width: 25px;
-                height: 25px;
             }
         }
 
-        /* מסכים גדולים */
-        @media (min-width: 1024px) {
-            .main-image-container {
-                max-width: 650px;
+        @media (max-width: 400px) {
+            .products-grid {
+                grid-template-columns: 1fr;
             }
+        }
 
-            .thumbnails-grid {
-                grid-template-columns: repeat(8, 1fr);
-                max-width: 650px;
-            }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
@@ -570,102 +373,130 @@
 
     <div class="stars-container" id="starsContainer"></div>
 
-    <header>
-        <a href="index.html" class="logo">Premium</a>
-        
-        <nav class="categories">
-            <a href="shoes.html" class="category">נעליים</a>
-            <span class="dot"></span>
-            <a href="clothes.html" class="category">בגדים</a>
-            <span class="dot"></span>
-            <a href="bags.html" class="category active">תיקים</a>
-            <span class="dot"></span>
-            <a href="perfume.html" class="category">בישום</a>
-            <span class="dot"></span>
-            <a href="electronics.html" class="category">אלקטרוניקה</a>
-            <span class="dot"></span>
-            <a href="furniture.html" class="category">ריהוט</a>
-        </nav>
+    <header class="header">
+        <a href="index.html" class="back-btn">→ חזרה</a>
+        <h1 class="logo">Premium</h1>
+        <p class="page-title">תיקים</p>
     </header>
 
-    <main>
-        <div class="page-title">
-            <h1>תיקים</h1>
-        </div>
-
-        <!-- תצוגת מחשב -->
-        <div class="desktop-view">
-            <div class="gallery-container">
-                <div class="main-image-container">
-                    <div class="main-image-wrapper">
-                        <img src="" alt="תיק יוקרתי" class="main-image" id="mainImage" onclick="openFullImage()">
-                        
-                        <button class="nav-btn nav-prev" onclick="changeImage(1)">❮</button>
-                        <button class="nav-btn nav-next" onclick="changeImage(-1)">❯</button>
-                    </div>
-                </div>
-
-                <div class="thumbnails-grid" id="thumbnailsGrid"></div>
-            </div>
-        </div>
-
-        <!-- תצוגת טלפון -->
-        <div class="mobile-view">
-            <div class="mobile-gallery">
-                <div class="mobile-image-wrapper" id="mobileImageWrapper">
-                    <img src="" alt="תיק יוקרתי" class="mobile-image" id="mobileImage">
-                    
-                    <button class="mobile-nav-btn mobile-nav-prev" onclick="changeImage(1)">❮</button>
-                    <button class="mobile-nav-btn mobile-nav-next" onclick="changeImage(-1)">❯</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="product-info">
-            <h3>תיק יוקרתי</h3>
-            <p>ייבוא אישי • איכות פרימיום</p>
-            <a href="" class="order-btn" id="orderBtn">לפרטים והזמנה</a>
-            <div class="image-counter">
-                <span id="currentIndex">1</span> / <span id="totalImages">12</span>
-            </div>
-        </div>
-    </main>
-
-    <!-- Lightbox -->
-    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-        <button class="lightbox-close" onclick="closeLightbox()">×</button>
-        <img src="" alt="תמונה מלאה" class="lightbox-image" id="lightboxImage">
+    <div class="brand-filter">
+        <button class="brand-btn active" data-brand="all">הכל</button>
+        <button class="brand-btn" data-brand="gucci">Gucci</button>
     </div>
 
-    <a href="https://wa.me/972500000000" target="_blank" class="whatsapp-btn">
+    <div class="products-grid" id="productsGrid">
+        
+        <!-- תיק 1 - Gucci -->
+        <div class="product-card" data-brand="gucci">
+            <img src="https://i.ibb.co/PvnhjQ3r/2c56f085-3129-4bd5-8d19-b8257debe0f8j.jpg" alt="Gucci Bag" class="product-image">
+            <div class="product-info">
+                <p class="product-brand">Gucci</p>
+                <h3 class="product-name">GG Marmont</h3>
+                <p class="product-price">₪1,200</p>
+                <a href="https://wa.me/9720559937579?text=היי, אני מתעניין/ת בתיק Gucci GG Marmont" target="_blank" class="contact-btn">
+                    <svg viewBox="0 0 32 32">
+                        <path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 8.135-2.135c2.369 1.313 5.061 2.135 7.865 2.135 8.837 0 16-7.163 16-16s-7.163-16-16-16z"/>
+                    </svg>
+                    צור קשר
+                </a>
+            </div>
+        </div>
+
+        <!-- תיק 2 - Gucci -->
+        <div class="product-card" data-brand="gucci">
+            <img src="https://i.ibb.co/t9DTX6j/5f85caa6-ad0e-4a3c-abe9-001fe5421008.jpg" alt="Gucci Bag" class="product-image">
+            <div class="product-info">
+                <p class="product-brand">Gucci</p>
+                <h3 class="product-name">Dionysus</h3>
+                <p class="product-price">₪1,350</p>
+                <a href="https://wa.me/9720559937579?text=היי, אני מתעניין/ת בתיק Gucci Dionysus" target="_blank" class="contact-btn">
+                    <svg viewBox="0 0 32 32">
+                        <path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 8.135-2.135c2.369 1.313 5.061 2.135 7.865 2.135 8.837 0 16-7.163 16-16s-7.163-16-16-16z"/>
+                    </svg>
+                    צור קשר
+                </a>
+            </div>
+        </div>
+
+        <!-- תיק 3 - Gucci -->
+        <div class="product-card" data-brand="gucci">
+            <img src="https://i.ibb.co/YFY2QWF3/24e4eb29-9162-4ed4-858e-656816ea70d8.jpg" alt="Gucci Bag" class="product-image">
+            <div class="product-info">
+                <p class="product-brand">Gucci</p>
+                <h3 class="product-name">Jackie 1961</h3>
+                <p class="product-price">₪1,450</p>
+                <a href="https://wa.me/9720559937579?text=היי, אני מתעניין/ת בתיק Gucci Jackie 1961" target="_blank" class="contact-btn">
+                    <svg viewBox="0 0 32 32">
+                        <path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 8.135-2.135c2.369 1.313 5.061 2.135 7.865 2.135 8.837 0 16-7.163 16-16s-7.163-16-16-16z"/>
+                    </svg>
+                    צור קשר
+                </a>
+            </div>
+        </div>
+
+        <!-- תיק 4 - Gucci -->
+        <div class="product-card" data-brand="gucci">
+            <img src="https://i.ibb.co/jkGy2cYp/32a8fad7-bc68-4e66-ba3d-21c1015ad60c.jpg" alt="Gucci Bag" class="product-image">
+            <div class="product-info">
+                <p class="product-brand">Gucci</p>
+                <h3 class="product-name">Ophidia</h3>
+                <p class="product-price">₪1,280</p>
+                <a href="https://wa.me/9720559937579?text=היי, אני מתעניין/ת בתיק Gucci Ophidia" target="_blank" class="contact-btn">
+                    <svg viewBox="0 0 32 32">
+                        <path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 8.135-2.135c2.369 1.313 5.061 2.135 7.865 2.135 8.837 0 16-7.163 16-16s-7.163-16-16-16z"/>
+                    </svg>
+                    צור קשר
+                </a>
+            </div>
+        </div>
+
+        <!-- תיק 5 - Gucci -->
+        <div class="product-card" data-brand="gucci">
+            <img src="https://i.ibb.co/V0zY6DPF/43fbbca4-6aa1-4f8c-a627-7b7e8b5aa8f8.jpg" alt="Gucci Bag" class="product-image">
+            <div class="product-info">
+                <p class="product-brand">Gucci</p>
+                <h3 class="product-name">Horsebit 1955</h3>
+                <p class="product-price">₪1,500</p>
+                <a href="https://wa.me/9720559937579?text=היי, אני מתעניין/ת בתיק Gucci Horsebit 1955" target="_blank" class="contact-btn">
+                    <svg viewBox="0 0 32 32">
+                        <path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 8.135-2.135c2.369 1.313 5.061 2.135 7.865 2.135 8.837 0 16-7.163 16-16s-7.163-16-16-16z"/>
+                    </svg>
+                    צור קשר
+                </a>
+            </div>
+        </div>
+
+        <!-- תיק 6 - Gucci -->
+        <div class="product-card" data-brand="gucci">
+            <img src="https://i.ibb.co/7xB5FXF6/6890e691-eabb-45c7-bb9c-ccfc08cba72c.jpg" alt="Gucci Bag" class="product-image">
+            <div class="product-info">
+                <p class="product-brand">Gucci</p>
+                <h3 class="product-name">Bamboo 1947</h3>
+                <p class="product-price">₪1,380</p>
+                <a href="https://wa.me/9720559937579?text=היי, אני מתעניין/ת בתיק Gucci Bamboo 1947" target="_blank" class="contact-btn">
+                    <svg viewBox="0 0 32 32">
+                        <path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 8.135-2.135c2.369 1.313 5.061 2.135 7.865 2.135 8.837 0 16-7.163 16-16s-7.163-16-16-16z"/>
+                    </svg>
+                    צור קשר
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <a href="https://wa.me/9720559937579" target="_blank" class="whatsapp-float">
         <svg viewBox="0 0 32 32">
             <path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 8.135-2.135c2.369 1.313 5.061 2.135 7.865 2.135 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.333c-2.547 0-5.043-0.725-7.203-2.088l-0.515-0.32-5.328 1.397 1.423-5.195-0.348-0.533c-1.499-2.312-2.363-5.035-2.363-7.927 0-7.455 6.212-13.667 13.667-13.667s13.667 6.212 13.667 13.667c0 7.455-6.212 13.667-13.667 13.667zM23.488 19.739c-0.424-0.212-2.507-1.239-2.897-1.381s-0.671-0.212-0.953 0.212c-0.283 0.424-1.097 1.381-1.344 1.663s-0.495 0.318-0.919 0.106c-0.424-0.212-1.789-0.659-3.405-2.101-1.259-1.121-2.109-2.507-2.355-2.931s-0.025-0.653 0.186-0.864c0.191-0.191 0.424-0.495 0.637-0.743s0.283-0.424 0.424-0.707c0.141-0.283 0.071-0.531-0.035-0.743s-0.953-2.299-1.305-3.147c-0.344-0.825-0.692-0.712-0.953-0.725-0.247-0.012-0.531-0.015-0.815-0.015s-0.743 0.106-1.133 0.531c-0.39 0.424-1.487 1.453-1.487 3.544s1.521 4.112 1.733 4.395c0.212 0.283 2.989 4.563 7.243 6.4 1.012 0.437 1.8 0.697 2.416 0.892 1.019 0.318 1.945 0.273 2.677 0.165 0.817-0.122 2.507-1.025 2.861-2.015s0.353-1.839 0.247-2.015c-0.106-0.176-0.39-0.283-0.815-0.495z"/>
         </svg>
     </a>
 
     <script>
-        const images = [
-            'https://i.ibb.co/Q7m273Mf/nscwr-Whats-App-Image-2025-12-16-at-20-57-16.jpg',
-            'https://i.ibb.co/8n05HX73/pddgp-Whats-App-Image-2025-12-16-at-20-57-17.jpg',
-            'https://i.ibb.co/BH5YW1XG/nzknc-Whats-App-Image-2025-12-16-at-20-57-16.jpg',
-            'https://i.ibb.co/MxqWPc6N/ewhoi-Whats-App-Image-2025-12-16-at-20-57-17.jpg',
-            'https://i.ibb.co/JwC46mmJ/fehrv-Whats-App-Image-2025-12-16-at-20-57-16.jpg',
-            'https://i.ibb.co/4nrw82dp/mdgiq-Whats-App-Image-2025-12-16-at-20-57-17.jpg',
-            'https://i.ibb.co/0yG1mhYD/qxwqc-Whats-App-Image-2025-12-16-at-20-57-16.jpg',
-            'https://i.ibb.co/p6SRQwkX/rcbiy-Whats-App-Image-2025-12-16-at-20-57-16.jpg',
-            'https://i.ibb.co/chKN5XMH/vmzia-Whats-App-Image-2025-12-16-at-20-57-17.jpg',
-            'https://i.ibb.co/XkLcySB8/wcjps-Whats-App-Image-2025-12-16-at-20-57-17.jpg',
-            'https://i.ibb.co/bgZxd31r/Whats-App-Image-2025-12-16-at-20-57-17.jpg',
-            'https://i.ibb.co/whr3j6kz/xushg-Whats-App-Image-2025-12-16-at-20-57-17.jpg'
-        ];
-
-        let currentIndex = 0;
-        const phoneNumber = '972500000000';
-
-        // כוכבים
+        // יצירת כוכבים
         function createStars() {
             const container = document.getElementById('starsContainer');
-            for (let i = 0; i < 25; i++) {
+            const starCount = 30;
+
+            for (let i = 0; i < starCount; i++) {
                 createStar(container);
             }
         }
@@ -673,13 +504,17 @@
         function createStar(container) {
             const star = document.createElement('div');
             star.className = 'star';
+            
             star.style.left = Math.random() * 100 + '%';
             star.style.top = Math.random() * 100 + '%';
-            const size = Math.random() * 2 + 1;
+            
+            const size = Math.random() * 3 + 1;
             star.style.width = size + 'px';
             star.style.height = size + 'px';
+            
             star.style.animationDelay = Math.random() * 4 + 's';
             star.style.animationDuration = (Math.random() * 3 + 3) + 's';
+            
             container.appendChild(star);
 
             setTimeout(() => {
@@ -688,100 +523,29 @@
             }, (Math.random() * 6 + 4) * 1000);
         }
 
-        // יצירת thumbnails למחשב
-        function createThumbnails() {
-            const grid = document.getElementById('thumbnailsGrid');
-            if (!grid) return;
-            
-            grid.innerHTML = '';
-            images.forEach((src, index) => {
-                const thumb = document.createElement('div');
-                thumb.className = `thumbnail ${index === 0 ? 'active' : ''}`;
-                thumb.onclick = () => selectImage(index);
-                thumb.innerHTML = `<img src="${src}" alt="תיק ${index + 1}">`;
-                grid.appendChild(thumb);
-            });
-        }
-
-        function selectImage(index) {
-            currentIndex = index;
-            updateImages();
-            updateThumbnails();
-        }
-
-        function updateImages() {
-            // עדכון תמונה ראשית במחשב
-            const mainImage = document.getElementById('mainImage');
-            if (mainImage) mainImage.src = images[currentIndex];
-            
-            // עדכון תמונה בטלפון
-            const mobileImage = document.getElementById('mobileImage');
-            if (mobileImage) mobileImage.src = images[currentIndex];
-            
-            // עדכון קישור הזמנה
-            const orderBtn = document.getElementById('orderBtn');
-            if (orderBtn) {
-                orderBtn.href = `https://wa.me/${phoneNumber}?text=היי, אני מתעניין/ת בתיק מהאתר (תמונה ${currentIndex + 1})`;
-            }
-            
-            // עדכון מונה
-            const currentIndexEl = document.getElementById('currentIndex');
-            if (currentIndexEl) currentIndexEl.textContent = currentIndex + 1;
-        }
-
-        function updateThumbnails() {
-            document.querySelectorAll('.thumbnail').forEach((thumb, index) => {
-                thumb.classList.toggle('active', index === currentIndex);
-            });
-        }
-
-        function changeImage(direction) {
-            currentIndex += direction;
-            if (currentIndex >= images.length) currentIndex = 0;
-            if (currentIndex < 0) currentIndex = images.length - 1;
-            updateImages();
-            updateThumbnails();
-        }
-
-        function openFullImage() {
-            document.getElementById('lightboxImage').src = images[currentIndex];
-            document.getElementById('lightbox').classList.add('active');
-        }
-
-        function closeLightbox() {
-            document.getElementById('lightbox').classList.remove('active');
-        }
-
-        // Touch swipe לטלפון
-        let touchStartX = 0;
-        const mobileWrapper = document.getElementById('mobileImageWrapper');
-        
-        if (mobileWrapper) {
-            mobileWrapper.addEventListener('touchstart', e => {
-                touchStartX = e.changedTouches[0].screenX;
-            }, { passive: true });
-
-            mobileWrapper.addEventListener('touchend', e => {
-                const diff = touchStartX - e.changedTouches[0].screenX;
-                if (Math.abs(diff) > 50) changeImage(diff > 0 ? -1 : 1);
-            }, { passive: true });
-        }
-
-        // Keyboard
-        document.addEventListener('keydown', function(e) {
-            if (document.getElementById('lightbox').classList.contains('active')) {
-                if (e.key === 'Escape') closeLightbox();
-            } else {
-                if (e.key === 'ArrowRight') changeImage(-1);
-                if (e.key === 'ArrowLeft') changeImage(1);
-            }
-        });
-
-        // Init
-        document.getElementById('totalImages').textContent = images.length;
         createStars();
-        createThumbnails();
-        updateImages();
+
+        // פילטר מותגים
+        const brandBtns = document.querySelectorAll('.brand-btn');
+        const products = document.querySelectorAll('.product-card');
+
+        brandBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                brandBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const brand = btn.dataset.brand;
+
+                products.forEach(product => {
+                    if (brand === 'all' || product.dataset.brand === brand) {
+                        product.style.display = 'block';
+                        product.style.animation = 'fadeIn 0.5s ease';
+                    } else {
+                        product.style.display = 'none';
+                    }
+                });
+            });
+        });
     </script>
 
 </body>
