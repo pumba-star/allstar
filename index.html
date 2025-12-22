@@ -6,23 +6,206 @@
     <title>Premium | ייבוא אישי</title>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <style>
-        *{margin:0;padding:0;box-sizing:border-box;}
-        body{font-family:'Rubik',sans-serif;background:#000;color:#fff;min-height:100vh;background:radial-gradient(circle at 50% 50%,#111 0%,#000 80%);}
-        header{position:fixed;top:0;width:100%;padding:20px 5%;background:rgba(0,0,0,0.9);backdrop-filter:blur(15px);z-index:1000;display:flex;justify-content:center;align-items:center;border-bottom:1px solid #222;}
-        .logo{font-size:42px;font-weight:900;background:linear-gradient(90deg,#ff6b6b,#f46036);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-        .hero{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;}
-        .hero h1{font-size:110px;font-weight:900;background:linear-gradient(90deg,#ff6b6b,#f46036);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:70px;letter-spacing:-4px;}
-        .categories{display:flex;flex-wrap:wrap;gap:35px;justify-content:center;}
-        .cat-btn{padding:24px 55px;font-size:26px;font-weight:700;text-transform:uppercase;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.2);border-radius:50px;backdrop-filter:blur(12px);transition:all 0.4s;color:#fff;text-decoration:none;}
-        .cat-btn:hover{background:linear-gradient(45deg,#f46036,#ff6b6b);transform:translateY(-15px);box-shadow:0 25px 50px rgba(244,96,54,0.45);}
-        .whatsapp{position:fixed;bottom:30px;left:30px;width:70px;height:70px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 15px 40px rgba(37,211,102,0.6);z-index:9999;transition:0.3s;}
-        .whatsapp:hover{transform:scale(1.2);}
-        @media(max-width:768px){.hero h1{font-size:68px;}.cat-btn{padding:18px 40px;font-size:21px;}}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Rubik', sans-serif;
+            background: #fafafa;
+            color: #000;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        /* ערפל שחור דינמי */
+        .fog-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .fog {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.05) 40%, transparent 70%);
+            filter: blur(60px);
+        }
+        
+        .fog-1 {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: float1 8s ease-in-out infinite;
+        }
+        
+        .fog-2 {
+            top: 40%;
+            left: 40%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0.04) 40%, transparent 70%);
+            animation: float2 10s ease-in-out infinite;
+        }
+        
+        .fog-3 {
+            top: 60%;
+            left: 60%;
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.03) 40%, transparent 70%);
+            animation: float3 12s ease-in-out infinite;
+        }
+        
+        @keyframes float1 {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            25% { transform: translate(-40%, -60%) scale(1.1); }
+            50% { transform: translate(-60%, -40%) scale(0.9); }
+            75% { transform: translate(-45%, -55%) scale(1.05); }
+        }
+        
+        @keyframes float2 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(80px, -60px) scale(1.15); }
+            66% { transform: translate(-60px, 80px) scale(0.85); }
+        }
+        
+        @keyframes float3 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-100px, -80px) scale(1.2); }
+        }
+        
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 5%;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        }
+        
+        .logo {
+            font-size: 42px;
+            font-weight: 900;
+            color: #000;
+            letter-spacing: -2px;
+        }
+        
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 120px;
+            font-weight: 900;
+            color: #000;
+            margin-bottom: 70px;
+            letter-spacing: -5px;
+            text-shadow: 0 0 60px rgba(0, 0, 0, 0.1);
+        }
+        
+        .categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            justify-content: center;
+        }
+        
+        .cat-btn {
+            padding: 20px 50px;
+            font-size: 18px;
+            font-weight: 600;
+            text-transform: uppercase;
+            background: #fff;
+            border: 2px solid #000;
+            border-radius: 0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            color: #000;
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+        
+        .cat-btn:hover {
+            background: #000;
+            color: #fff;
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .whatsapp {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 65px;
+            height: 65px;
+            background: #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            z-index: 9999;
+            transition: 0.3s;
+        }
+        
+        .whatsapp:hover {
+            transform: scale(1.1);
+            background: #25D366;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 60px;
+                letter-spacing: -2px;
+            }
+            .cat-btn {
+                padding: 16px 35px;
+                font-size: 14px;
+            }
+            .fog {
+                width: 350px;
+                height: 350px;
+            }
+            .fog-2, .fog-3 {
+                width: 280px;
+                height: 280px;
+            }
+        }
     </style>
 </head>
 <body>
 
-<header><div class="logo">Premium</div></header>
+<!-- ערפל שחור דינמי -->
+<div class="fog-container">
+    <div class="fog fog-1"></div>
+    <div class="fog fog-2"></div>
+    <div class="fog fog-3"></div>
+</div>
+
+<header>
+    <div class="logo">Premium</div>
+</header>
 
 <div class="hero">
     <h1>Premium</h1>
@@ -37,7 +220,7 @@
 </div>
 
 <a href="https://wa.me/972559937579" class="whatsapp">
-    <svg width="38" viewBox="0 0 32 32"><path fill="#fff" d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 8.135-2.135c2.369 1.313 5.061 2.135 7.865 2.135 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.333c-2.547 0-5.043-0.725-7.203-2.088l-0.515-0.32-5.328 1.397 1.423-5.195-0.348-0.533c-1.499-2.312-2.363-5.035-2.363-7.927 0-7.455 6.212-13.667 13.667-13.667s13.667 6.212 13.667 13.667c0 7.455-6.212 13.667-13.667 13.667zM23.488 19.739c-0.424-0.212-2.507-1.239-2.897-1.381s-0.671-0.212-0.953 0.212c-0.283 0.424-1.097 1.381-1.344 1.663s-0.495 0.318-0.919 0.106c-0.424-0.212-1.789-0.659-3.405-2.101-1.259-1.121-2.109-2.507-2.355-2.931s-0.025-0.653 0.186-0.864c0.191-0.191 0.424-0.495 0.637-0.743s0.283-0.424 0.424-0.707c0.141-0.283 0.071-0.531-0.035-0.743s-0.953-2.299-1.305-3.147c-0.344-0.825-0.692-0.712-0.953-0.725-0.247-0.012-0.531-0.015-0.815-0.015s-0.743 0.106-1.133 0.531c-0.39 0.424-1.487 1.453-1.487 3.544s1.521 4.112 1.733 4.395c0.212 0.283 2.989 4.563 7.243 6.4 1.012 0.437 1.8 0.697 2.416 0.892 1.019 0.318 1.945 0.273 2.677 0.165 0.817-0.122 2.507-1.025 2.861-2.015s0.353-1.839 0.247-2.015c-0.106-0.176-0.39-0.283-0.815-0.495z"/></svg>
+    <svg width="32" viewBox="0 0 32 32"><path fill="#fff" d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 8.135-2.135c2.369 1.313 5.061 2.135 7.865 2.135 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.333c-2.547 0-5.043-0.725-7.203-2.088l-0.515-0.32-5.328 1.397 1.423-5.195-0.348-0.533c-1.499-2.312-2.363-5.035-2.363-7.927 0-7.455 6.212-13.667 13.667-13.667s13.667 6.212 13.667 13.667c0 7.455-6.212 13.667-13.667 13.667zM23.488 19.739c-0.424-0.212-2.507-1.239-2.897-1.381s-0.671-0.212-0.953 0.212c-0.283 0.424-1.097 1.381-1.344 1.663s-0.495 0.318-0.919 0.106c-0.424-0.212-1.789-0.659-3.405-2.101-1.259-1.121-2.109-2.507-2.355-2.931s-0.025-0.653 0.186-0.864c0.191-0.191 0.424-0.495 0.637-0.743s0.283-0.424 0.424-0.707c0.141-0.283 0.071-0.531-0.035-0.743s-0.953-2.299-1.305-3.147c-0.344-0.825-0.692-0.712-0.953-0.725-0.247-0.012-0.531-0.015-0.815-0.015s-0.743 0.106-1.133 0.531c-0.39 0.424-1.487 1.453-1.487 3.544s1.521 4.112 1.733 4.395c0.212 0.283 2.989 4.563 7.243 6.4 1.012 0.437 1.8 0.697 2.416 0.892 1.019 0.318 1.945 0.273 2.677 0.165 0.817-0.122 2.507-1.025 2.861-2.015s0.353-1.839 0.247-2.015c-0.106-0.176-0.39-0.283-0.815-0.495z"/></svg>
 </a>
 
 </body>
