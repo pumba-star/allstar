@@ -20,7 +20,7 @@
             overflow-x: hidden;
         }
         
-        /* ערפל שחור דינמי */
+        /* ערפל שחור בפינות */
         .fog-container {
             position: fixed;
             top: 0;
@@ -32,56 +32,107 @@
             overflow: hidden;
         }
         
-        .fog {
+        /* פינה ימנית עליונה */
+        .fog-corner-1 {
             position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 700px;
+            height: 700px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 30%, rgba(0,0,0,0.05) 60%, transparent 80%);
+            filter: blur(40px);
+            animation: fogMove1 15s ease-in-out infinite;
+        }
+        
+        /* פינה שמאלית עליונה */
+        .fog-corner-2 {
+            position: absolute;
+            top: -150px;
+            left: -150px;
             width: 600px;
             height: 600px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.05) 40%, transparent 70%);
-            filter: blur(60px);
+            background: radial-gradient(circle, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.15) 30%, rgba(0,0,0,0.03) 60%, transparent 80%);
+            filter: blur(50px);
+            animation: fogMove2 18s ease-in-out infinite;
         }
         
-        .fog-1 {
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            animation: float1 8s ease-in-out infinite;
+        /* פינה ימנית תחתונה */
+        .fog-corner-3 {
+            position: absolute;
+            bottom: -200px;
+            right: -100px;
+            width: 650px;
+            height: 650px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.18) 30%, rgba(0,0,0,0.04) 60%, transparent 80%);
+            filter: blur(45px);
+            animation: fogMove3 20s ease-in-out infinite;
         }
         
-        .fog-2 {
-            top: 40%;
-            left: 40%;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0.04) 40%, transparent 70%);
-            animation: float2 10s ease-in-out infinite;
+        /* פינה שמאלית תחתונה */
+        .fog-corner-4 {
+            position: absolute;
+            bottom: -150px;
+            left: -200px;
+            width: 700px;
+            height: 700px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 30%, rgba(0,0,0,0.05) 60%, transparent 80%);
+            filter: blur(40px);
+            animation: fogMove4 16s ease-in-out infinite;
         }
         
-        .fog-3 {
-            top: 60%;
-            left: 60%;
-            width: 450px;
-            height: 450px;
-            background: radial-gradient(circle, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.03) 40%, transparent 70%);
-            animation: float3 12s ease-in-out infinite;
+        @keyframes fogMove1 {
+            0%, 100% { 
+                transform: translate(0, 0) scale(1); 
+            }
+            25% { 
+                transform: translate(-50px, 30px) scale(1.1); 
+            }
+            50% { 
+                transform: translate(-30px, 60px) scale(0.95); 
+            }
+            75% { 
+                transform: translate(-70px, 20px) scale(1.05); 
+            }
         }
         
-        @keyframes float1 {
-            0%, 100% { transform: translate(-50%, -50%) scale(1); }
-            25% { transform: translate(-40%, -60%) scale(1.1); }
-            50% { transform: translate(-60%, -40%) scale(0.9); }
-            75% { transform: translate(-45%, -55%) scale(1.05); }
+        @keyframes fogMove2 {
+            0%, 100% { 
+                transform: translate(0, 0) scale(1); 
+            }
+            33% { 
+                transform: translate(60px, 40px) scale(1.15); 
+            }
+            66% { 
+                transform: translate(30px, 70px) scale(0.9); 
+            }
         }
         
-        @keyframes float2 {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(80px, -60px) scale(1.15); }
-            66% { transform: translate(-60px, 80px) scale(0.85); }
+        @keyframes fogMove3 {
+            0%, 100% { 
+                transform: translate(0, 0) scale(1); 
+            }
+            30% { 
+                transform: translate(-40px, -50px) scale(1.1); 
+            }
+            60% { 
+                transform: translate(-80px, -30px) scale(1.05); 
+            }
         }
         
-        @keyframes float3 {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(-100px, -80px) scale(1.2); }
+        @keyframes fogMove4 {
+            0%, 100% { 
+                transform: translate(0, 0) scale(1); 
+            }
+            40% { 
+                transform: translate(50px, -40px) scale(1.12); 
+            }
+            70% { 
+                transform: translate(70px, -60px) scale(0.92); 
+            }
         }
         
         header {
@@ -89,13 +140,12 @@
             top: 0;
             width: 100%;
             padding: 20px 5%;
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(20px);
             z-index: 1000;
             display: flex;
             justify-content: center;
             align-items: center;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
         }
         
         .logo {
@@ -122,35 +172,46 @@
             color: #000;
             margin-bottom: 70px;
             letter-spacing: -5px;
-            text-shadow: 0 0 60px rgba(0, 0, 0, 0.1);
         }
         
         .categories {
             display: flex;
             flex-wrap: wrap;
-            gap: 25px;
+            gap: 40px;
             justify-content: center;
         }
         
         .cat-btn {
-            padding: 20px 50px;
-            font-size: 18px;
-            font-weight: 600;
-            text-transform: uppercase;
-            background: #fff;
-            border: 2px solid #000;
-            border-radius: 0;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 15px 10px;
+            font-size: 20px;
+            font-weight: 500;
+            background: transparent;
+            border: none;
+            transition: all 0.3s ease;
             color: #000;
             text-decoration: none;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
+            position: relative;
+        }
+        
+        .cat-btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: #000;
+            transition: width 0.3s ease;
         }
         
         .cat-btn:hover {
-            background: #000;
-            color: #fff;
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            transform: translateY(-3px);
+        }
+        
+        .cat-btn:hover::after {
+            width: 100%;
         }
         
         .whatsapp {
@@ -176,31 +237,30 @@
         
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 60px;
+                font-size: 55px;
                 letter-spacing: -2px;
             }
             .cat-btn {
-                padding: 16px 35px;
-                font-size: 14px;
+                font-size: 16px;
             }
-            .fog {
-                width: 350px;
-                height: 350px;
+            .categories {
+                gap: 25px;
             }
-            .fog-2, .fog-3 {
-                width: 280px;
-                height: 280px;
+            .fog-corner-1, .fog-corner-2, .fog-corner-3, .fog-corner-4 {
+                width: 400px;
+                height: 400px;
             }
         }
     </style>
 </head>
 <body>
 
-<!-- ערפל שחור דינמי -->
+<!-- ערפל שחור בפינות -->
 <div class="fog-container">
-    <div class="fog fog-1"></div>
-    <div class="fog fog-2"></div>
-    <div class="fog fog-3"></div>
+    <div class="fog-corner-1"></div>
+    <div class="fog-corner-2"></div>
+    <div class="fog-corner-3"></div>
+    <div class="fog-corner-4"></div>
 </div>
 
 <header>
