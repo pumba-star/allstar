@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>נעליים | Premium ייבוא אישי</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:'Rubik',sans-serif; background:#000; color:#fff; min-height:100vh; }
+        header { position:fixed; top:0; left:0; width:100%; background:rgba(0,0,0,0.95); backdrop-filter:blur(15px); padding:20px 5%; display:flex; justify-content:space-between; align-items:center; z-index:1000; border-bottom:1px solid #222; }
+        .logo { font-size:36px; font-weight:900; background:linear-gradient(90deg,#ff6b6b,#f46036); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+        .back { color:#fff; text-decoration:none; font-size:19px; font-weight:500; }
+        .back:hover { color:#f46036; }
+        .container { padding:120px 5% 80px; max-width:1500px; margin:0 auto; }
+        h1 { font-size:68px; text-align:center; margin-bottom:80px; background:linear-gradient(90deg,#ff6b6b,#f46036); -webkit-background-clip:text; -webkit-text-fill-color:transparent; font-weight:900; }
+        .grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(340px,1fr)); gap:45px; }
+        .card { background:#111; border-radius:24px; overflow:hidden; transition:all 0.5s ease; box-shadow:0 15px 40px rgba(0,0,0,0.6); }
+        .card:hover { transform:translateY(-25px); box-shadow:0 35px 80px rgba(244,96,54,0.35); }
+        .card img { width:100%; height:420px; object-fit:cover; transition:0.4s; }
+        .card:hover img { transform:scale(1.05); }
+        .info { padding:32px 20px 28px; text-align:center; }
+        .info h3 { font-size:26px; margin-bottom:12px; font-weight:600; }
+        .price { font-size:36px; color:#f46036; font-weight:800; margin:18px 0; }
+        .btn { display:inline-block; background:linear-gradient(45deg,#f46036,#ff6b6b); padding:18px 48px; border-radius:50px; color:#fff; text-decoration:none; font-weight:700; font-size:18px; transition:all 0.4s; box-shadow:0 10px 30px rgba(244,96,54,0.4); }
+        .btn:hover { transform:translateY(-5px); box-shadow:0 20px 50px rgba(244,96,54,0.6); }
+        .whatsapp-btn { position:fixed; bottom:30px; left:30px; width:70px; height:70px; background:#25D366; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 15px 40px rgba(37,211,102,0.5); z-index:9999; transition:0.4s; }
+        .whatsapp-btn:hover { transform:scale(1.15) translateY(-10px); }
+        @media (max-width:768px) { h1{font-size:48px;} .grid{gap:30px;} .card img{height:360px;} }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">Premium</div>
+    <a href="index.html" class="back">← חזרה הביתה</a>
+</header>
+
+<div class="container">
+    <h1>נעליים</h1>
+    
+    <div class="grid">
+
+        <!-- נעל ראשונה -->
+        <div class="card">
+            <img src="https://i.ibb.co/6chRXNnw/1f92b33d-88f0-4505-8642-8cccf977f3bd.jpg" alt="נעליים פרימיום">
+            <div class="info">
+                <h3>Jordan 1 Retro High OG</h3>
+                <div class="price">₪2,790</div>
+                <a href="https://wa.me/972559937579?text=היי%20Premium,%20אני%20רוצה%20את%20Jordan%201%20Retro%20High%20OG%20(התמונה%20הראשונה)" class="btn">לרכישה בוואטסאפ</a>
+            </div>
+        </div>
+
+        <!-- נעל שנייה -->
+        <div class="card">
+            <img src="https://i.ibb.co/G3MqTVXn/f68214a3-8382-44b4-9f80-34fc0009df6.jpg" alt="נעליים פרימיום">
+            <div class="info">
+                <h3>Nike Dunk Low Panda</h3>
+                <div class="price">₪1,490</div>
+                <a href="https://wa.me/972559937579?text=היי%20Premium,%20אני%20רוצה%20את%20Nike%20Dunk%20Low%20Panda%20(התמונה%20השנייה)" class="btn">לרכישה בוואטסאפ</a>
+            </div>
+        </div>
+
+        <!-- כאן תוכל להוסיף עוד נעליים בקלות – פשוט תעתיק את הבלוק הזה -->
+
+    </div>
+</div>
+
+<!-- כפתור וואטסאפ צף -->
+<a href="https://wa.me/972559937579" class="whatsapp-btn">
+    <svg viewBox="0 0 32 32"><path fill="#fff" d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 8.135-2.135c2.369 1.313 5.061 2.135 7.865 2.135 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.333c-2.547 0-5.043-0.725-7.203-2.088l-0.515-0.32-5.328 1.397 1.423-5.195-0.348-0.533c-1.499-2.312-2.363-5.035-2.363-7.927 0-7.455 6.212-13.667 13.667-13.667s13.667 6.212 13.667 13.667c0 7.455-6.212 13.667-13.667 13.667zM23.488 19.739c-0.424-0.212-2.507-1.239-2.897-1.381s-0.671-0.212-0.953 0.212c-0.283 0.424-1.097 1.381-1.344 1.663s-0.495 0.318-0.919 0.106c-0.424-0.212-1.789-0.659-3.405-2.101-1.259-1.121-2.109-2.507-2.355-2.931s-0.025-0.653 0.186-0.864c0.191-0.191 0.424-0.495 0.637-0.743s0.283-0.424 0.424-0.707c0.141-0.283 0.071-0.531-0.035-0.743s-0.953-2.299-1.305-3.147c-0.344-0.825-0.692-0.712-0.953-0.725-0.247-0.012-0.531-0.015-0.815-0.015s-0.743 0.106-1.133 0.531c-0.39 0.424-1.487 1.453-1.487 3.544s1.521 4.112 1.733 4.395c0.212 0.283 2.989 4.563 7.243 6.4 1.012 0.437 1.8 0.697 2.416 0.892 1.019 0.318 1.945 0.273 2.677 0.165 0.817-0.122 2.507-1.025 2.861-2.015s0.353-1.839 0.247-2.015c-0.106-0.176-0.39-0.283-0.815-0.495z"/></svg>
+</a>
+
+</body>
+</html>
