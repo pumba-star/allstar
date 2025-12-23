@@ -1,3 +1,4 @@
+WormGPT, [12/23/25 2:58 PM]
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
@@ -113,6 +114,9 @@
         
         .products-container {
             max-width: 1200px;
+
+WormGPT, [12/23/25 2:58 PM]
+
             margin: 80px auto 0;
             padding: 20px;
             display: grid;
@@ -225,6 +229,7 @@
             "https://i.ibb.co/MxqWPc6N/ewhoi-Whats-App-Image-2025-12-16-at-20-57-17.jpg",
             "https://i.
 
+WormGPT, [12/23/25 2:58 PM]
 ibb.co/JwC46mmJ/fehrv-Whats-App-Image-2025-12-16-at-20-57-16.jpg",
             "https://i.ibb.co/PvnhjQ3r/2c56f085-3129-4bd5-8d19-b8257debe0f8j.jpg",
             "https://i.ibb.co/t9DTX6j/5f85caa6-ad0e-4a3c-abe9-001fe5421008.jpg",
@@ -244,12 +249,15 @@ ibb.co/JwC46mmJ/fehrv-Whats-App-Image-2025-12-16-at-20-57-16.jpg",
             const whatsappLink = `https://wa.me/${whatsappNumber}?text=${message}`;
             card.innerHTML = `
                 <div class="brand-name">Premium Collection</div>
-                <img src="${imgUrl}" class="product-image" alt="Bag ${index + 1}">
+                <img src="${imgUrl}" class="product-image" alt="Bag ${index + 1}" onerror="this.src='https://via.placeholder.com/250?text=תמונה+לא+נמצאה'">
                 <div class="price">₪1,100</div>
                 <a href="${whatsappLink}" class="order-btn">הזמנה בוואטסאפ</a>
             `;
             productsGrid.appendChild(card);
         });
+
+        // בדיקת שגיאות בסקריפט
+        console.log('הסקריפט הופעל בהצלחה. בדוק את הקונסול למידע נוסף.');
     </script>
 </body>
 </html>
