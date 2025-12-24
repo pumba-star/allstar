@@ -4,12 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Premium | ייבוא אישי</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Premium ייבוא אישי - נעליים, בגדים, תיקים, בישום ואלקטרוניקה">
+    <meta name="keywords" content="ייבוא אישי, Premium, נעליים, בגדים, תיקים, בישום, אלקטרוניקה, ריהוט">
+    <meta name="author" content="Premium">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph for Social Sharing -->
+    <meta property="og:title" content="Premium | ייבוא אישי">
+    <meta property="og:description" content="שירותי ייבוא אישי פרימיום - נעליים, בגדים, תיקים, בישום ואלקטרוניקה">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pumba-star.github.io/allstar/">
+    <meta property="og:image" content="https://pumba-star.github.io/allstar/preview.jpg">
+    <meta property="og:locale" content="he_IL">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Premium | ייבוא אישי">
+    <meta name="twitter:description" content="שירותי ייבוא אישי פרימיום">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
         }
         
         body {
@@ -39,6 +71,7 @@
             background: #fff;
             border-radius: 50%;
             animation: twinkle 3s infinite;
+            will-change: transform, opacity;
         }
         
         @keyframes twinkle {
@@ -93,6 +126,7 @@
             border-radius: 50%;
             box-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700;
             animation: twinkleGold 2s infinite;
+            will-change: transform, opacity;
         }
         
         @keyframes twinkleGold {
@@ -239,6 +273,12 @@
             width: 15px;
         }
         
+        /* Focus states for accessibility */
+        .cat-link:focus {
+            outline: 2px solid #FFD700;
+            outline-offset: 4px;
+        }
+        
         .whatsapp {
             position: fixed;
             bottom: 30px;
@@ -268,6 +308,29 @@
         .whatsapp:hover {
             transform: scale(1.15) rotate(5deg);
             box-shadow: 0 15px 60px rgba(255, 215, 0, 0.7), 0 0 80px rgba(255, 215, 0, 0.5);
+        }
+        
+        .whatsapp:focus {
+            outline: 3px solid #fff;
+            outline-offset: 4px;
+        }
+        
+        /* Skip link for accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #FFD700;
+            color: #0a0a0a;
+            padding: 8px 16px;
+            z-index: 10000;
+            text-decoration: none;
+            font-weight: 500;
+            border-radius: 4px;
+        }
+        
+        .skip-link:focus {
+            top: 10px;
         }
         
         @media (max-width: 1024px) {
@@ -315,12 +378,30 @@
                 left: 20px;
             }
         }
+        
+        /* Reduced motion for accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            .star,
+            .star-gold,
+            .whatsapp,
+            .hero-title h1 {
+                animation: none;
+            }
+            
+            .cat-link,
+            .whatsapp {
+                transition: none;
+            }
+        }
     </style>
 </head>
 <body>
 
+<!-- Skip link for accessibility -->
+<a href="#main-content" class="skip-link">דלג לתוכן הראשי</a>
+
 <!-- כוכבים ברקע -->
-<div class="stars">
+<div class="stars" aria-hidden="true">
     <!-- כוכבים לבנים -->
     <div class="star"></div>
     <div class="star"></div>
@@ -364,29 +445,37 @@
     <div class="star-gold"></div>
 </div>
 
-<header>
+<header role="banner">
     <div class="logo">Premium</div>
 </header>
 
-<div class="container">
-    <div class="content-wrapper">
-        <div class="hero-title">
-            <h1>Premium</h1>
-        </div>
-        
-        <div class="categories">
-            <a href="shoes.html" class="cat-link">נעליים</a>
-            <a href="clothes.html" class="cat-link">בגדים</a>
-            <a href="bags.html" class="cat-link">תיקים</a>
-            <a href="perfume.html" class="cat-link">בישום</a>
-            <a href="electronics.html" class="cat-link">אלקטרוניקה</a>
-            <a href="furniture.html" class="cat-link">ריהוט</a>
+<main id="main-content">
+    <div class="container">
+        <div class="content-wrapper">
+            <div class="hero-title">
+                <h1>Premium</h1>
+            </div>
+            
+            <nav class="categories" role="navigation" aria-label="קטגוריות מוצרים">
+                <a href="shoes.html" class="cat-link">נעליים</a>
+                <a href="clothes.html" class="cat-link">בגדים</a>
+                <a href="bags.html" class="cat-link">תיקים</a>
+                <a href="perfume.html" class="cat-link">בישום</a>
+                <a href="electronics.html" class="cat-link">אלקטרוניקה</a>
+                <a href="furniture.html" class="cat-link">ריהוט</a>
+            </nav>
         </div>
     </div>
-</div>
+</main>
 
-<a href="https://wa.me/972559937579" class="whatsapp">
-    <svg width="36" viewBox="0 0 32 32"><path fill="#0a0a0a" d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 8.135-2.135c2.369 1.313 5.061 2.135 7.865 2.135 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.333c-2.547 0-5.043-0.725-7.203-2.088l-0.515-0.32-5.328 1.397 1.423-5.195-0.348-0.533c-1.499-2.312-2.363-5.035-2.363-7.927 0-7.455 6.212-13.667 13.667-13.667s13.667 6.212 13.667 13.667c0 7.455-6.212 13.667-13.667 13.667zM23.488 19.739c-0.424-0.212-2.507-1.239-2.897-1.381s-0.671-0.212-0.953 0.212c-0.283 0.424-1.097 1.381-1.344 1.663s-0.495 0.318-0.919 0.106c-0.424-0.212-1.789-0.659-3.405-2.101-1.259-1.121-2.109-2.507-2.355-2.931s-0.025-0.653 0.186-0.864c0.191-0.191 0.424-0.495 0.637-0.743s0.283-0.424 0.424-0.707c0.141-0.283 0.071-0.531-0.035-0.743s-0.953-2.299-1.305-3.147c-0.344-0.825-0.692-0.712-0.953-0.725-0.247-0.012-0.531-0.015-0.815-0.015s-0.743 0.106-1.133 0.531c-0.39 0.424-1.487 1.453-1.487 3.544s1.521 4.112 1.733 4.395c0.212 0.283 2.989 4.563 7.243 6.4 1.012 0.437 1.8 0.697 2.416 0.892 1.019 0.318 1.945 0.273 2.677 0.165 0.817-0.122 2.507-1.025 2.861-2.015s0.353-1.839 0.247-2.015c-0.106-0.176-0.39-0.283-0.815-0.495z"/></svg>
+<a href="https://wa.me/972559937579" 
+   class="whatsapp" 
+   aria-label="צור קשר בוואטסאפ"
+   target="_blank"
+   rel="noopener noreferrer">
+    <svg width="36" viewBox="0 0 32 32" aria-hidden="true">
+        <path fill="#0a0a0a" d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 8.135-2.135c2.369 1.313 5.061 2.135 7.865 2.135 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.333c-2.547 0-5.043-0.725-7.203-2.088l-0.515-0.32-5.328 1.397 1.423-5.195-0.348-0.533c-1.499-2.312-2.363-5.035-2.363-7.927 0-7.455 6.212-13.667 13.667-13.667s13.667 6.212 13.667 13.667c0 7.455-6.212 13.667-13.667 13.667zM23.488 19.739c-0.424-0.212-2.507-1.239-2.897-1.381s-0.671-0.212-0.953 0.212c-0.283 0.424-1.097 1.381-1.344 1.663s-0.495 0.318-0.919 0.106c-0.424-0.212-1.789-0.659-3.405-2.101-1.259-1.121-2.109-2.507-2.355-2.931s-0.025-0.653 0.186-0.864c0.191-0.191 0.424-0.495 0.637-0.743s0.283-0.424 0.424-0.707c0.141-0.283 0.071-0.531-0.035-0.743s-0.953-2.299-1.305-3.147c-0.344-0.825-0.692-0.712-0.953-0.725-0.247-0.012-0.531-0.015-0.815-0.015s-0.743 0.106-1.133 0.531c-0.39 0.424-1.487 1.453-1.487 3.544s1.521 4.112 1.733 4.395c0.212 0.283 2.989 4.563 7.243 6.4 1.012 0.437 1.8 0.697 2.416 0.892 1.019 0.318 1.945 0.273 2.677 0.165 0.817-0.122 2.507-1.025 2.861-2.015s0.353-1.839 0.247-2.015c-0.106-0.176-0.39-0.283-0.815-0.495z"/>
+    </svg>
 </a>
 
 </body>
