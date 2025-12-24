@@ -3,61 +3,916 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>בישום | Premium ייבוא אישי</title>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <title>בישום | Premium</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Premium ייבוא אישי - בשמי יוקרה מהעולם">
+    <meta name="keywords" content="בשמים, בישום, בשמי יוקרה, ייבוא אישי, Premium">
+    <meta name="author" content="Premium">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="בישום | Premium">
+    <meta property="og:description" content="בשמי יוקרה - ייבוא אישי">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pumba-star.github.io/allstar/perfume.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <!-- Preconnect & Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
     <style>
-        *{margin:0;padding:0;box-sizing:border-box;}
-        body{font-family:'Rubik',sans-serif;background:#000;color:#fff;min-height:100vh;}
-        header{position:fixed;top:0;left:0;width:100%;background:rgba(0,0,0,0.95);backdrop-filter:blur(15px);padding:20px 5%;display:flex;justify-content:space-between;align-items:center;z-index:1000;border-bottom:1px solid #222;}
-        .logo{font-size:36px;font-weight:900;background:linear-gradient(90deg,#ff6b6b,#f46036);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-        .back{color:#fff;text-decoration:none;font-size:19px;font-weight:500;}
-        .container{padding:120px 5% 80px;max-width:1500px;margin:0 auto;}
-        h1{font-size:68px;text-align:center;margin-bottom:80px;background:linear-gradient(90deg,#ff6b6b,#f46036);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:900;}
-        .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:45px;}
-        .card{background:#111;border-radius:24px;overflow:hidden;transition:all 0.5s ease;box-shadow:0 15px 40px rgba(0,0,0,0.6);}
-        .card:hover{transform:translateY(-25px);box-shadow:0 35px 80px rgba(244,96,54,0.35);}
-        .card img{width:100%;height:500px;object-fit:contain;background:#000;padding:20px;}
-        .info{padding:32px 20px 28px;text-align:center;}
-        .price{font-size:36px;color:#f46036;font-weight:800;margin:18px 0;}
-        .btn{display:inline-block;background:linear-gradient(45deg,#f46036,#ff6b6b);padding:18px 48px;border-radius:50px;color:#fff;text-decoration:none;font-weight:700;font-size:18px;transition:all 0.4s;box-shadow:0 10px 30px rgba(244,96,54,0.4);}
-        .whatsapp-btn{position:fixed;bottom:30px;left:30px;width:70px;height:70px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 15px 40px rgba(37,211,102,0.5);z-index:9999;}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Rubik', sans-serif;
+            background: linear-gradient(to bottom, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* Stars Background */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #fff;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+            will-change: transform, opacity;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { 
+                opacity: 0.2;
+                transform: scale(1);
+            }
+            50% { 
+                opacity: 1;
+                transform: scale(1.5);
+            }
+        }
+        
+        .star:nth-child(1) { top: 10%; left: 20%; animation-delay: 0s; }
+        .star:nth-child(2) { top: 20%; left: 80%; animation-delay: 0.5s; }
+        .star:nth-child(3) { top: 30%; left: 40%; animation-delay: 1s; }
+        .star:nth-child(4) { top: 40%; left: 70%; animation-delay: 1.5s; }
+        .star:nth-child(5) { top: 50%; left: 15%; animation-delay: 2s; }
+        .star:nth-child(6) { top: 60%; left: 85%; animation-delay: 0.3s; }
+        .star:nth-child(7) { top: 70%; left: 50%; animation-delay: 0.8s; }
+        .star:nth-child(8) { top: 80%; left: 25%; animation-delay: 1.3s; }
+        .star:nth-child(9) { top: 15%; left: 60%; animation-delay: 1.8s; }
+        .star:nth-child(10) { top: 25%; left: 35%; animation-delay: 2.3s; }
+        .star:nth-child(11) { top: 35%; left: 90%; animation-delay: 0.6s; }
+        .star:nth-child(12) { top: 45%; left: 10%; animation-delay: 1.1s; }
+        .star:nth-child(13) { top: 55%; left: 65%; animation-delay: 1.6s; }
+        .star:nth-child(14) { top: 65%; left: 45%; animation-delay: 2.1s; }
+        .star:nth-child(15) { top: 75%; left: 75%; animation-delay: 0.4s; }
+        .star:nth-child(16) { top: 85%; left: 55%; animation-delay: 0.9s; }
+        .star:nth-child(17) { top: 12%; left: 48%; animation-delay: 1.4s; }
+        .star:nth-child(18) { top: 22%; left: 12%; animation-delay: 1.9s; }
+        .star:nth-child(19) { top: 32%; left: 78%; animation-delay: 2.4s; }
+        .star:nth-child(20) { top: 42%; left: 28%; animation-delay: 0.7s; }
+        
+        .star-gold {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            border-radius: 50%;
+            box-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700;
+            animation: twinkleGold 2s infinite;
+            will-change: transform, opacity;
+        }
+        
+        @keyframes twinkleGold {
+            0%, 100% { 
+                opacity: 0.4;
+                transform: scale(1);
+            }
+            50% { 
+                opacity: 1;
+                transform: scale(2);
+            }
+        }
+        
+        .star-gold:nth-child(21) { top: 15%; left: 30%; animation-delay: 0s; }
+        .star-gold:nth-child(22) { top: 35%; left: 60%; animation-delay: 0.7s; }
+        .star-gold:nth-child(23) { top: 55%; left: 40%; animation-delay: 1.4s; }
+        .star-gold:nth-child(24) { top: 75%; left: 70%; animation-delay: 2.1s; }
+        .star-gold:nth-child(25) { top: 25%; left: 85%; animation-delay: 0.3s; }
+        
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 5%;
+            background: rgba(10, 10, 10, 0.5);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 36px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #FFD700 0%, #FFF 50%, #FFD700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1px;
+            text-decoration: none;
+        }
+        
+        .back {
+            color: #bbb;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 18px;
+            letter-spacing: 1px;
+            transition: all 0.4s ease;
+            padding: 10px 20px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 30px;
+        }
+        
+        .back:hover {
+            color: #FFD700;
+            border-color: #FFD700;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+        
+        .back:focus {
+            outline: 2px solid #FFD700;
+            outline-offset: 4px;
+        }
+        
+        /* Main Container */
+        .container {
+            padding: 140px 5% 100px;
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        h1 {
+            font-size: 80px;
+            margin-bottom: 60px;
+            background: linear-gradient(135deg, #FFD700 0%, #FFF 30%, #FFD700 60%, #FFF 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 900;
+            letter-spacing: -3px;
+            animation: shimmer 3s linear infinite;
+        }
+        
+        @keyframes shimmer {
+            to {
+                background-position: 200% center;
+            }
+        }
+        
+        /* Product Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 35px;
+        }
+        
+        .card {
+            background: rgba(20, 20, 20, 0.8);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.5s ease;
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        .card:hover {
+            transform: translateY(-15px);
+            border-color: rgba(255, 215, 0, 0.4);
+            box-shadow: 0 25px 50px rgba(255, 215, 0, 0.2), 0 0 30px rgba(255, 215, 0, 0.1);
+        }
+        
+        .card-image {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .card:hover img {
+            transform: scale(1.08);
+        }
+        
+        .card-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: linear-gradient(to top, rgba(20, 20, 20, 1), transparent);
+            pointer-events: none;
+        }
+        
+        .card-body {
+            padding: 25px;
+        }
+        
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            padding: 15px 35px;
+            border-radius: 50px;
+            color: #0a0a0a;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+            font-size: 16px;
+            width: 100%;
+        }
+        
+        .whatsapp-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(255, 215, 0, 0.6);
+        }
+        
+        .whatsapp-btn:focus {
+            outline: 3px solid #fff;
+            outline-offset: 4px;
+        }
+        
+        .whatsapp-btn svg {
+            width: 24px;
+            height: 24px;
+        }
+        
+        /* Fixed WhatsApp Button */
+        .whatsapp-fixed {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 40px rgba(255, 215, 0, 0.5), 0 0 60px rgba(255, 215, 0, 0.3);
+            z-index: 9999;
+            transition: all 0.3s ease;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        .whatsapp-fixed:hover {
+            transform: scale(1.15) rotate(5deg);
+            box-shadow: 0 15px 60px rgba(255, 215, 0, 0.7), 0 0 80px rgba(255, 215, 0, 0.5);
+        }
+        
+        .whatsapp-fixed:focus {
+            outline: 3px solid #fff;
+            outline-offset: 4px;
+        }
+        
+        /* Skip Link */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #FFD700;
+            color: #0a0a0a;
+            padding: 8px 16px;
+            z-index: 10000;
+            text-decoration: none;
+            font-weight: 500;
+            border-radius: 4px;
+        }
+        
+        .skip-link:focus {
+            top: 10px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            h1 {
+                font-size: 60px;
+            }
+            
+            .grid {
+                gap: 30px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 48px;
+                margin-bottom: 40px;
+                letter-spacing: -2px;
+            }
+            
+            .grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 25px;
+            }
+            
+            .card img {
+                height: 250px;
+            }
+            
+            .whatsapp-fixed {
+                width: 60px;
+                height: 60px;
+                bottom: 20px;
+                left: 20px;
+            }
+            
+            .back {
+                font-size: 16px;
+                padding: 8px 16px;
+            }
+        }
+        
+        /* Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            .star,
+            .star-gold,
+            .whatsapp-fixed,
+            h1 {
+                animation: none;
+            }
+            
+            .card,
+            .whatsapp-btn,
+            .back,
+            .whatsapp-fixed {
+                transition: none;
+            }
+        }
     </style>
 </head>
 <body>
 
-<header>
-    <div class="logo">Premium</div>
-    <a href="index.html" class="back">← חזרה הביתה</a>
-</header>
+<!-- Skip Link -->
+<a href="#main-content" class="skip-link">דלג לתוכן הראשי</a>
 
-<div class="container">
-    <h1>בישום</h1>
-    <div class="grid">
-
-        <div class="card">
-            <img src="https://i.ibb.co/0jD7Z7K/creed-aventus.jpg" alt="Creed Aventus">
-            <div class="info">
-                <h3>Creed Aventus 100ml</h3>
-                <div class="price">₪1,950</div>
-                <a href="https://wa.me/972559937579?text=היי%20Premium,%20אני%20רוצה%20את%20Creed%20Aventus%20100ml" class="btn">לרכישה בוואטסאפ</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://i.ibb.co/4pYk7hX/tom-ford-oud-wood.jpg" alt="Tom Ford Oud Wood">
-            <div class="info">
-                <h3>Tom Ford Oud Wood 100ml</h3>
-                <div class="price">₪2,290</div>
-                <a href="https://wa.me/972559937579?text=היי%20Premium,%20אני%20רוצה%20את%20Tom%20Ford%20Oud%20Wood" class="btn">לרכישה בוואטסאפ</a>
-            </div>
-        </div>
-
-    </div>
+<!-- Stars Background -->
+<div class="stars" aria-hidden="true">
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star-gold"></div>
+    <div class="star-gold"></div>
+    <div class="star-gold"></div>
+    <div class="star-gold"></div>
+    <div class="star-gold"></div>
 </div>
 
-<a href="https://wa.me/972559937579" class="whatsapp-btn">
-    <svg viewBox="0 0 32 32"><path fill="#fff" d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 8.135-2.135c2.369 1.313 5.061 2.135 7.865 2.135 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.333c-2.547 0-5.043-0.725-7.203-2.088l-0.515-0.32-5.328 1.397 1.423-5.195-0.348-0.533c-1.499-2.312-2.363-5.035-2.363-7.927 0-7.455 6.212-13.667 13.667-13.667s13.667 6.212 13.667 13.667c0 7.455-6.212 13.667-13.667 13.667zM23.488 19.739c-0.424-0.212-2.507-1.239-2.897-1.381s-0.671-0.212-0.953 0.212c-0.283 0.424-1.097 1.381-1.344 1.663s-0.495 0.318-0.919 0.106c-0.424-0.212-1.789-0.659-3.405-2.101-1.259-1.121-2.109-2.507-2.355-2.931s-0.025-0.653 0.186-0.864c0.191-0.191 0.424-0.495 0.637-0.743s0.283-0.424 0.424-0.707c0.141-0.283 0.071-0.531-0.035-0.743s-0.953-2.299-1.305-3.147c-0.344-0.825-0.692-0.712-0.953-0.725-0.247-0.012-0.531-0.015-0.815-0.015s-0.743 0.106-1.133 0.531c-0.39 0.424-1.487 1.453-1.487 3.544s1.521 4.112 1.733 4.395c0.212 0.283 2.989 4.563 7.243 6.4 1.012 0.437 1.8 0.697 2.416 0.892 1.019 0.318 1.945 0.273 2.677 0.165 0.817-0.122 2.507-1.025 2.861-2.015s0.353-1.839 0.247-2.015c-0.106-0.176-0.39-0.283-0.815-0.495z"/></svg>
+<header role="banner">
+    <a href="index.html" class="logo">Premium</a>
+    <a href="index.html" class="back">→ חזרה לעמוד הראשי</a>
+</header>
+
+<main id="main-content">
+    <div class="container">
+        <h1>בישום</h1>
+        
+        <div class="grid">
+            
+            <article class="card">
+                <div class="card-image">
+                    <img src="https://i.ibb.co/fdgn7LMx/1e79519c-8dbf-493a-b1d5-8d9f05cc92c9.jpg" alt="בושם יוקרתי" loading="lazy">
+                </div>
+                <div class="card-body">
+                    <a href="https://wa.me/972559937579?text=היי%2C%20אני%20מתעניין%20בבושם%20הזה%3A%20https%3A%2F%2Fi.ibb.co%2Ffdgn7LMx%2F1e79519c-8dbf-493a-b1d5-8d9f05cc92c9.jpg" 
+                       class="whatsapp-btn"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <svg viewBox="0 0 32 32" aria-hidden="true">
+                            <path fill="#0a0a0a" d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 8.135-2.135c2.369 1.313 5.061 2.135 7.865 2.135 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.333c-2.547 0-5.043-0.725-7.203-2.088l-0.515-0.32-5.328 1.397 1.423-5.195-0.348-0.533c-1.499-2.312-2.363-5.035-2.363-7.927 0-7.455 6.212-13.667 13.667-13.667s13.667 6.212 13.667 13.667c0 7.455-6.212 13.667-13.667 13.667zM23.488 19.739c-0.424-0.212-2.507-1.239-2.897-1.381s-0.671-0.212-0.953 0.212c-0.283 0.424-1.097 1.381-1.344 1.663s-0.495 0.318-0.919 0.106c-0.424-0.212-1.789-0.659-3.405-2.101-1.259-1.121-2.109-2.507-2.355-2.931s-0.025-0.653 0.186-0.864c0.191-0.191 0.424-0.495 0.637-0.743s0.283-0.424 0.424-0.707c0.141-0.283 0.071-0.531-0.035-0.743s-0.953-2.299-1.305-3.147c-0.344-0.825-0.692-0.712-0.953-0.725-0.247-0.012-0.531-0.015-0.815-0.015s-0.743 0.106-1.133 0.531c-0.39 0.424-1.487 1.453-1.487 3.544s1.521 4.112 1.733 4.395c0.212 0.283 2.989 4.563 7.243 6.4 1.012 0.437 1.8 0.697 2.416 0.892 1.019 0.318 1.945 0.273 2.677 0.165 0.817-0.122 2.507-1.025 2.861-2.015s0.353-1.839 0.247-2.015c-0.106-0.176-0.39-0.283-0.815-0.495z"/>
+                        </svg>
+                        לפרטים בוואטסאפ
+                    </a>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-image">
+                    <img src="https://i.ibb.co/fd7hXjLW/4dd6d974-6975-43e1-ab33-f16b3c404cce.jpg" alt="בושם יוקרתי" loading="lazy">
+                </div>
+                <div class="card-body">
+                    <a href="https://wa.me/972559937579?text=היי%2C%20אני%20מתעניין%20בבושם%20הזה%3A%20https%3A%2F%2Fi.ibb.co%2Ffd7hXjLW%2F4dd6d974-6975-43e1-ab33-f16b3c404cce.jpg" 
+                       class="whatsapp-btn"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <svg viewBox="0 0 32 32" aria-hidden="true">
+                            <path fill="#0a0a0a" d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 8.135-2.135c2.369 1.313 5.061 2.135 7.865 2.135 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.333c-2.547 0-5.043-0.725-7.203-2.088l-0.515-0.32-5.328 1.397 1.423-5.195-0.348-0.533c-1.499-2.312-2.363-5.035-2.363-7.927 0-7.455 6.212-13.667 13.667-13.667s13.667 6.212 13.667 13.667c0 7.455-6.212 13.667-13.667 13.667zM23.488 19.739c-0.424-0.212-2.507-1.239-2.897-1.381s-0.671-0.212-0.953 0.212c-0.283 0.424-1.097 1.381-1.344 1.663s-0.495 0.318-0.919 0.106c-0.424-0.212-1.789-0.659-3.405-2.101-1.259-1.121-2.109-2.507-2.355-2.931s-0.025-0.653 0.186-0.864c0.191-0.191 0.424-0.495 0.637-0.743s0.283-0.424 0.424-0.707c0.141-0.283 0.071-0.531-0.035-0.743s-0.953-2.299-1.305-3.147c-0.344-0.825-0.692-0.712-0.953-0.725-0.247-0.012-0.531-0.015-0.815-0.015s-0.743 0.106-1.133 0.531c-0.39 0.424-1.487 1.453-1.487 3.544s1.521 4.112 1.733 4.395c0.212 0.283 2.989 4.563 7.243 6.4 1.012 0.437 1.8 0.697 2.416 0.892 1.019 0.318 1.945 0.273 2.677 0.165 0.817-0.122 2.507-1.025 2.861-2.015s0.353-1.839 0.247-2.015c-0.106-0.176-0.39-0.283-0.815-0.495z"/>
+                        </svg>
+                        לפרטים בוואטסאפ
+                    </a>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-image">
+                    <img src="https://i.ibb.co/hFDDsmQb/5d5e111e-1a1b-4b5f-951f-ffeed24f93eb.jpg" alt="בושם יוקרתי" loading="lazy">
+                </div>
+                <div class="card-body">
+                    <a href="https://wa.me/972559937579?text=היי%2C%20אני%20מתעניין%20בבושם%20הזה%3A%20https%3A%2F%2Fi.ibb.co%2FhFDDsmQb%2F5d5e111e-1a1b-4b5f-951f-ffeed24f93eb.jpg" 
+                       class="whatsapp-btn"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <svg viewBox="0 0 32 32" aria-hidden="true">
+                            <path fill="#0a0a0a" d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 8.135-2.135c2.369 1.313 5.061 2.135 7.865 2.135 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.333c-2.547 0-5.043-0.725-7.203-2.088l-0.515-0.32-5.328 1.397 1.423-5.195-0.348-0.533c-1.499-2.312-2.363-5.035-2.363-7.927 0-7.455 6.212-13.667 13.667-13.667s13.667 6.212 13.667 13.667c0 7.455-6.212 13.667-13.667 13.667zM23.488 19.739c-0.424-0.212-2.507-1.239-2.897-1.381s-0.671-0.212-0.953 0.212c-0.283 0.424-1.097 1.381-1.344 1.663s-0.495 0.318-0.919 0.106c-0.424-0.212-1.789-0.659-3.405-2.101-1.259-1.121-2.109-2.507-2.355-2.931s-0.025-0.653 0.186-0.864c0.191-0.191 0.424-0.495 0.637-0.743s0.283-0.424 0.424-0.707c0.141-0.283 0.071-0.531-0.035-0.743s-0.953-2.299-1.305-3.147c-0.344-0.825-0.692-0.712-0.953-0.725-0.247-0.012-0.531-0.015-0.815-0.015s-0.743 0.106-1.133 0.531c-0.39 0.424-1.487 1.453-1.487 3.544s1.521 4.112 1.733 4.395c0.212 0.283 2.989 4.563 7.243 6.4 1.012 0.437 1.8 0.697 2.416 0.892 1.019 0.318 1.945 0.273 2.677 0.165 0.817-0.122 2.507-1.025 2.861-2.015s0.353-1.839 0.247-2.015c-0.106-0.176-0.39-0.283-0.815-0.495z"/>
+                        </svg>
+                        לפרטים בוואטסאפ
+                    </a>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-image">
+                    <img src="https://i.ibb.co/602709FH/7a1b8ad0-8420-4a19-b3cf-af3c7fba22fe.jpg" alt="בושם יוקרתי" loading="lazy">
+                </div>
+                <div class="card-body">
+                    <a href="https://wa.me/972559937579?text=היי%2C%20אני%20מתעניין%20בבושם%20הזה%3A%20https%3A%2F%2Fi.ibb.co%2F602709FH%2F7a1b8ad0-8420-4a19-b3cf-af3c7fba22fe.jpg" 
+                       class="whatsapp-btn"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <svg viewBox="0 0 32 32" aria-hidden="true">
+                            <path fill="#0a0a0a" d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 8.135-2.135c2.369 1.313 5.061 2.135 7.865 2.135 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.333c-2.547 0-5.043-0.725-7.203-2.088l-0.515-0.32-5.328 1.397 1.423-5.195-0.348-0.533c-1.499-2.312-2.363-5.035-2.363-7.927 0-7.455 6.212-13.667 13.667-13.667s13.667 6.212 13.667 13.667c0 7.455-6.212 13.667-13.667 13.667zM23.488 19.739c-0.424-0.212-2.507-1.239-2.897-1.381s-0.671-0.212-0.953 0.212c-0.283 0.424-1.097 1.381-1.344 1.663s-0.495 0.318-0.919 0.106c-0.424-0.212-1.789-0.659-3.405-2.101-1.259-1.121-2.109-2.507-2.355-2.931s-0.025-0.653 0.186-0.864c0.191-0.191 0.424-0.495 0.637-0.743s0.283-0.424 0.424-0.707c0.141-0.283 0.071-0.531-0.035-0.743s-0.953-2.299-1.305-3.147c-0.344-0.825-0.692-0.712-0.953-0.725-0.247-0.012-0.531-0.015-0.815-0.015s-0.743 0.106-1.133 0.531c-0.39 0.424-1.487 1.453-1.487 3.544s1.521 4.112 1.733 4.395c0.212 0.283 2.989 4.563 7.243 6.4 1.012 0.437 1.8 0.697 2.416 0.892 1.019 0.318 1.945 0.273 2.677 0.165 0.817-0.122 2.507-1.025 2.861-2.015s0.353-1.839 0.247-2.015c-0.106-0.176-0.39-0.283-0.815-0.495z"/>
+                        </svg>
+                        לפרטים בוואטסאפ
+                    </a>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-image">
+                    <img src="https://i.ibb.co/Myy8YbPz/8eca511a-9290-4d4d-b129-b2708669127d.jpg" alt="בושם יוקרתי" loading="lazy">
+                </div>
+                <div class="card-body">
+                    <a href="https://wa.me/972559937579?text=היי%2C%20אני%20מתעניין%20בבושם%20הזה%3A%20https%3A%2F%2Fi.ibb.co%2FMyy8YbPz%2F8eca511a-9290-4d4d-b129-b2708669127d.jpg" 
+                       class="whatsapp-btn"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <svg viewBox="0 0 32 32" aria-hidden="true">
+                            <path fill="#0a0a0a" d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 8.135-2.135c2.369 1.313 5.061 2.135 7.865 2.135 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.333c-2.547 0-5.043-0.725-7.203-2.088l-0.515-0.32-5.328 1.397 1.423-5.195-0.348-0.533c-1.499-2.312-2.363-5.035-2.363-7.927 0-7.455 6.212-13.667 13.667-13.667s13.667 6.212 13.667 13.667c0 7.455-6.212 13.667-13.667 13.667zM23.488 19.739c-0.424-0.212-2.507-1.239-2.897-1.381s-0.671-0.212-0.953 0.212c-0.283 0.424-1.097 1.381-1.344 1.663s-0.495 0.318-0.919 0.106c-0.424-0.212-1.789-0.659-3.405-2.101-1.259-1.121-2.109-2.507-2.355-2.931s-0.025-0.653 0.186-0.864c0.191-0.191 0.424-0.495 0.637-0.743s0.283-0.424 0.424-0.707c0.141-0.283 0.071-0.531-0.035-0.743s-0.953-2.299-1.305-3.147c-0.344-0.825-0.692-0.712-0.953-0.725-0.247-0.012-0.531-0.015-0.815-0.015s-0.743 0.106-1.133 0.531c-0.39 0.424-1.487 1.453-1.487 3.544s1.521 4.112 1.733 4.395c0.212 0.283 2.989 4.563 7.243 6.4 1.012 0.437 1.8 0.697 2.416 0.892 1.019 0.318 1.945 0.273 2.677 0.165 0.817-0.122 2.507-1.025 2.861-2.015s0.353-1.839 0.247-2.015c-0.106-0.176-0.39-0.283-0.815-0.495z"/>
+                        </svg>
+                        לפרטים בוואטסאפ
+                    </a>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-image">
+                    <img src="https://i.ibb.co/4ZQwXzf1/8eed4e99-cbdf-4fe1-bb53-21c59ad71788.jpg" alt="בושם יוקרתי" loading="lazy">
+                </div>
+                <div class="card-body">
+                    <a href="https://wa.me/972559937579?text=היי%2C%20אני%20מתעניין%20בבושם%20הזה%3A%20https%3A%2F%2Fi.ibb.co%2F4ZQwXzf1%2F8eed4e99-cbdf-4fe1-bb53-21c59ad71788.jpg" 
+                       class="whatsapp-btn"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <svg viewBox="0 0 32 32" aria-hidden="true">
+                            <path fill="#0a0a0a" d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 8.135-2.135c2.369 1.313 5.061 2.135 7.865 2.135 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.333c-2.547 0-5.043-0.725-7.203-2.088l-0.515-0.32-5.328 1.397 1.423-5.195-0.348-0.533c-1.499-2.312-2.363-5.035-2.363-7.927 0-7.455 6.212-13.667 13.667-13.667s13.667 6.212 13.667 13.667c0 7.455-6.212 13.667-13.667 13.667zM23.488 19.739c-0.424-0.212-2.507-1.239-2.897-1.381s-0.671-0.212-0.953 0.212c-0.283 0.424-1.097 1.381-1.344 1.663s-0.495 0.318-0.919 0.106c-0.424-0.212-1.789-0.659-3.405-2.101-1.259-1.121-2.109-2.507-2.355-2.931s-0.025-0.653 0.186-0.864c0.191-0.191 0.424-0.495 0.637-0.743s0.283-0.424 0.424-0.707c0.141-0.283 0.071-0.531-0.035-0.743s-0.953-2.299-1.305-3.147c-0.344-0.825-0.692-0.712-0.953-0.725-0.247-0.012-0.531-0.015-0.815-0.015s-0.743 0.106-1.133 0.531c-0.39 0.424-1.487 1.453-1.487 3.544s1.521 4.112 1.733 4.395c0.212 0.283 2.989 4.563 7.243 6.4 1.012 0.437 1.8 0.697 2.416 0.892 1.019 0.318 1.945 0.273 2.677 0.165 0.817-0.122 2.507-1.025 2.861-2.015s0.353-1.839 0.247-2.015c-0.106-0.176-0.39-0.283-0.815-0.495z"/>
+                        </svg>
+                        לפרטים בוואטסאפ
+                    </a>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-image">
+                    <img src="https://i.ibb.co/nMxWH7TH/9f9bf91d-8f5e-41cd-8d9b-d7c18489f709.jpg" alt="בושם יוקרתי" loading="lazy">
+                </div>
+                <div class="card-body">
+                    <a href="https://wa.me/972559937579?text=היי%2C%20אני%20מתעניין%20בבושם%20הזה%3A%20https%3A%2F%2Fi.ibb.co%2FnMxWH7TH%2F9f9bf91d-8f5e-41cd-8d9b-d7c18489f709.jpg" 
+                       class="whatsapp-btn"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <svg viewBox="0 0 32 32" aria-hidden="true">
+                            <path fill="#0a0a0a" d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 8.135-2.135c2.369 1.313 5.061 2.135 7.865 2.135 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.333c-2.547 0-5.043-0.725-7.203-2.088l-0.515-0.32-5.328 1.397 1.423-5.195-0.348-0.533c-1.499-2.312-2.363-5.035-2.363-7.927 0-7.455 6.212-13.667 13.667-13.667s13.667 6.212 13.667 13.667c0 7.455-6.212 13.667-13.667 13.667zM23.488 19.739c-0.424-0.212-2.507-1.239-2.897-1.381s-0.671-0.212-0.953 0.212c-0.283 0.424-1.097 1.381-1.344 1.663s-0.495 0.318-0.919 0.106c-0.424-0.212-1.789-0.659-3.405-2.101-1.259-1.121-2.109-2.507-2.355-2.931s-0.025-0.653 0.186-0.864c0.191-0.191 0.424-0.495 0.637-0.743s0.283-0.424 0.424-0.707c0.141-0.283 0.071-0.531-0.035-0.743s-0.953-2.299-1.305-3.147c-0.344-0.825-0.692-0.712-0.953-0.725-0.247-0.012-0.531-0.015-0.815-0.015s-0.743 0.106-1.133 0.531c-0.39 0.424-1.487 1.453-1.487 3.544s1.521 4.112 1.733 4.395c0.212 0.283 2.989 4.563 7.243 6.4 1.012 0.437 1.8 0.697 2.416 0.892 1.019 0.318 1.945 0.273 2.677 0.165 0.817-0.122 2.507-1.025 2.861-2.015s0.353-1.839 0.247-2.015c-0.106-0.176-0.39-0.283-0.815-0.495z"/>
+                        </svg>
+                        לפרטים בוואטסאפ
+                    </a>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-image">
+                    <img src="https://i.ibb.co/V0GDsQpN/44ee2054-3ffe-4abf-aeaa-31049df59e54.jpg" alt="בושם יוקרתי" loading="lazy">
+                </div>
+                <div class="card-body">
+                    <a href="https://wa.me/972559937579?text=היי%2C%20אני%20מתעניין%20בבושם%20הזה%3A%20https%3A%2F%2Fi.ibb.co%2FV0GDsQpN%2F44ee2054-3ffe-4abf-aeaa-31049df59e54.jpg" 
+                       class="whatsapp-btn"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <svg viewBox="0 0 32 32" aria-hidden="true">
+                            <path fill="#0a0a0a" d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 8.135-2.135c2.369 1.313 5.061 2.135 7.865 2.135 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.333c-2.547 0-5.043-0.725-7.203-2.088l-0.515-0.32-5.328 1.397 1.423-5.195-0.348-0.533c-1.499-2.312-2.363-5.035-2.363-7.927 0-7.455 6.212-13.667 13.667-13.667s13.667 6.212 13.667 13.667c0 7.455-6.212 13.667-13.667 13.667zM23.488 19.739c-0.424-0.212-2.507-1.239-2.897-1.381s-0.671-0.212-0.953 0.212c-0.283 0.424-1.097 1.381-1.344 1.663s-0.495 0.318-0.919 0.106c-0.424-0.212-1.789-0.659-3.405-2.101-1.259-1.121-2.109-2.507-2.355-2.931s-0.025-0.653 0.186-0.864c0.191-0.191 0.424-0.495 0.637-0.743s0.283-0.424 0.424-0.707c0.141-0.283 0.071-0.531-0.035-0.743s-0.953-2.299-1.305-3.147c-0.344-0.825-0.692-0.712-0.953-0.725-0.247-0.012-0.531-0.015-0.815-0.015s-0.743 0.106-1.133 0.531c-0.39 0.424-1.487 1.453-1.487 3.544s1.521 4.112 1.733 4.395c0.212 0.283 2.989 4.563 7.243 6.4 1.012 0.437 1.8 0.697 2.416 0.892 1.019 0.318 1.945 0.273 2.677 0.165 0.817-0.122 2.507-1.025 2.861-2.015s0.353-1.839 0.247-2.015c-0.106-0.176-0.39-0.283-0.815-0.495z"/>
+                        </svg>
+                        לפרטים בוואטסאפ
+                    </a>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-image">
+                    <img src="https://i.ibb.co/BYJkL6n/98f0ac6b-1c9c-4481-b9bf-4e060568b6b2.jpg" alt="בושם יוקרתי" loading="lazy">
+                </div>
+                <div class="card-body">
+                    <a href="https://wa.me/972559937579?text=היי%2C%20אני%20מתעניין%20בבושם%20הזה%3A%20https%3A%2F%2Fi.ibb.co%2FBYJkL6n%2F98f0ac6b-1c9c-4481-b9bf-4e060568b6b2.jpg" 
+                       class="whatsapp-btn"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <svg viewBox="0 0 32 32" aria-hidden="true">
+                            <path fill="#0a0a0a" d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 8.135-2.135c2.369 1.313 5.061 2.135 7.865 2.135 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.333c-2.547 0-5.043-0.725-7.203-2.088l-0.515-0.32-5.328 1.397 1.423-5.195-0.348-0.533c-1.499-2.312-2.363-5.035-2.363-7.927 0-7.455 6.212-13.667 13.667-13.667s13.667 6.212 13.667 13.667c0 7.455-6.212 13.667-13.667 13.667zM23.488 19.739c-0.424-0.212-2.507-1.239-2.897-1.381s-0.671-0.212-0.953 0.212c-0.283 0.424-1.097 1.381-1.344 1.663s-0.495 0.318-0.919 0.106c-0.424-0.212-1.789-0.659-3.405-2.101-1.259-1.121-2.109-2.507-2.355-2.931s-0.025-0.653 0.186-0.864c0.191-0.191 0.424-0.495 0.637-0.743s0.283-0.424 0.424-0.707c0.141-0.283 0.071-0.531-0.035-0.743s-0.953-2.299-1.305-3.147c-0.344-0.825-0.692-0.712-0.953-0.725-0.247-0.012-0.531-0.015-0.815-0.015s-0.743 0.106-1.133 0.531c-0.39 0.424-1.487 1.453-1.487 3.544s1.521 4.112 1.733 4.395c0.212 0.283 2.989 4.563 7.243 6.4 1.012 0.437 1.8 0.697 2.416 0.892 1.019 0.318 1.945 0.273 2.677 0.165 0.817-0.122 2.507-1.025 2.861-2.015s0.353-1.839 0.247-2.015c-0.106-0.176-0.39-0.283-0.815-0.495z"/>
+                        </svg>
+                        לפרטים בוואטסאפ
+                    </a>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-image">
+                    <img src="https://i.ibb.co/KpDJPVZd/595db781-2797-433a-8340-758ff3e1139d.jpg" alt="בושם יוקרתי" loading="lazy">
+                </div>
+                <div class="card-body">
+                    <a href="https://wa.me/972559937579?text=היי%2C%20אני%20מתעניין%20בבושם%20הזה%3A%20https%3A%2F%2Fi.ibb.co%2FKpDJPVZd%2F595db781-2797-433a-8340-758ff3e1139d.jpg" 
+                       class="whatsapp-btn"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <svg viewBox="0 0 32 32" aria-hidden="true">
+                            <path fill="#0a0a0a" d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 8.135-2.135c2.369 1.313 5.061 2.135 7.865 2.135 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.333c-2.547 0-5.043-0.725-7.203-2.088l-0.515-0.32-5.328 1.397 1.423-5.195-0.348-0.533c-1.499-2.312-2.363-5.035-2.363-7.927 0-7.455 6.212-13.667 13.667-13.667s13.667 6.212 13.667 13.667c0 7.455-6.212 13.667-13.667 13.667zM23.488 19.739c-0.424-0.212-2.507-1.239-2.897-1.381s-0.671-0.212-0.953 0.212c-0.283 0.424-1.097 1.381-1.344 1.663s-0.495 0.318-0.919 0.106c-0.424-0.212-1.789-0.659-3.405-2.101-1.259-1.121-2.109-2.507-2.355-2.931s-0.025-0.653 0.186-0.864c0.191-0.191 0.424-0.495 0.637-0.743s0.283-0.424 0.424-0.707c0.141-0.283 0.071-0.531-0.035-0.743s-0.953-2.299-1.305-3.147c-0.344-0.825-0.692-0.712-0.953-0.725-0.247-0.012-0.531-0.015-0.815-0.015s-0.743 0.106-1.133 0.531c-0.39 0.424-1.487 1.453-1.487 3.544s1.521 4.112 1.733 4.395c0.212 0.283 2.989 4.563 7.243 6.4 1.012 0.437 1.8 0.697 2.416 0.892 1.019 0.318 1.945 0.273 2.677 0.165 0.817-0.122 2.507-1.025 2.861-2.015s0.353-1.839 0.247-2.015c-0.106-0.176-0.39-0.283-0.815-0.495z"/>
+                        </svg>
+                        לפרטים בוואטסאפ
+                    </a>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-image">
+                    <img src="https://i.ibb.co/4RvKTqm3/816e09df-b802-4c40-8d32-886de978b2f7.jpg" alt="בושם יוקרתי" loading="lazy">
+                </div>
+                <div class="card-body">
+                    <a href="https://wa.me/972559937579?text=היי%2C%20אני%20מתעניין%20בבושם%20הזה%3A%20https%3A%2F%2Fi.ibb.co%2F4RvKTqm3%2F816e09df-b802-4c40-8d32-886de978b2f7.jpg" 
+                       class="whatsapp-btn"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <svg viewBox="0 0 32 32" aria-hidden="true">
+                            <path fill="#0a0a0a" d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 8.135-2.135c2.369 1.313 5.061 2.135 7.865 2.135 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.333c-2.547 0-5.043-0.725-7.203-2.088l-0.515-0.32-5.328 1.397 1.423-5.195-0.348-0.533c-1.499-2.312-2.363-5.035-2.363-7.927 0-7.455 6.212-13.667 13.667-13.667s13.667 6.212 13.667 13.667c0 7.455-6.212 13.667-13.667 13.667zM23.488 19.739c-0.424-0.212-2.507-1.239-2.897-1.381s-0.671-0.212-0.953 0.212c-0.283 0.424-1.097 1.381-1.344 1.663s-0.495 0.318-0.919 0.106c-0.424-0.212-1.789-0.659-3.405-2.101-1.259-1.121-2.109-2.507-2.355-2.931s-0.025-0.653 0.186-0.864c0.191-0.191 0.424-0.495 0.637-0.743s0.283-0.424 0.424-0.707c0.141-0.283 0.071-0.531-0.035-0.743s-0.953-2.299-1.305-3.147c-0.344-0.825-0.692-0.712-0.953-0.725-0.247-0.012-0.531-0.015-0.815-0.015s-0.743 0.106-1.133 0.531c-0.39 0.424-1.487 1.453-1.487 3.544s1.521 4.112 1.733 4.395c0.212 0.283 2.989 4.563 7.243 6.4 1.012 0.437 1.8 0.697 2.416 0.892 1.019 0.318 1.945 0.273 2.677 0.165 0.817-0.122 2.507-1.025 2.861-2.015s0.353-1.839 0.247-2.015c-0.106-0.176-0.39-0.283-0.815-0.495z"/>
+                        </svg>
+                        לפרטים בוואטסאפ
+                    </a>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-image">
+                    <img src="https://i.ibb.co/FLVFn4mV/5003c143-4f5b-4f13-96e1-d01abe5ccfd0.jpg" alt="בושם יוקרתי" loading="lazy">
+                </div>
+                <div class="card-body">
+                    <a href="https://wa.me/972559937579?text=היי%2C%20אני%20מתעניין%20בבושם%20הזה%3A%20https%3A%2F%2Fi.ibb.co%2FFLVFn4mV%2F5003c143-4f5b-4f13-96e1-d01abe5ccfd0.jpg" 
+                       class="whatsapp-btn"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <svg viewBox="0 0 32 32" aria-hidden="true">
+                            <path fill="#0a0a0a" d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 8.135-2.135c2.369 1.313 5.061 2.135 7.865 2.135 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.333c-2.547 0-5.043-0.725-7.203-2.088l-0.515-0.32-5.328 1.397 1.423-5.195-0.348-0.533c-1.499-2.312-2.363-5.035-2.363-7.927 0-7.455 6.212-13.667 13.667-13.667s13.667 6.212 13.667 13.667c0 7.455-6.212 13.667-13.667 13.667zM23.488 19.739c-0.424-0.212-2.507-1.239-2.897-1.381s-0.671-0.212-0.953 0.212c-0.283 0.424-1.097 1.381-1.344 1.663s-0.495 0.318-0.919 0.106c-0.424-0.212-1.789-0.659-3.405-2.101-1.259-1.121-2.109-2.507-2.355-2.931s-0.025-0.653 0.186-0.864c0.191-0.191 0.424-0.495 0.637-0.743s0.283-0.424 0.424-0.707c0.141-0.283 0.071-0.531-0.035-0.743s-0.953-2.299-1.305-3.147c-0.344-0.825-0.692-0.712-0.953-0.725-0.247-0.012-0.531-0.015-0.815-0.015s-0.743 0.106-1.133 0.531c-0.39 0.424-1.487 1.453-1.487 3.544s1.521 4.112 1.733 4.395c0.212 0.283 2.989 4.563 7.243 6.4 1.012 0.437 1.8 0.697 2.416 0.892 1.019 0.318 1.945 0.273 2.677 0.165 0.817-0.122 2.507-1.025 2.861-2.015s0.353-1.839 0.247-2.015c-0.106-0.176-0.39-0.283-0.815-0.495z"/>
+                        </svg>
+                        לפרטים בוואטסאפ
+                    </a>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-image">
+                    <img src="https://i.ibb.co/LDWVhr28/47669feb-80c3-470b-b65b-fc2c982f5390.jpg" alt="בושם יוקרתי" loading="lazy">
+                </div>
+                <div class="card-body">
+                    <a href="https://wa.me/972559937579?text=היי%2C%20אני%20מתעניין%20בבושם%20הזה%3A%20https%3A%2F%2Fi.ibb.co%2FLDWVhr28%2F47669feb-80c3-470b-b65b-fc2c982f5390.jpg" 
+                       class="whatsapp-btn"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <svg viewBox="0 0 32 32" aria-hidden="true">
+                            <path fill="#0a0a0a" d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 8.135-2.135c2.369 1.313 5.061 2.135 7.865 2.135 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.333c-2.547 0-5.043-0.725-7.203-2.088l-0.515-0.32-5.328 1.397 1.423-5.195-0.348-0.533c-1.499-2.312-2.363-5.035-2.363-7.927 0-7.455 6.212-13.667 13.667-13.667s13.667 6.212 13.667 13.667c0 7.455-6.212 13.667-13.667 13.667zM23.488 19.739c-0.424-0.212-2.507-1.239-2.897-1.381s-0.671-0.212-0.953 0.212c-0.283 0.424-1.097 1.381-1.344 1.663s-0.495 0.318-0.919 0.106c-0.424-0.212-1.789-0.659-3.405-2.101-1.259-1.121-2.109-2.507-2.355-2.931s-0.025-0.653 0.186-0.864c0.191-0.191 0.424-0.495 0.637-0.743s0.283-0.424 0.424-0.707c0.141-0.283 0.071-0.531-0.035-0.743s-0.953-2.299-1.305-3.147c-0.344-0.825-0.692-0.712-0.953-0.725-0.247-0.012-0.531-0.015-0.815-0.015s-0.743 0.106-1.133 0.531c-0.39 0.424-1.487 1.453-1.487 3.544s1.521 4.112 1.733 4.395c0.212 0.283 2.989 4.563 7.243 6.4 1.012 0.437 1.8 0.697 2.416 0.892 1.019 0.318 1.945 0.273 2.677 0.165 0.817-0.122 2.507-1.025 2.861-2.015s0.353-1.839 0.247-2.015c-0.106-0.176-0.39-0.283-0.815-0.495z"/>
+                        </svg>
+                        לפרטים בוואטסאפ
+                    </a>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-image">
+                    <img src="https://i.ibb.co/jm0hbhb/4611214b-b257-48f0-858b-49f17fac6bd8.jpg" alt="בושם יוקרתי" loading="lazy">
+                </div>
+                <div class="card-body">
+                    <a href="https://wa.me/972559937579?text=היי%2C%20אני%20מתעניין%20בבושם%20הזה%3A%20https%3A%2F%2Fi.ibb.co%2Fjm0hbhb%2F4611214b-b257-48f0-858b-49f17fac6bd8.jpg" 
+                       class="whatsapp-btn"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <svg viewBox="0 0 32 32" aria-hidden="true">
+                            <path fill="#0a0a0a" d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 8.135-2.135c2.369 1.313 5.061 2.135 7.865 2.135 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.333c-2.547 0-5.043-0.725-7.203-2.088l-0.515-0.32-5.328 1.397 1.423-5.195-0.348-0.533c-1.499-2.312-2.363-5.035-2.363-7.927 0-7.455 6.212-13.667 13.667-13.667s13.667 6.212 13.667 13.667c0 7.455-6.212 13.667-13.667 13.667zM23.488 19.739c-0.424-0.212-2.507-1.239-2.897-1.381s-0.671-0.212-0.953 0.212c-0.283 0.424-1.097 1.381-1.344 1.663s-0.495 0.318-0.919 0.106c-0.424-0.212-1.789-0.659-3.405-2.101-1.259-1.121-2.109-2.507-2.355-2.931s-0.025-0.653 0.186-0.864c0.191-0.191 0.424-0.495 0.637-0.743s0.283-0.424 0.424-0.707c0.141-0.283 0.071-0.531-0.035-0.743s-0.953-2.299-1.305-3.147c-0.344-0.825-0.692-0.712-0.953-0.725-0.247-0.012-0.531-0.015-0.815-0.015s-0.743 0.106-1.133 0.531c-0.39 0.424-1.487 1.453-1.487 3.544s1.521 4.112 1.733 4.395c0.212 0.283 2.989 4.563 7.243 6.4 1.012 0.437 1.8 0.697 2.416 0.892 1.019 0.318 1.945 0.273 2.677 0.165 0.817-0.122 2.507-1.025 2.861-2.015s0.353-1.839 0.247-2.015c-0.106-0.176-0.39-0.283-0.815-0.495z"/>
+                        </svg>
+                        לפרטים בוואטסאפ
+                    </a>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-image">
+                    <img src="https://i.ibb.co/7xrsgJF7/53382257-7cd0-44b9-816f-5e559180a1cb.jpg" alt="בושם יוקרתי" loading="lazy">
+                </div>
+                <div class="card-body">
+                    <a href="https://wa.me/972559937579?text=היי%2C%20אני%20מתעניין%20בבושם%20הזה%3A%20https%3A%2F%2Fi.ibb.co%2F7xrsgJF7%2F53382257-7cd0-44b9-816f-5e559180a1cb.jpg" 
+                       class="whatsapp-btn"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <svg viewBox="0 0 32 32" aria-hidden="true">
+                            <path fill="#0a0a0a" d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 8.135-2.135c2.369 1.313 5.061 2.135 7.865 2.135 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.333c-2.547 0-5.043-0.725-7.203-2.088l-0.515-0.32-5.328 1.397 1.423-5.195-0.348-0.533c-1.499-2.312-2.363-5.035-2.363-7.927 0-7.455 6.212-13.667 13.667-13.667s13.667 6.212 13.667 13.667c0 7.455-6.212 13.667-13.667 13.667zM23.488 19.739c-0.424-0.212-2.507-1.239-2.897-1.381s-0.671-0.212-0.953 0.212c-0.283 0.424-1.097 1.381-1.344 1.663
+                                       <article class="card">
+                <div class="card-image">
+                    <img src="https://i.ibb.co/7xrsgJF7/53382257-7cd0-44b9-816f-5e559180a1cb.jpg" alt="בושם יוקרתי" loading="lazy">
+                </div>
+                <div class="card-body">
+                    <a href="https://wa.me/972559937579?text=היי%2C%20אני%20מתעניין%20בבושם%20הזה%3A%20https%3A%2F%2Fi.ibb.co%2F7xrsgJF7%2F53382257-7cd0-44b9-816f-5e559180a1cb.jpg" 
+                       class="whatsapp-btn"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <svg viewBox="0 0 32 32" aria-hidden="true">
+                            <path fill="#0a0a0a" d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 8.135-2.135c2.369 1.313 5.061 2.135 7.865 2.135 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.333c-2.547 0-5.043-0.725-7.203-2.088l-0.515-0.32-5.328 1.397 1.423-5.195-0.348-0.533c-1.499-2.312-2.363-5.035-2.363-7.927 0-7.455 6.212-13.667 13.667-13.667s13.667 6.212 13.667 13.667c0 7.455-6.212 13.667-13.667 13.667zM23.488 19.739c-0.424-0.212-2.507-1.239-2.897-1.381s-0.671-0.212-0.953 0.212c-0.283 0.424-1.097 1.381-1.344 1.663s-0.495 0.318-0.919 0.106c-0.424-0.212-1.789-0.659-3.405-2.101-1.259-1.121-2.109-2.507-2.355-2.931s-0.025-0.653 0.186-0.864c0.191-0.191 0.424-0.495 0.637-0.743s0.283-0.424 0.424-0.707c0.141-0.283 0.071-0.531-0.035-0.743s-0.953-2.299-1.305-3.147c-0.344-0.825-0.692-0.712-0.953-0.725-0.247-0.012-0.531-0.015-0.815-0.015s-0.743 0.106-1.133 0.531c-0.39 0.424-1.487 1.453-1.487 3.544s1.521 4.112 1.733 4.395c0.212 0.283 2.989 4.563 7.243 6.4 1.012 0.437 1.8 0.697 2.416 0.892 1.019 0.318 1.945 0.273 2.677 0.165 0.817-0.122 2.507-1.025 2.861-2.015s0.353-1.839 0.247-2.015c-0.106-0.176-0.39-0.283-0.815-0.495z"/>
+                        </svg>
+                        לפרטים בוואטסאפ
+                    </a>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-image">
+                    <img src="https://i.ibb.co/LXf5gt4P/b8b57ae6-de63-4171-9976-673cd07a2c3e.jpg" alt="בושם יוקרתי" loading="lazy">
+                </div>
+                <div class="card-body">
+                    <a href="https://wa.me/972559937579?text=היי%2C%20אני%20מתעניין%20בבושם%20הזה%3A%20https%3A%2F%2Fi.ibb.co%2FLXf5gt4P%2Fb8b57ae6-de63-4171-9976-673cd07a2c3e.jpg" 
+                       class="whatsapp-btn"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <svg viewBox="0 0 32 32" aria-hidden="true">
+                            <path fill="#0a0a0a" d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 8.135-2.135c2.369 1.313 5.061 2.135 7.865 2.135 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.333c-2.547 0-5.043-0.725-7.203-2.088l-0.515-0.32-5.328 1.397 1.423-5.195-0.348-0.533c-1.499-2.312-2.363-5.035-2.363-7.927 0-7.455 6.212-13.667 13.667-13.667s13.667 6.212 13.667 13.667c0 7.455-6.212 13.667-13.667 13.667zM23.488 19.739c-0.424-0.212-2.507-1.239-2.897-1.381s-0.671-0.212-0.953 0.212c-0.283 0.424-1.097 1.381-1.344 1.663s-0.495 0.318-0.919 0.106c-0.424-0.212-1.789-0.659-3.405-2.101-1.259-1.121-2.109-2.507-2.355-2.931s-0.025-0.653 0.186-0.864c0.191-0.191 0.424-0.495 0.637-0.743s0.283-0.424 0.424-0.707c0.141-0.283 0.071-0.531-0.035-0.743s-0.953-2.299-1.305-3.147c-0.344-0.825-0.692-0.712-0.953-0.725-0.247-0.012-0.531-0.015-0.815-0.015s-0.743 0.106-1.133 0.531c-0.39 0.424-1.487 1.453-1.487 3.544s1.521 4.112 1.733 4.395c0.212 0.283 2.989 4.563 7.243 6.4 1.012 0.437 1.8 0.697 2.416 0.892 1.019 0.318 1.945 0.273 2.677 0.165 0.817-0.122 2.507-1.025 2.861-2.015s0.353-1.839 0.247-2.015c-0.106-0.176-0.39-0.283-0.815-0.495z"/>
+                        </svg>
+                        לפרטים בוואטסאפ
+                    </a>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-image">
+                    <img src="https://i.ibb.co/QvHGR3CS/b324103f-4e7e-40ca-91ea-24f0fb135684.jpg" alt="בושם יוקרתי" loading="lazy">
+                </div>
+                <div class="card-body">
+                    <a href="https://wa.me/972559937579?text=היי%2C%20אני%20מתעניין%20בבושם%20הזה%3A%20https%3A%2F%2Fi.ibb.co%2FQvHGR3CS%2Fb324103f-4e7e-40ca-91ea-24f0fb135684.jpg" 
+                       class="whatsapp-btn"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <svg viewBox="0 0 32 32" aria-hidden="true">
+                            <path fill="#0a0a0a" d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 8.135-2.135c2.369 1.313 5.061 2.135 7.865 2.135 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.333c-2.547 0-5.043-0.725-7.203-2.088l-0.515-0.32-5.328 1.397 1.423-5.195-0.348-0.533c-1.499-2.312-2.363-5.035-2.363-7.927 0-7.455 6.212-13.667 13.667-13.667s13.667 6.212 13.667 13.667c0 7.455-6.212 13.667-13.667 13.667zM23.488 19.739c-0.424-0.212-2.507-1.239-2.897-1.381s-0.671-0.212-0.953 0.212c-0.283 0.424-1.097 1.381-1.344 1.663s-0.495 0.318-0.919 0.106c-0.424-0.212-1.789-0.659-3.405-2.101-1.259-1.121-2.109-2.507-2.355-2.931s-0.025-0.653 0.186-0.864c0.191-0.191 0.424-0.495 0.637-0.743s0.283-0.424 0.424-0.707c0.141-0.283 0.071-0.531-0.035-0.743s-0.953-2.299-1.305-3.147c-0.344-0.825-0.692-0.712-0.953-0.725-0.247-0.012-0.531-0.015-0.815-0.015s-0.743 0.106-1.133 0.531c-0.39 0.424-1.487 1.453-1.487 3.544s1.521 4.112 1.733 4.395c0.212 0.283 2.989 4.563 7.243 6.4 1.012 0.437 1.8 0.697 2.416 0.892 1.019 0.318 1.945 0.273 2.677 0.165 0.817-0.122 2.507-1.025 2.861-2.015s0.353-1.839 0.247-2.015c-0.106-0.176-0.39-0.283-0.815-0.495z"/>
+                        </svg>
+                        לפרטים בוואטסאפ
+                    </a>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-image">
+                    <img src="https://i.ibb.co/pjX31pqr/bc32531c-c5dc-4585-9037-c587a9590922.jpg" alt="בושם יוקרתי" loading="lazy">
+                </div>
+                <div class="card-body">
+                    <a href="https://wa.me/972559937579?text=היי%2C%20אני%20מתעניין%20בבושם%20הזה%3A%20https%3A%2F%2Fi.ibb.co%2FpjX31pqr%2Fbc32531c-c5dc-4585-9037-c587a9590922.jpg" 
+                       class="whatsapp-btn"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <svg viewBox="0 0 32 32" aria-hidden="true">
+                            <path fill="#0a0a0a" d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 8.135-2.135c2.369 1.313 5.061 2.135 7.865 2.135 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.333c-2.547 0-5.043-0.725-7.203-2.088l-0.515-0.32-5.328 1.397 1.423-5.195-0.348-0.533c-1.499-2.312-2.363-5.035-2.363-7.927 0-7.455 6.212-13.667 13.667-13.667s13.667 6.212 13.667 13.667c0 7.455-6.212 13.667-13.667 13.667zM23.488 19.739c-0.424-0.212-2.507-1.239-2.897-1.381s-0.671-0.212-0.953 0.212c-0.283 0.424-1.097 1.381-1.344 1.663s-0.495 0.318-0.919 0.106c-0.424-0.212-1.789-0.659-3.405-2.101-1.259-1.121-2.109-2.507-2.355-2.931s-0.025-0.653 0.186-0.864c0.191-0.191 0.424-0.495 0.637-0.743s0.283-0.424 0.424-0.707c0.141-0.283 0.071-0.531-0.035-0.743s-0.953-2.299-1.305-3.147c-0.344-0.825-0.692-0.712-0.953-0.725-0.247-0.012-0.531-0.015-0.815-0.015s-0.743 0.106-1.133 0.531c-0.39 0.424-1.487 1.453-1.487 3.544s1.521 4.112 1.733 4.395c0.212 0.283 2.989 4.563 7.243 6.4 1.012 0.437 1.8 0.697 2.416 0.892 1.019 0.318 1.945 0.273 2.677 0.165 0.817-0.122 2.507-1.025 2.861-2.015s0.353-1.839 0.247-2.015c-0.106-0.176-0.39-0.283-0.815-0.495z"/>
+                        </svg>
+                        לפרטים בוואטסאפ
+                    </a>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-image">
+                    <img src="https://i.ibb.co/6JTnxmn8/bde6ed57-7256-4531-8434-87cc9a6d6a18.jpg" alt="בושם יוקרתי" loading="lazy">
+                </div>
+                <div class="card-body">
+                    <a href="https://wa.me/972559937579?text=היי%2C%20אני%20מתעניין%20בבושם%20הזה%3A%20https%3A%2F%2Fi.ibb.co%2F6JTnxmn8%2Fbde6ed57-7256-4531-8434-87cc9a6d6a18.jpg" 
+                       class="whatsapp-btn"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <svg viewBox="0 0 32 32" aria-hidden="true">
+                            <path fill="#0a0a0a" d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 8.135-2.135c2.369 1.313 5.061 2.135 7.865 2.135 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.333c-2.547 0-5.043-0.725-7.203-2.088l-0.515-0.32-5.328 1.397 1.423-5.195-0.348-0.533c-1.499-2.312-2.363-5.035-2.363-7.927 0-7.455 6.212-13.667 13.667-13.667s13.667 6.212 13.667 13.667c0 7.455-6.212 13.667-13.667 13.667zM23.488 19.739c-0.424-0.212-2.507-1.239-2.897-1.381s-0.671-0.212-0.953 0.212c-0.283 0.424-1.097 1.381-1.344 1.663s-0.495 0.318-0.919 0.106c-0.424-0.212-1.789-0.659-3.405-2.101-1.259-1.121-2.109-2.507-2.355-2.931s-0.025-0.653 0.186-0.864c0.191-0.191 0.424-0.495 0.637-0.743s0.283-0.424 0.424-0.707c0.141-0.283 0.071-0.531-0.035-0.743s-0.953-2.299-1.305-3.147c-0.344-0.825-0.692-0.712-0.953-0.725-0.247-0.012-0.531-0.015-0.815-0.015s-0.743 0.106-1.133 0.531c-0.39 0.424-1.487 1.453-1.487 3.544s1.521 4.112 1.733 4.395c0.212 0.283 2.989 4.563 7.243 6.4 1.012 0.437 1.8 0.697 2.416 0.892 1.019 0.318 1.945 0.273 2.677 0.165 0.817-0.122 2.507-1.025 2.861-2.015s0.353-1.839 0.247-2.015c-0.106-0.176-0.39-0.283-0.815-0.495z"/>
+                        </svg>
+                        לפרטים בוואטסאפ
+                    </a>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-image">
+                    <img src="https://i.ibb.co/8D5JHnjG/d506a928-704a-493d-a087-54b58638d878.jpg" alt="בושם יוקרתי" loading="lazy">
+                </div>
+                <div class="card-body">
+                    <a href="https://wa.me/972559937579?text=היי%2C%20אני%20מתעניין%20בבושם%20הזה%3A%20https%3A%2F%2Fi.ibb.co%2F8D5JHnjG%2Fd506a928-704a-493d-a087-54b58638d878.jpg" 
+                       class="whatsapp-btn"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <svg viewBox="0 0 32 32" aria-hidden="true">
+                            <path fill="#0a0a0a" d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 8.135-2.135c2.369 1.313 5.061 2.135 7.865 2.135 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.333c-2.547 0-5.043-0.725-7.203-2.088l-0.515-0.32-5.328 1.397 1.423-5.195-0.348-0.533c-1.499-2.312-2.363-5.035-2.363-7.927 0-7.455 6.212-13.667 13.667-13.667s13.667 6.212 13.667 13.667c0 7.455-6.212 13.667-13.667 13.667zM23.488 19.739c-0.424-0.212-2.507-1.239-2.897-1.381s-0.671-0.212-0.953 0.212c-0.283 0.424-1.097 1.381-1.344 1.663s-0.495 0.318-0.919 0.106c-0.424-0.212-1.789-0.659-3.405-2.101-1.259-1.121-2.109-2.507-2.355-2.931s-0.025-0.653 0.186-0.864c0.191-0.191 0.424-0.495 0.637-0.743s0.283-0.424 0.424-0.707c0.141-0.283 0.071-0.531-0.035-0.743s-0.953-2.299-1.305-3.147c-0.344-0.825-0.692-0.712-0.953-0.725-0.247-0.012-0.531-0.015-0.815-0.015s-0.743 0.106-1.133 0.531c-0.39 0.424-1.487 1.453-1.487 3.544s1.521 4.112 1.733 4.395c0.212 0.283 2.989 4.563 7.243 6.4 1.012 0.437 1.8 0.697 2.416 0.892 1.019 0.318 1.945 0.273 2.677 0.165 0.817-0.122 2.507-1.025 2.861-2.015s0.353-1.839 0.247-2.015c-0.106-0.176-0.39-0.283-0.815-0.495z"/>
+                        </svg>
+                        לפרטים בוואטסאפ
+                    </a>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-image">
+                    <img src="https://i.ibb.co/tMdnCLqj/dbc28d44-58fd-4de1-8568-0c3e8382d403.jpg" alt="בושם יוקרתי" loading="lazy">
+                </div>
+                <div class="card-body">
+                    <a href="https://wa.me/972559937579?text=היי%2C%20אני%20מתעניין%20בבושם%20הזה%3A%20https%3A%2F%2Fi.ibb.co%2FtMdnCLqj%2Fdbc28d44-58fd-4de1-8568-0c3e8382d403.jpg" 
+                       class="whatsapp-btn"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <svg viewBox="0 0 32 32" aria-hidden="true">
+                            <path fill="#0a0a0a" d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 8.135-2.135c2.369 1.313 5.061 2.135 7.865 2.135 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.333c-2.547 0-5.043-0.725-7.203-2.088l-0.515-0.32-5.328 1.397 1.423-5.195-0.348-0.533c-1.499-2.312-2.363-5.035-2.363-7.927 0-7.455 6.212-13.667 13.667-13.667s13.667 6.212 13.667 13.667c0 7.455-6.212 13.667-13.667 13.667zM23.488 19.739c-0.424-0.212-2.507-1.239-2.897-1.381s-0.671-0.212-0.953 0.212c-0.283 0.424-1.097 1.381-1.344 1.663s-0.495 0.318-0.919 0.106c-0.424-0.212-1.789-0.659-3.405-2.101-1.259-1.121-2.109-2.507-2.355-2.931s-0.025-0.653 0.186-0.864c0.191-0.191 0.424-0.495 0.637-0.743s0.283-0.424 0.424-0.707c0.141-0.283 0.071-0.531-0.035-0.743s-0.953-2.299-1.305-3.147c-0.344-0.825-0.692-0.712-0.953-0.725-0.247-0.012-0.531-0.015-0.815-0.015s-0.743 0.106-1.133 0.531c-0.39 0.424-1.487 1.453-1.487 3.544s1.521 4.112 1.733 4.395c0.212 0.283 2.989 4.563 7.243 6.4 1.012 0.437 1.8 0.697 2.416 0.892 1.019 0.318 1.945 0.273 2.677 0.165 0.817-0.122 2.507-1.025 2.861-2.015s0.353-1.839 0.247-2.015c-0.106-0.176-0.39-0.283-0.815-0.495z"/>
+                        </svg>
+                        לפרטים בוואטסאפ
+                    </a>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-image">
+                    <img src="https://i.ibb.co/x4g8s4p/dd733263-ece9-43c9-a8c5-371f561db42a.jpg" alt="בושם יוקרתי" loading="lazy">
+                </div>
+                <div class="card-body">
+                    <a href="https://wa.me/972559937579?text=היי%2C%20אני%20מתעניין%20בבושם%20הזה%3A%20https%3A%2F%2Fi.ibb.co%2Fx4g8s4p%2Fdd733263-ece9-43c9-a8c5-371f561db42a.jpg" 
+                       class="whatsapp-btn"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <svg viewBox="0 0 32 32" aria-hidden="true">
+                            <path fill="#0a0a0a" d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 8.135-2.135c2.369 1.313 5.061 2.135 7.865 2.135 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.333c-2.547 0-5.043-0.725-7.203-2.088l-0.515-0.32-5.328 1.397 1.423-5.195-0.348-0.533c-1.499-2.312-2.363-5.035-2.363-7.927 0-7.455 6.212-13.667 13.667-13.667s13.667 6.212 13.667 13.667c0 7.455-6.212 13.667-13.667 13.667zM23.488 19.739c-0.424-0.212-2.507-1.239-2.897-1.381s-0.671-0.212-0.953 0.212c-0.283 0.424-1.097 1.381-1.344 1.663s-0.495 0.318-0.919 0.106c-0.424-0.212-1.789-0.659-3.405-2.101-1.259-1.121-2.109-2.507-2.355-2.931s-0.025-0.653 0.186-0.864c0.191-0.191 0.424-0.495 0.637-0.743s0.283-0.424 0.424-0.707c0.141-0.283 0.071-0.531-0.035-0.743s-0.953-2.299-1.305-3.147c-0.344-0.825-0.692-0.712-0.953-0.725-0.247-0.012-0.531-0.015-0.815-0.015s-0.743 0.106-1.133 0.531c-0.39 0.424-1.487 1.453-1.487 3.544s1.521 4.112 1.733 4.395c0.212 0.283 2.989 4.563 7.243 6.4 1.012 0.437 1.8 0.697 2.416 0.892 1.019 0.318 1.945 0.273 2.677 0.165 0.817-0.122 2.507-1.025 2.861-2.015s0.353-1.839 0.247-2.015c-0.106-0.176-0.39-0.283-0.815-0.495z"/>
+                        </svg>
+                        לפרטים בוואטסאפ
+                    </a>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-image">
+                    <img src="https://i.ibb.co/nMHKzRGm/e1a838ec-0f34-43dd-8c6c-b05ac6dacd5b.jpg" alt="בושם יוקרתי" loading="lazy">
+                </div>
+                <div class="card-body">
+                    <a href="https://wa.me/972559937579?text=היי%2C%20אני%20מתעניין%20בבושם%20הזה%3A%20https%3A%2F%2Fi.ibb.co%2FnMHKzRGm%2Fe1a838ec-0f34-43dd-8c6c-b05ac6dacd5b.jpg" 
+                       class="whatsapp-btn"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <svg viewBox="0 0 32 32" aria-hidden="true">
+                            <path fill="#0a0a0a" d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 8.135-2.135c2.369 1.313 5.061 2.135 7.865 2.135 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.333c-2.547 0-5.043-0.725-7.203-2.088l-0.515-0.32-5.328 1.397 1.423-5.195-0.348-0.533c-1.499-2.312-2.363-5.035-2.363-7.927 0-7.455 6.212-13.667 13.667-13.667s13.667 6.212 13.667 13.667c0 7.455-6.212 13.667-13.667 13.667zM23.488 19.739c-0.424-0.212-2.507-1.239-2.897-1.381s-0.671-0.212-0.953 0.212c-0.283 0.424-1.097 1.381-1.344 1.663s-0.495 0.318-0.919 0.106c-0.424-0.212-1.789-0.659-3.405-2.101-1.259-1.121-2.109-2.507-2.355-2.931s-0.025-0.653 0.186-0.864c0.191-0.191 0.424-0.495 0.637-0.743s0.283-0.424 0.424-0.707c0.141-0.283 0.071-0.531-0.035-0.743s-0.953-2.299-1.305-3.147c-0.344-0.825-0.692-0.712-0.953-0.725-0.247-0.012-0.531-0.015-0.815-0.015s-0.743 0.106-1.133 0.531c-0.39 0.424-1.487 1.453-1.487 3.544s1.521 4.112 1.733 4.395c0.212 0.283 2.989 4.563 7.243 6.4 1.012 0.437 1.8 0.697 2.416 0.892 1.019 0.318 1.945 0.273 2.677 0.165 0.817-0.122 2.507-1.025 2.861-2.015s0.353-1.839 0.247-2.015c-0.106-0.176-0.39-0.283-0.815-0.495z"/>
+                        </svg>
+                        לפרטים בוואטסאפ
+                    </a>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-image">
+                    <img src="https://i.ibb.co/sdtDqHy2/eb36d1b4-aa08-4f9f-a343-4324e347b56c.jpg" alt="בושם יוקרתי" loading="lazy">
+                </div>
+                <div class="card-body">
+                    <a href="https://wa.me/972559937579?text=היי%2C%20אני%20מתעניין%20בבושם%20הזה%3A%20https%3A%2F%2Fi.ibb.co%2FsdtDqHy2%2Feb36d1b4-aa08-4f9f-a343-4324e347b56c.jpg" 
+                       class="whatsapp-btn"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <svg viewBox="0 0 32 32" aria-hidden="true">
+                            <path fill="#0a0a0a" d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 8.135-2.135c2.369 1.313 5.061 2.135 7.865 2.135 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.333c-2.547 0-5.043-0.725-7.203-2.088l-0.515-0.32-5.328 1.397 1.423-5.195-0.348-0.533c-1.499-2.312-2.363-5.035-2.363-7.927 0-7.455 6.212-13.667 13.667-13.667s13.667 6.212 13.667 13.667c0 7.455-6.212 13.667-13.667 13.667zM23.488 19.739c-0.424-0.212-2.507-1.239-2.897-1.381s-0.671-0.212-0.953 0.212c-0.283 0.424-1.097 1.381-1.344 1.663s-0.495 0.318-0.919 0.106c-0.424-0.212-1.789-0.659-3.405-2.101-1.259-1.121-2.109-2.507-2.355-2.931s-0.025-0.653 0.186-0.864c0.191-0.191 0.424-0.495 0.637-0.743s0.283-0.424 0.424-0.707c0.141-0.283 0.071-0.531-0.035-0.743s-0.953-2.299-1.305-3.147c-0.344-0.825-0.692-0.712-0.953-0.725-0.247-0.012-0.531-0.015-0.815-0.015s-0.743 0.106-1.133 0.531c-0.39 0.424-1.487 1.453-1.487 3.544s1.521 4.112 1.733 4.395c0.212 0.283 2.989 4.563 7.243 6.4 1.012 0.437 1.8 0.697 2.416 0.892 1.019 0.318 1.945 0.273 2.677 0.165 0.817-0.122 2.507-1.025 2.861-2.015s0.353-1.839 0.247-2.015c-0.106-0.176-0.39-0.283-0.815-0.495z"/>
+                        </svg>
+                        לפרטים בוואטסאפ
+                    </a>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-image">
+                    <img src="https://i.ibb.co/jZJMyf46/ec72a3c0-ad1c-4a30-802d-f0dd2f99fc0e.jpg" alt="בושם יוקרתי" loading="lazy">
+                </div>
+                <div class="card-body">
+                    <a href="https://wa.me/972559937579?text=היי%2C%20אני%20מתעניין%20בבושם%20הזה%3A%20https%3A%2F%2Fi.ibb.co%2FjZJMyf46%2Fec72a3c0-ad1c-4a30-802d-f0dd2f99fc0e.jpg" 
+                       class="whatsapp-btn"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <svg viewBox="0 0 32 32" aria-hidden="true">
+                            <path fill="#0a0a0a" d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 8.135-2.135c2.369 1.313 5.061 2.135 7.865 2.135 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.333c-2.547 0-5.043-0.725-7.203-2.088l-0.515-0.32-5.328 1.397 1.423-5.195-0.348-0.533c-1.499-2.312-2.363-5.035-2.363-7.927 0-7.455 6.212-13.667 13.667-13.667s13.667 6.212 13.667 13.667c0 7.455-6.212 13.667-13.667 13.667zM23.488 19.739c-0.424-0.212-2.507-1.239-2.897-1.381s-0.671-0.212-0.953 0.212c-0.283 0.424-1.097 1.381-1.344 1.663s-0.495 0.318-0.919 0.106c-0.424-0.212-1.789-0.659-3.405-2.101-1.259-1.121-2.109-2.507-2.355-2.931s-0.025-0.653 0.186-0.864c0.191-0.191 0.424-0.495 0.637-0.743s0.283-0.424 0.424-0.707c0.141-0.283 0.071-0.531-0.035-0.743s-0.953-2.299-1.305-3.147c-0.344-0.825-0.692-0.712-0.953-0.725-0.247-0.012-0.531-0.015-0.815-0.015s-0.743 0.106-1.133 0.531c-0.39 0.424-1.487 1.453-1.487 3.544s1.521 4.112 1.733 4.395c0.212 0.283 2.989 4.563 7.243 6.4 1.012 0.437 1.8 0.697 2.416 0.892 1.019 0.318 1.945 0.273 2.677 0.165 0.817-0.122 2.507-1.025 2.861-2.015s0.353-1.839 0.247-2.015c-0.106-0.176-0.39-0.283-0.815-0.495z"/>
+                        </svg>
+                        לפרטים בוואטסאפ
+                    </a>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-image">
+                    <img src="https://i.ibb.co/4RsQgQQT/f380c1c9-72a7-4327-b358-246ea144d9f6.jpg" alt="בושם יוקרתי" loading="lazy">
+                </div>
+                <div class="card-body">
+                    <a href="https://wa.me/972559937579?text=היי%2C%20אני%20מתעניין%20בבושם%20הזה%3A%20https%3A%2F%2Fi.ibb.co%2F4RsQgQQT%2Ff380c1c9-72a7-4327-b358-246ea144d9f6.jpg" 
+                       class="whatsapp-btn"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <svg viewBox="0 0 32 32" aria-hidden="true">
+                            <path fill="#0a0a0a" d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 8.135-2.135c2.369 1.313 5.061 2.135 7.865 2.135 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.333c-2.547 0-5.043-0.725-7.203-2.088l-0.515-0.32-5.328 1.397 1.423-5.195-0.348-0.533c-1.499-2.312-2.363-5.035-2.363-7.927 0-7.455 6.212-13.667 13.667-13.667s13.667 6.212 13.667 13.667c0 7.455-6.212 13.667-13.667 13.667zM23.488 19.739c-0.424-0.212-2.507-1.239-2.897-1.381s-0.671-0.212-0.953 0.212c-0.283 0.424-1.097 1.381-1.344 1.663s-0.495 0.318-0.919 0.106c-0.424-0.212-1.789-0.659-3.405-2.101-1.259-1.121-2.109-2.507-2.355-2.931s-0.025-0.653 0.186-0.864c0.191-0.191 0.424-0.495 0.637-0.743s0.283-0.424 0.424-0.707c0.141-0.283 0.071-0.531-0.035-0.743s-0.953-2.299-1.305-3.147c-0.344-0.825-0.692-0.712-0.953-0.725-0.247-0.012-0.531-0.015-0.815-0.015s-0.743 0.106-1.133 0.531c-0.39 0.424-1.487 1.453-1.487 3.544s1.521 4.112 1.733 4.395c0.212 0.283 2.989 4.563 7.243 6.4 1.012 0.437 1.8 0.697 2.416 0.892 1.019 0.318 1.945 0.273 2.677 0.165 0.817-0.122 2.507-1.025 2.861-2.015s0.353-1.839 0.247-2.015c-0.106-0.176-0.39-0.283-0.815-0.495z"/>
+                        </svg>
+                        לפרטים בוואטסאפ
+                    </a>
+                </div>
+            </article>
+
+        </div>
+    </div>
+</main>
+
+<!-- Fixed WhatsApp Button -->
+<a href="https://wa.me/972559937579" 
+   class="whatsapp-fixed" 
+   aria-label="צור קשר בוואטסאפ"
+   target="_blank"
+   rel="noopener noreferrer">
+    <svg width="36" viewBox="0 0 32 32" aria-hidden="true">
+        <path fill="#0a0a0a" d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 8.135-2.135c2.369 1.313 5.061 2.135 7.865 2.135 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.333c-2.547 0-5.043-0.725-7.203-2.088l-0.515-0.32-5.328 1.397 1.423-5.195-0.348-0.533c-1.499-2.312-2.363-5.035-2.363-7.927 0-7.455 6.212-13.667 13.667-13.667s13.667 6.212 13.667 13.667c0 7.455-6.212 13.667-13.667 13.667zM23.488 19.739c-0.424-0.212-2.507-1.239-2.897-1.381s-0.671-0.212-0.953 0.212c-0.283 0.424-1.097 1.381-1.344 1.663s-0.495 0.318-0.919 0.106c-0.424-0.212-1.789-0.659-3.405-2.101-1.259-1.121-2.109-2.507-2.355-2.931s-0.025-0.653 0.186-0.864c0.191-0.191 0.424-0.495 0.637-0.743s0.283-0.424 0.424-0.707c0.141-0.283 0.071-0.531-0.035-0.743s-0.953-2.299-1.305-3.147c-0.344-0.825-0.692-0.712-0.953-0.725-0.247-0.012-0.531-0.015-0.815-0.015s-0.743 0.106-1.133 0.531c-0.39 0.424-1.487 1.453-1.487 3.544s1.521 4.112 1.733 4.395c0.212 0.283 2.989 4.563 7.243 6.4 1.012 0.437 1.8 0.697 2.416 0.892 1.019 0.318 1.945 0.273 2.677 0.165 0.817-0.122 2.507-1.025 2.861-2.015s0.353-1.839 0.247-2.015c-0.106-0.176-0.39-0.283-0.815-0.495z"/>
+    </svg>
 </a>
 
 </body>
-</html>
+</html>     
